@@ -411,7 +411,7 @@ public final class Plants {
                 CommonPlacements.COMMON_OVERWORLD,
                 GrowthRates.GROWTH_RATE_UNCOMMON
             )
-        ).addHarvestingResult(new ItemStack(Material.SCUTE), 5
+        ).addHarvestingResult(new ItemStack(Material.TURTLE_SCUTE), 5
         ).addHarvestingResult(new ItemStack(Material.SEAGRASS, 5), 7
         ).addHarvestingResult(new ItemStack(Material.TURTLE_EGG), 1
         ).addBreedingPair(
