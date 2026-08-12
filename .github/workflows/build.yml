@@ -130,20 +130,26 @@ jobs:
           fi
           echo "Packaged resource policy passed."
 
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: SF_Cultivation${{ env.VERSION }}
-          path: ${{ env.OUTPUT_JAR }}
-          if-no-files-found: error
-          compression-level: 0
-
       - name: Publish direct JAR release
-        if: github.event_name == 'workflow_dispatch'
+        if: github.event_name != 'pull_request'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          gh release create "v${VERSION}" "$OUTPUT_JAR" \
-            --title "SF Cultivation Legacy ${VERSION}" \
-            --notes "Cultivation Legacy ${VERSION}: Slimefun Legacy build with modern Minecraft compatibility, English-first maintenance, GuizhanLib removed, farmland growth support, and selected community performance/stability fixes."
+          TAG="v${VERSION}"
+          FILE_NAME="$(basename "$OUTPUT_JAR")"
+
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$OUTPUT_JAR" --clobber
+          else
+            gh release create "$TAG" "$OUTPUT_JAR" \
+              --title "SF Cultivation Legacy ${VERSION}" \
+              --notes "Cultivation Legacy ${VERSION}: Slimefun Legacy build with modern Minecraft compatibility, English-first maintenance, GuizhanLib removed, farmland growth support, and selected community performance/stability fixes."
+          fi
+
+          {
+            echo "### Direct JAR build"
+            echo ""
+            echo "Published **${FILE_NAME}** directly to GitHub Releases under **${TAG}**."
+            echo "No ZIP artifact is produced by this workflow."
+          } >> "$GITHUB_STEP_SUMMARY"
