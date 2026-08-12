@@ -130,6 +130,14 @@ jobs:
           fi
           echo "Packaged resource policy passed."
 
+      - name: Upload Actions artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SF_Cultivation${{ env.VERSION }}
+          path: ${{ env.OUTPUT_JAR }}
+          if-no-files-found: error
+          compression-level: 0
+
       - name: Publish direct JAR release
         if: github.event_name != 'pull_request'
         env:
@@ -148,8 +156,8 @@ jobs:
           fi
 
           {
-            echo "### Direct JAR build"
+            echo "### Build outputs"
             echo ""
-            echo "Published **${FILE_NAME}** directly to GitHub Releases under **${TAG}**."
-            echo "No ZIP artifact is produced by this workflow."
+            echo "- Actions run: **${FILE_NAME}** is listed in the Artifacts section. GitHub downloads Actions artifacts as a ZIP container."
+            echo "- GitHub Release **${TAG}** contains the same **${FILE_NAME}** as a direct .jar download."
           } >> "$GITHUB_STEP_SUMMARY"
