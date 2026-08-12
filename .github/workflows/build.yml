@@ -27,6 +27,49 @@ jobs:
           java-version: '21'
           cache: maven
 
+      - name: Verify English and Legacy source policy
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          string_re = re.compile(r'"(?:\\.|[^"\\])*"')
+          cjk_re = re.compile(r'[\u4e00-\u9fff]')
+          blocked = ('SlimefunGuguProject', 'guizhanss', 'GuizhanLibPlugin')
+          failures = []
+
+          for path in sorted(Path('src/main/java').rglob('*.java')):
+              text = path.read_text(encoding='utf-8')
+              for number, line in enumerate(text.splitlines(), 1):
+                  if any(cjk_re.search(match.group(0)) for match in string_re.finditer(line)):
+                      failures.append(f'{path}:{number}: non-English Java string literal')
+              lowered = text.lower()
+              for term in blocked:
+                  if term.lower() in lowered:
+                      failures.append(f'{path}: forbidden legacy dependency/reference: {term}')
+
+          for path in (Path('pom.xml'), Path('src/main/resources/plugin.yml')):
+              text = path.read_text(encoding='utf-8')
+              lowered = text.lower()
+              for term in blocked:
+                  if term.lower() in lowered:
+                      failures.append(f'{path}: forbidden legacy dependency/reference: {term}')
+
+          for path in sorted(Path('src/main/resources').rglob('*')):
+              if not path.is_file() or path.suffix.lower() not in {'.yml', '.yaml', '.json', '.properties', '.txt'}:
+                  continue
+              text = path.read_text(encoding='utf-8')
+              if cjk_re.search(text):
+                  failures.append(f'{path}: non-English packaged resource text')
+
+          if failures:
+              print('Cultivation Legacy source policy failed:')
+              for failure in failures:
+                  print(f' - {failure}')
+              raise SystemExit(1)
+
+          print('English/Legacy source policy passed.')
+
       - name: Install Slimefun Legacy build dependency
         env:
           GH_TOKEN: ${{ github.token }}
@@ -77,6 +120,15 @@ jobs:
           cp "$JAR" "$OUTPUT"
           echo "OUTPUT_JAR=$OUTPUT" >> "$GITHUB_ENV"
           echo "Built $OUTPUT"
+
+      - name: Verify packaged English resources
+        shell: bash
+        run: |
+          if jar tf "$OUTPUT_JAR" | grep -E '^acf-(core|minecraft)_.+\.properties$'; then
+            echo "Non-English ACF locale resources were packaged unexpectedly."
+            exit 1
+          fi
+          echo "Packaged resource policy passed."
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
