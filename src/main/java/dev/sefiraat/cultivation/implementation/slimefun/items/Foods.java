@@ -217,7 +217,7 @@ public final class Foods {
             player,
             2,
             new Pair<>(PotionEffectType.FIRE_RESISTANCE, 1),
-            new Pair<>(PotionEffectType.DAMAGE_RESISTANCE, 2)
+            new Pair<>(PotionEffectType.RESISTANCE, 2)
         )
     ).buildRegister(Cultivation.getInstance());
 
@@ -396,7 +396,7 @@ public final class Foods {
                 player,
                 0,
                 new Pair<>(PotionEffectType.REGENERATION, 1),
-                new Pair<>(PotionEffectType.DAMAGE_RESISTANCE, 1)
+                new Pair<>(PotionEffectType.RESISTANCE, 1)
             );
             simplePlayerEffect(player, 999);
         }
@@ -690,7 +690,7 @@ public final class Foods {
         },
         player -> simplePlayerEffect(player, 999,
                                      new Pair<>(PotionEffectType.HEALTH_BOOST, 3),
-                                     new Pair<>(PotionEffectType.DAMAGE_RESISTANCE, 2),
+                                     new Pair<>(PotionEffectType.RESISTANCE, 2),
                                      new Pair<>(PotionEffectType.HASTE, 1),
                                      new Pair<>(PotionEffectType.SLOWNESS, 1)
         )
@@ -698,7 +698,7 @@ public final class Foods {
 
     public static final Food SAUSAGE = new Food(
         CultivationStacks.SAUSAGE,
-        RecipeTypes.GRILLED,
+        RecipeTypes.BAKING,
         new ItemStack[]{
             new ItemStack(Material.SUGAR), SlimefunItems.SALT, Products.GARLIC.getChoppedItem(),
             Products.PORK.getGroundItem(), null, null,
