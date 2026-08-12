@@ -15,7 +15,8 @@ public final class CommonPlacements {
         Material.DIRT,
         Material.PODZOL,
         Material.MUD,
-        Material.COARSE_DIRT
+        Material.COARSE_DIRT,
+        Material.FARMLAND
     );
 
 }
