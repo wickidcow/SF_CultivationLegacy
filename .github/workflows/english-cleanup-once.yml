@@ -49,6 +49,29 @@ jobs:
           string_re = re.compile(r'"(?:\\.|[^"\\])*"')
           cjk_re = re.compile(r'[\u4e00-\u9fff]')
 
+          explicit_literals = {
+              '"副产品"': '"By-Products"',
+              '"植物宝典"': '"Plants Codex"',
+              '"切碎的"': '"Chopped "',
+              '"捣碎的"': '"Mashed "',
+              '"切片的"': '"Sliced "',
+              '"剁碎的"': '"Ground "',
+              '"搅拌的"': '"Blended "',
+              '"煮熟的"': '"Boiled "',
+              '"油炸的"': '"Fried "',
+              '"烤制的"': '"Grilled "',
+              '"目前收集的种子："': '"Stored Seed Type: "',
+              '"取出种子："': '"Remove Seed: "',
+          }
+
+          for path in Path('src/main/java').rglob('*.java'):
+              text = path.read_text(encoding='utf-8')
+              replaced = text
+              for old, new in explicit_literals.items():
+                  replaced = replaced.replace(old, new)
+              if replaced != text:
+                  path.write_text(replaced, encoding='utf-8')
+
           def literal_has_cjk(line: str) -> bool:
               return any(cjk_re.search(m.group(0)) for m in string_re.finditer(line))
 
@@ -126,9 +149,7 @@ jobs:
                   print(entry)
               raise SystemExit(1)
 
-          print('English literal cleanup changed:')
-          for path in changed_files:
-              print(path)
+          print('All Java string literals are free of CJK localization text.')
 
           pom = Path('pom.xml')
           pom_text = pom.read_text(encoding='utf-8')
