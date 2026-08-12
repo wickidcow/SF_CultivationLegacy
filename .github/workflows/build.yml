@@ -21,11 +21,30 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Java 21
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '21'
           cache: maven
+
+      - name: Install Slimefun Legacy build dependency
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          mkdir -p .ci-deps
+          gh release download "SlimefunLegacy4.1.29B" \
+            --repo "wickidcow/Slimefun-Legacy" \
+            --pattern "Slimefun-4.1.29.jar" \
+            --dir ".ci-deps"
+
+          mvn -B install:install-file \
+            -Dfile=".ci-deps/Slimefun-4.1.29.jar" \
+            -DgroupId="com.github.slimefun" \
+            -DartifactId="Slimefun" \
+            -Dversion="4.1.29" \
+            -Dpackaging="jar" \
+            -DgeneratePom=true
 
       - name: Set 1.1.x build version
         shell: bash
@@ -75,4 +94,4 @@ jobs:
         run: |
           gh release create "v${VERSION}" "$OUTPUT_JAR" \
             --title "SF Cultivation Legacy ${VERSION}" \
-            --notes "AlbionMC Cultivation Legacy build ${VERSION}. Custom Cultivation plants can grow on farmland without Crop Sticks; Crop Sticks remain supported for advanced Cultivation mechanics and breeding."
+            --notes "Cultivation Legacy ${VERSION}: Slimefun Legacy build with modern Minecraft compatibility, English-first maintenance, GuizhanLib removed, farmland growth support, and selected community performance/stability fixes."
