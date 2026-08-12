@@ -164,6 +164,10 @@
             <id>aikar</id>
             <url>https://repo.aikar.co/content/groups/aikar/</url>
         </repository>
+        <repository>
+            <id>slimefun-legacy-releases</id>
+            <url>https://maven.norain.city/releases</url>
+        </repository>
     </repositories>
 
     <profiles>
@@ -265,9 +269,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.SlimefunGuguProject</groupId>
-            <artifactId>Slimefun4</artifactId>
-            <version>2025.1</version>
+            <groupId>com.github.slimefun</groupId>
+            <artifactId>Slimefun</artifactId>
+            <version>4.1.29</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
