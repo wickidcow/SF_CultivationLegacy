@@ -14,6 +14,7 @@ import dev.sefiraat.cultivation.api.slimefun.groups.CultivationGroups;
 import dev.sefiraat.cultivation.api.slimefun.items.CultivationFloraItem;
 import dev.sefiraat.cultivation.api.slimefun.plant.BreedResult;
 import dev.sefiraat.cultivation.api.slimefun.plant.BreedingPair;
+import dev.sefiraat.cultivation.api.slimefun.plant.CommonPlacements;
 import dev.sefiraat.cultivation.api.slimefun.plant.Growth;
 import dev.sefiraat.cultivation.api.slimefun.plant.PlantTheme;
 import dev.sefiraat.cultivation.api.utils.LevelType;
@@ -122,13 +123,11 @@ public abstract class CultivationPlant extends CultivationFloraItem<CultivationP
     protected void tryBreed(@Nonnull Block motherBlock, @Nonnull CultivationPlant plant) {
         double breedChance = ThreadLocalRandom.current().nextDouble();
         if (breedChance > getDefaultGrowthRate()) {
-            // No breed attempted this tick
             return;
         }
 
         for (BlockFace face : BREEDING_DIRECTIONS) {
             Block middleBlock = motherBlock.getRelative(face);
-            // There must be space for the new block
             if (middleBlock.getType() != Material.AIR || StorageCacheUtils.hasBlock(middleBlock.getLocation())) {
                 continue;
             }
@@ -178,14 +177,10 @@ public abstract class CultivationPlant extends CultivationFloraItem<CultivationP
     @Override
     @ParametersAreNonnullByDefault
     protected boolean canGrow(Block block, CultivationPlant flora, SlimefunBlockData data, Location location, int growthStage) {
-        // Preserve the original Crop Stick behavior.
         if (isCropped(data)) {
             return true;
         }
 
-        // AlbionMC Legacy convenience: ordinary Cultivation plants may grow when
-        // planted directly above vanilla farmland. Crop Sticks remain available
-        // for the addon's advanced crop and crossbreeding mechanics.
         return block.getRelative(BlockFace.DOWN).getType() == Material.FARMLAND;
     }
 
@@ -216,22 +211,17 @@ public abstract class CultivationPlant extends CultivationFloraItem<CultivationP
         }
 
         switch (result.getResultType()) {
-            case NO_PAIRS ->
-                // No matching breeding pairs, lets feedback to the player then move to the next direction
-                breedInvalidDisplay(middleBlock.getLocation());
+            case NO_PAIRS -> breedInvalidDisplay(middleBlock.getLocation());
             case SUCCESS -> {
-                // Breed was a success - spawn child, log discovery
                 CultivationPlant child = result.getMatchedPair().getChild();
                 trySetChildSeed(motherBlock.getLocation(), middleBlock, child);
                 StatisticUtils.incrementExp(getOwner(motherBlock.getLocation()), LevelType.HORTICULTURALIST, 2);
             }
             case SPREAD_NO_MUTATE -> {
-                // Breed failed, spread success - spawn copy of mother
                 trySetChildSeed(motherBlock.getLocation(), middleBlock, mother);
                 StatisticUtils.incrementExp(getOwner(motherBlock.getLocation()), LevelType.HORTICULTURALIST, 1);
             }
             case SPREAD_MUTATE -> {
-                // Breed not possible, but mutation possible.
                 FloraLevelProfile motherProfile = getLevelProfile(motherBlock.getLocation());
                 FloraLevelProfile fatherProfile = getLevelProfile(fatherBlock.getLocation());
                 trySetChildSeed(motherBlock.getLocation(), middleBlock, mother);
@@ -253,8 +243,9 @@ public abstract class CultivationPlant extends CultivationFloraItem<CultivationP
     @ParametersAreNonnullByDefault
     private void trySetChildSeed(Location motherLocation, Block cloneBlock, CultivationPlant childSeed) {
         PlantTheme theme = childSeed.growth.getTheme();
+        Material support = cloneBlock.getRelative(BlockFace.DOWN).getType();
 
-        if (theme == null) {
+        if (theme == null || !CommonPlacements.COMMON_OVERWORLD.contains(support)) {
             return;
         }
 
@@ -278,19 +269,9 @@ public abstract class CultivationPlant extends CultivationFloraItem<CultivationP
     }
 
     protected void breedSuccess(@Nonnull Location location) {
-        ParticleUtils.displayParticleRandomly(LocationUtils.centre(location), Particle.SLIME, 0.5, 4);
+        ParticleUtils.displayParticleRandomly(LocationUtils.centre(location), Particle.ITEM_SLIME, 0.5, 4);
     }
 
-    /**
-     * Adds a possible BreedingPair that will result in this seed as a child.
-     * Can have multiple pairs resulting in the same child.
-     *
-     * @param mother       The ID of the potential Mother
-     * @param father       The ID of the potential Mother
-     * @param breedChance  The chance for the breed to return this plant
-     * @param spreadChance The chance that the Mother will spread
-     * @return Returns self
-     */
     @Nonnull
     @ParametersAreNonnullByDefault
     public CultivationPlant addBreedingPair(String mother, String father, double breedChance, double spreadChance) {
@@ -298,13 +279,7 @@ public abstract class CultivationPlant extends CultivationFloraItem<CultivationP
         return this;
     }
 
-    /**
-     * Gets all the possible ways this plant can be bred
-     *
-     * @return The {@link Set} of {@link BreedingPair}s this plant can be bred from
-     */
     @Nonnull
-    @ParametersAreNonnullByDefault
     public Set<BreedingPair> getBreedingPairs() {
         return this.breedingPairs;
     }
@@ -333,11 +308,13 @@ public abstract class CultivationPlant extends CultivationFloraItem<CultivationP
 
         if (profile.isAnalyzed()) {
             List<String> lore = itemMeta.getLore();
-            lore.add("");
-            lore.add(Theme.CLICK_INFO.asTitle("等级", profile.getLevel()));
-            lore.add(Theme.CLICK_INFO.asTitle("速率", profile.getSpeed()));
-            lore.add(Theme.CLICK_INFO.asTitle("强度", profile.getStrength()));
-            itemMeta.setLore(lore);
+            if (lore != null) {
+                lore.add("");
+                lore.add(Theme.CLICK_INFO.asTitle("Drop Level", profile.getLevel()));
+                lore.add(Theme.CLICK_INFO.asTitle("Speed", profile.getSpeed()));
+                lore.add(Theme.CLICK_INFO.asTitle("Breed Strength", profile.getStrength()));
+                itemMeta.setLore(lore);
+            }
         }
 
         itemToDrop.setItemMeta(itemMeta);
