@@ -130,14 +130,6 @@ jobs:
           fi
           echo "Packaged resource policy passed."
 
-      - name: Upload Actions artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: SF_Cultivation${{ env.VERSION }}
-          path: ${{ env.OUTPUT_JAR }}
-          if-no-files-found: error
-          compression-level: 0
-
       - name: Publish direct JAR release
         if: github.event_name != 'pull_request'
         env:
@@ -146,6 +138,7 @@ jobs:
         run: |
           TAG="v${VERSION}"
           FILE_NAME="$(basename "$OUTPUT_JAR")"
+          DOWNLOAD_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/${TAG}/${FILE_NAME}"
 
           if gh release view "$TAG" >/dev/null 2>&1; then
             gh release upload "$TAG" "$OUTPUT_JAR" --clobber
@@ -156,8 +149,9 @@ jobs:
           fi
 
           {
-            echo "### Build outputs"
+            echo "## Cultivation Legacy JAR"
             echo ""
-            echo "- Actions run: **${FILE_NAME}** is listed in the Artifacts section. GitHub downloads Actions artifacts as a ZIP container."
-            echo "- GitHub Release **${TAG}** contains the same **${FILE_NAME}** as a direct .jar download."
+            echo "### [Download ${FILE_NAME}](${DOWNLOAD_URL})"
+            echo ""
+            echo "This is the actual plugin .jar file, not a GitHub Actions ZIP artifact."
           } >> "$GITHUB_STEP_SUMMARY"
