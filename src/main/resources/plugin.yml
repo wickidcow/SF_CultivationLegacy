@@ -2,13 +2,11 @@ name: Cultivation
 author: Sefiraat, J3fftw, JustAHuman
 description: A Spiritual Successor to ExoticGarden
 main: dev.sefiraat.cultivation.Cultivation
-website: https://github.com/Sefiraat/Cultivation
+website: https://github.com/wickidcow/SF_CultivationLegacy
 version: ${project.version}
-api-version: 1.19
+api-version: '1.21.11'
 depend:
   - Slimefun
-softdepend:
-  - GuizhanLibPlugin
 commands:
   cultivation:
     description: /cultivation
