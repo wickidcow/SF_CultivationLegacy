@@ -178,7 +178,15 @@ public abstract class CultivationPlant extends CultivationFloraItem<CultivationP
     @Override
     @ParametersAreNonnullByDefault
     protected boolean canGrow(Block block, CultivationPlant flora, SlimefunBlockData data, Location location, int growthStage) {
-        return isCropped(data);
+        // Preserve the original Crop Stick behavior.
+        if (isCropped(data)) {
+            return true;
+        }
+
+        // AlbionMC Legacy convenience: ordinary Cultivation plants may grow when
+        // planted directly above vanilla farmland. Crop Sticks remain available
+        // for the addon's advanced crop and crossbreeding mechanics.
+        return block.getRelative(BlockFace.DOWN).getType() == Material.FARMLAND;
     }
 
     @Override
@@ -296,6 +304,7 @@ public abstract class CultivationPlant extends CultivationFloraItem<CultivationP
      * @return The {@link Set} of {@link BreedingPair}s this plant can be bred from
      */
     @Nonnull
+    @ParametersAreNonnullByDefault
     public Set<BreedingPair> getBreedingPairs() {
         return this.breedingPairs;
     }
