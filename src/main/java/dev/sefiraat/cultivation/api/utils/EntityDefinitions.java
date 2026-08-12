@@ -4,8 +4,6 @@ import dev.sefiraat.cultivation.Cultivation;
 import dev.sefiraat.sefilib.entity.LivingEntityCategory;
 import dev.sefiraat.sefilib.entity.LivingEntityDefinition;
 import dev.sefiraat.sefilib.entity.LivingEntitySelector;
-import io.github.bakedlibs.dough.versions.MinecraftVersion;
-import io.github.bakedlibs.dough.versions.UnknownServerVersionException;
 import org.bukkit.Server;
 
 import java.util.Collections;
@@ -29,9 +27,8 @@ public final class EntityDefinitions {
         try {
             passiveMobs = LivingEntitySelector.start()
                 .includeCategories(LivingEntityCategory.PASSIVE)
-                .setVersion(MinecraftVersion.of(Cultivation.getInstance().getServer()))
                 .process(LivingEntitySelector.MatchType.MATCH_ALL);
-        } catch (UnknownServerVersionException e) {
+        } catch (Exception e) {
             passiveMobs = new HashSet<>();
             server.getLogger().severe(e.getMessage());
         }
@@ -39,9 +36,8 @@ public final class EntityDefinitions {
         try {
             hostileMobs = LivingEntitySelector.start()
                 .includeCategories(LivingEntityCategory.HOSTILE)
-                .setVersion(MinecraftVersion.of(Cultivation.getInstance().getServer()))
                 .process(LivingEntitySelector.MatchType.MATCH_ALL);
-        } catch (UnknownServerVersionException e) {
+        } catch (Exception e) {
             hostileMobs = new HashSet<>();
             server.getLogger().severe(e.getMessage());
         }
@@ -49,9 +45,8 @@ public final class EntityDefinitions {
         try {
             bossMobs = LivingEntitySelector.start()
                 .includeCategories(LivingEntityCategory.BOSS)
-                .setVersion(MinecraftVersion.of(Cultivation.getInstance().getServer()))
                 .process(LivingEntitySelector.MatchType.MATCH_ALL);
-        } catch (UnknownServerVersionException e) {
+        } catch (Exception e) {
             bossMobs = new HashSet<>();
             server.getLogger().severe(e.getMessage());
         }
@@ -59,9 +54,8 @@ public final class EntityDefinitions {
         try {
             flyingMobs = LivingEntitySelector.start()
                 .includeCategories(LivingEntityCategory.FLYING)
-                .setVersion(MinecraftVersion.of(Cultivation.getInstance().getServer()))
                 .process(LivingEntitySelector.MatchType.MATCH_ALL);
-        } catch (UnknownServerVersionException e) {
+        } catch (Exception e) {
             flyingMobs = new HashSet<>();
             server.getLogger().severe(e.getMessage());
         }

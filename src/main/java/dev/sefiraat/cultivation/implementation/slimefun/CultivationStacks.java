@@ -24,9 +24,9 @@ public final class CultivationStacks {
         "CLT_TREE_BANANA",
         new ItemStack(Material.ACACIA_SAPLING),
         CultivationThemes.SAPLING,
-        "农耕工艺 - 树木: 香蕉",
+        "Cultivation Tree: Banana",
         List.of(
-            "一棵能长出手指的树，emm！"
+            "A tree that grows fingers, grim!"
         )
     );
 
@@ -34,9 +34,9 @@ public final class CultivationStacks {
         "CLT_TREE_LEMON",
         new ItemStack(Material.ACACIA_SAPLING),
         CultivationThemes.SAPLING,
-        "农耕工艺 - 树木: 柠檬",
+        "Cultivation Tree: Lemon",
         List.of(
-            "这棵树看上去很酸。"
+            "Just looking at this tree taste sour."
         )
     );
 
@@ -44,9 +44,9 @@ public final class CultivationStacks {
         "CLT_TREE_ORANGE",
         new ItemStack(Material.JUNGLE_SAPLING),
         CultivationThemes.SAPLING,
-        "农耕工艺 - 树木: 橘子",
+        "Cultivation Tree: Orange",
         List.of(
-            "阳光小球。"
+            "Little orbs of sunshine."
         )
     );
 
@@ -54,9 +54,9 @@ public final class CultivationStacks {
         "CLT_TREE_GREEN_APPLE",
         new ItemStack(Material.BIRCH_SAPLING),
         CultivationThemes.SAPLING,
-        "农耕工艺 - 树木: 青苹果",
+        "Cultivation Tree: Green Apple",
         List.of(
-            "培育又大又清脆的青苹果。"
+            "Grows large and crisp green apples."
         )
     );
 
@@ -64,9 +64,9 @@ public final class CultivationStacks {
         "CLT_TREE_PINEAPPLE",
         new ItemStack(Material.JUNGLE_SAPLING),
         CultivationThemes.SAPLING,
-        "农耕工艺 - 树木: 菠萝",
+        "Cultivation Tree: Pineapple",
         List.of(
-            "披萨，哪里有披萨？"
+            "WHERE IS MY PIZZA?"
         )
     );
 
@@ -74,9 +74,9 @@ public final class CultivationStacks {
         "CLT_TREE_MANGO",
         new ItemStack(Material.OAK_SAPLING),
         CultivationThemes.SAPLING,
-        "农耕工艺 - 树木: 芒果",
+        "Cultivation Tree: Mango",
         List.of(
-            "成熟的时候最好吃。"
+            "Best when at it's ripest."
         )
     );
 
@@ -84,9 +84,9 @@ public final class CultivationStacks {
         "CLT_TREE_PEACH",
         new ItemStack(Material.BIRCH_SAPLING),
         CultivationThemes.SAPLING,
-        "农耕工艺 - 树木: 桃子",
+        "Cultivation Tree: Peach",
         List.of(
-            "我觉得詹姆斯正在找这个？"
+            "James was looking for this, I think?"
         )
     );
 
@@ -94,9 +94,9 @@ public final class CultivationStacks {
         "CLT_TREE_APRICOT",
         new ItemStack(Material.BIRCH_SAPLING),
         CultivationThemes.SAPLING,
-        "农耕工艺 - 树木: 杏子",
+        "Cultivation Tree: Apricot",
         List.of(
-            "里面只有一个个坑。"
+            "Inside is a single pit of despair."
         )
     );
 
@@ -104,9 +104,9 @@ public final class CultivationStacks {
         "CLT_TREE_PEAR",
         new ItemStack(Material.ACACIA_SAPLING),
         CultivationThemes.SAPLING,
-        "农耕工艺 - 树木: 梨子",
+        "Cultivation Tree: Pear",
         List.of(
-            "一对梨为了平衡而搭配。"
+            "A Pair of Pears were paired for parity."
         )
     );
 
@@ -114,7 +114,7 @@ public final class CultivationStacks {
         "CLT_TREE_CHERRY",
         new ItemStack(Material.OAK_SAPLING),
         CultivationThemes.SAPLING,
-        "农耕工艺 - 树木: 樱桃",
+        "Cultivation Tree: Cherry",
         List.of(
             "Tie the knot!"
         )
@@ -124,9 +124,9 @@ public final class CultivationStacks {
         "CLT_TREE_KIWI",
         new ItemStack(Material.BIRCH_SAPLING),
         CultivationThemes.SAPLING,
-        "农耕工艺 - 树木: 猕猴桃",
+        "Cultivation Tree: Kiwi",
         List.of(
-            "一颗来自新西兰的树? 我没搞错吧？"
+            "A New Zealand Tree? Have I got that right?"
         )
     );
 
@@ -134,9 +134,9 @@ public final class CultivationStacks {
         "CLT_TREE_LIME",
         new ItemStack(Material.JUNGLE_SAPLING),
         CultivationThemes.SAPLING,
-        "农耕工艺 - 树木: 酸橙",
+        "Cultivation Tree: Lime",
         List.of(
-            "你知道吗，酸橙只是柠檬在屏住呼吸？"
+            "Did you know Limes are just Lemons holding their breath?"
         )
     );
 
@@ -144,9 +144,9 @@ public final class CultivationStacks {
         "CLT_TREE_CHESTNUT",
         new ItemStack(Material.OAK_SAPLING),
         CultivationThemes.SAPLING,
-        "农耕工艺 - 树木: 栗子",
+        "Cultivation Tree: Chestnut",
         List.of(
-            "一棵显然是为了让人攀爬的树。"
+            "A tree clearly designed to be climbed."
         )
     );
 
@@ -154,9 +154,9 @@ public final class CultivationStacks {
         "CLT_TREE_HAZELNUT",
         new ItemStack(Material.OAK_SAPLING),
         CultivationThemes.SAPLING,
-        "农耕工艺 - 树木: 榛子",
+        "Cultivation Tree: Hazelnut",
         List.of(
-            "摇晃这棵树是童年的一种消遣。"
+            "Shaking this tree is a childhood past-time."
         )
     );
 
@@ -164,9 +164,9 @@ public final class CultivationStacks {
         "CLT_TREE_PECAN",
         new ItemStack(Material.BIRCH_SAPLING),
         CultivationThemes.SAPLING,
-        "农耕工艺 - 树木: 山核桃",
+        "Cultivation Tree: Pecan",
         List.of(
-            "我们能种这棵树马？是的，可以！"
+            "Can we grow this tree? Yes pe-can!"
         )
     );
 
@@ -178,10 +178,10 @@ public final class CultivationStacks {
         "CLT_BUSH_GRAPE",
         Skins.SPIKEY_PURPLE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 葡萄",
+        "Cultivation Bush: Grape",
         List.of(
-            "成熟多汁的葡萄,",
-            "几乎快要从树上掉下来了。"
+            "Ripe and juicy grapes that practically fall",
+            "off the bush."
         )
     );
 
@@ -189,9 +189,9 @@ public final class CultivationStacks {
         "CLT_BUSH_PEANUTS",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 花生",
+        "Cultivation Bush: Peanuts",
         List.of(
-            "坚实而芬芳，富含蛋白质。"
+            "Solid and fragrant and full of protein."
         )
     );
 
@@ -199,9 +199,9 @@ public final class CultivationStacks {
         "CLT_BUSH_STRAWBERRY",
         Skins.SPIKEY_RED_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 草莓",
+        "Cultivation Bush: Strawberry",
         List.of(
-            "坚实而芬芳，富含蛋白质。"
+            "Solid and fragrant and full of protein."
         )
     );
 
@@ -209,9 +209,9 @@ public final class CultivationStacks {
         "CLT_BUSH_RICE",
         Skins.SPIKEY_YELLOW_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 大米",
+        "Cultivation Bush: Rice",
         List.of(
-            "终极主食。"
+            "The ultimate staple food."
         )
     );
 
@@ -219,9 +219,9 @@ public final class CultivationStacks {
         "CLT_BUSH_GARLIC",
         Skins.SPIKEY_YELLOW_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 大蒜",
+        "Cultivation Bush: Garlic",
         List.of(
-            "灌木丛的味道闻起来很差。"
+            "This bush has simply the worst breath."
         )
     );
 
@@ -229,9 +229,9 @@ public final class CultivationStacks {
         "CLT_BUSH_CAYENNE_PEPPER",
         Skins.SPIKEY_RED_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 卡宴辣椒",
+        "Cultivation Bush: Cayenne Pepper",
         List.of(
-            "吃了容易上火。"
+            "A bush with a peppery attitude."
         )
     );
 
@@ -239,9 +239,9 @@ public final class CultivationStacks {
         "CLT_BUSH_TOMATO",
         Skins.SPIKEY_RED_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 番茄",
+        "Cultivation Bush: Tomato",
         List.of(
-            "成熟的番茄可以做成美食了。"
+            "Ripe and ready."
         )
     );
 
@@ -249,10 +249,10 @@ public final class CultivationStacks {
         "CLT_BUSH_BELL_PEPPER",
         Skins.SPIKEY_RED_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 甜椒",
+        "Cultivation Bush: Bell Pepper",
         List.of(
-            "走在边上的时候要小心,",
-            "你可能会触发警报。"
+            "Careful walking by this, you may ring",
+            "the bell."
         )
     );
 
@@ -260,9 +260,9 @@ public final class CultivationStacks {
         "CLT_BUSH_ONION",
         Skins.SPIKEY_YELLOW_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 洋葱",
+        "Cultivation Bush: Onion",
         List.of(
-            "这个灌木丛是不是看起来像在撕裂？"
+            "Does this bush look like it's tearing up?"
         )
     );
 
@@ -270,9 +270,9 @@ public final class CultivationStacks {
         "CLT_BUSH_PEA",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 豌豆",
+        "Cultivation Bush: Peas",
         List.of(
-            "我觉得Q更好。"
+            "I prefer Q's"
         )
     );
 
@@ -280,9 +280,9 @@ public final class CultivationStacks {
         "CLT_BUSH_RAPESEED",
         Skins.SPIKEY_BLUE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 油菜",
+        "Cultivation Bush: Rapeseed",
         List.of(
-            "这片灌木丛散发着一些油性物质。"
+            "This bush is exuding some oily substance."
         )
     );
 
@@ -290,10 +290,10 @@ public final class CultivationStacks {
         "CLT_BUSH_LETTUCE",
         Skins.SPIKEY_GREEN_4.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 生菜",
+        "Cultivation Bush: Lettuce",
         List.of(
-            "生菜真的长在灌木丛里吗？",
-            "剧透: 不, 并不会。"
+            "Does lettuce even grow on bushes?",
+            "Spoiler: No, it doesn't."
         )
     );
 
@@ -301,9 +301,9 @@ public final class CultivationStacks {
         "CLT_BUSH_MUSTARD",
         Skins.SPIKEY_YELLOW_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 芥菜",
+        "Cultivation Bush: Mustard Seeds",
         List.of(
-            "在嘴里就像火一样。"
+            "Like fire in your mouth."
         )
     );
 
@@ -311,9 +311,9 @@ public final class CultivationStacks {
         "CLT_BUSH_BROCCOLI",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 西兰花",
+        "Cultivation Bush: Broccoli",
         List.of(
-            "可以吃的小树? 是谁发明的!？"
+            "Tiny trees you can eat? Who invented this!?"
         )
     );
 
@@ -321,9 +321,9 @@ public final class CultivationStacks {
         "CLT_BUSH_CINNAMON",
         Skins.SPIKEY_ORANGE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 肉桂",
+        "Cultivation Bush: Cinnamon",
         List.of(
-            "芳香四溢的灌木丛。"
+            "A delightfully fragrant bush."
         )
     );
 
@@ -331,9 +331,9 @@ public final class CultivationStacks {
         "CLT_BUSH_BASIL",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 罗勒",
+        "Cultivation Bush: Basil",
         List.of(
-            "充满奇思妙想的轻盈灌木丛。"
+            "A light hearted bush full of whimsy."
         )
     );
 
@@ -341,9 +341,9 @@ public final class CultivationStacks {
         "CLT_BUSH_BAY_LEAF",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 香叶",
+        "Cultivation Bush: Bay Leaf",
         List.of(
-            "香味传千里。"
+            "The smell of this bush travels for miles."
         )
     );
 
@@ -351,9 +351,9 @@ public final class CultivationStacks {
         "CLT_BUSH_CILANTRO",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 香菜",
+        "Cultivation Bush: Cilantro",
         List.of(
-            "这片灌木丛中散发着淡淡的柑橘和香料的气味。"
+            "A faint citrus and spice smell comes from this bush."
         )
     );
 
@@ -361,10 +361,10 @@ public final class CultivationStacks {
         "CLT_BUSH_CHICORY",
         Skins.SPIKEY_BLUE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 菊苣",
+        "Cultivation Bush: Chicory",
         List.of(
-            "我以为菊苣是一种根茎？",
-            "这个附属真的做过相关的研究吗!？"
+            "I thought chicory was a root? Does this addon",
+            "even do it's research!?"
         )
     );
 
@@ -372,10 +372,10 @@ public final class CultivationStacks {
         "CLT_BUSH_CHIVES",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 韭菜",
+        "Cultivation Bush: Chives",
         List.of(
-            "可以生产世界上最小的",
-            "洋葱的灌木丛。"
+            "A bush that produces what is, effectively, the world's",
+            "smallest onion."
         )
     );
 
@@ -383,9 +383,9 @@ public final class CultivationStacks {
         "CLT_BUSH_CLOVE",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 丁香",
+        "Cultivation Bush: Clove",
         List.of(
-            "这灌木丛让我想起了圣诞节。"
+            "A bush that just reminds me of Christmas."
         )
     );
 
@@ -393,9 +393,9 @@ public final class CultivationStacks {
         "CLT_BUSH_CUMIN",
         Skins.SPIKEY_YELLOW_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 孜然",
+        "Cultivation Bush: Cumin",
         List.of(
-            "灌木丛中散发着温暖的香气。"
+            "A bush that lets of a warm citrus aroma."
         )
     );
 
@@ -403,9 +403,9 @@ public final class CultivationStacks {
         "CLT_BUSH_CHILLI_PEPPER",
         Skins.SPIKEY_RED_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 辣椒",
+        "Cultivation Bush: Chilli Pepper",
         List.of(
-            "仅仅看着这个灌木丛，就能让我的舌头发烫。"
+            "Just looking at this bush burns my tongue."
         )
     );
 
@@ -413,9 +413,9 @@ public final class CultivationStacks {
         "CLT_BUSH_CURRY_LEAF",
         Skins.SPIKEY_RED_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 咖喱叶",
+        "Cultivation Bush: Curry Leaf",
         List.of(
-            "干烤时效果最佳。"
+            "Best when dry roasted."
         )
     );
 
@@ -423,9 +423,9 @@ public final class CultivationStacks {
         "CLT_BUSH_DILL",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 莳萝",
+        "Cultivation Bush: Dill",
         List.of(
-            "这种灌木长得比其他的都快"
+            "This bush grows much faster than others."
         )
     );
 
@@ -433,9 +433,9 @@ public final class CultivationStacks {
         "CLT_BUSH_FENNEL",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 茴香",
+        "Cultivation Bush: Fennel",
         List.of(
-            "为什么这种灌木能驱虫!？"
+            "Why does this bush repel bugs!?"
         )
     );
 
@@ -443,9 +443,9 @@ public final class CultivationStacks {
         "CLT_BUSH_GINGER",
         Skins.SPIKEY_YELLOW_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 姜",
+        "Cultivation Bush: Ginger",
         List.of(
-            "这种灌木在煮熟后的效果很好。"
+            "This bush is nice when boiled whole."
         )
     );
 
@@ -453,9 +453,9 @@ public final class CultivationStacks {
         "CLT_BUSH_HORSERADISH",
         Skins.SPIKEY_YELLOW_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 辣根",
+        "Cultivation Bush: Horseradish",
         List.of(
-            "没错, 这种植物的存在没有任何意义。"
+            "Again, this growing on a bush just doesn't make sense."
         )
     );
 
@@ -463,9 +463,9 @@ public final class CultivationStacks {
         "CLT_BUSH_JASMINE",
         Skins.SPIKEY_YELLOW_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 茉莉",
+        "Cultivation Bush: Jasmine",
         List.of(
-            "这个灌木丛的气味是如此的柔和与圆润。"
+            "The scent from this bush is so soft and mellow."
         )
     );
 
@@ -473,9 +473,9 @@ public final class CultivationStacks {
         "CLT_BUSH_JUNIPER_BERRY",
         Skins.SPIKEY_BLUE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 杜松子",
+        "Cultivation Bush: Juniper Berry",
         List.of(
-            "未采摘时很甜，但烘干后很刺鼻。"
+            "So sweet on the bush, peppery when dried."
         )
     );
 
@@ -483,9 +483,9 @@ public final class CultivationStacks {
         "CLT_BUSH_KAFFIR_LIME",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 泰国青柠",
+        "Cultivation Bush: Kaffir Lime",
         List.of(
-            "一种叶子比果实更受欢迎的灌木。"
+            "A bush whose leafs are more wanted than it's fruit."
         )
     );
 
@@ -493,9 +493,9 @@ public final class CultivationStacks {
         "CLT_BUSH_LAVENDER",
         Skins.SPIKEY_PURPLE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 薰衣草",
+        "Cultivation Bush: Lavender",
         List.of(
-            "这种灌木到处散发着它的气味。"
+            "This bush wafts it's smell everywhere."
         )
     );
 
@@ -503,9 +503,9 @@ public final class CultivationStacks {
         "CLT_BUSH_LICORICE",
         Skins.SPIKEY_YELLOW_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 甘草",
+        "Cultivation Bush: Licorice",
         List.of(
-            "粗壮的"
+            "Gross"
         )
     );
 
@@ -513,9 +513,9 @@ public final class CultivationStacks {
         "CLT_BUSH_MACE",
         Skins.SPIKEY_PURPLE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 肉豆蔻",
+        "Cultivation Bush: Mace",
         List.of(
-            "这片灌木丛似乎在击退攻击者？"
+            "This bush seems to be repelling attackers?"
         )
     );
 
@@ -523,9 +523,9 @@ public final class CultivationStacks {
         "CLT_BUSH_MARJORAM",
         Skins.SPIKEY_YELLOW_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 马郁兰",
+        "Cultivation Bush: Marjoram",
         List.of(
-            "一大片散发着木质气味的灌木。"
+            "A large woody smelling bush."
         )
     );
 
@@ -533,9 +533,9 @@ public final class CultivationStacks {
         "CLT_BUSH_MINT",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 薄荷",
+        "Cultivation Bush: Mint",
         List.of(
-            "这简直是最好闻的灌木"
+            "Simply the best smelling bush."
         )
     );
 
@@ -543,9 +543,9 @@ public final class CultivationStacks {
         "CLT_BUSH_OREGANO",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 牛至",
+        "Cultivation Bush: Oregano",
         List.of(
-            "这种刺鼻气味的灌木令游客望而却步。"
+            "This pungent smelling bush deters visitors."
         )
     );
 
@@ -553,9 +553,9 @@ public final class CultivationStacks {
         "CLT_BUSH_PARSLEY",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 欧芹",
+        "Cultivation Bush: Parsley",
         List.of(
-            "把这片灌木丛扔进熔岩里, 就现在! :D"
+            "Throw this bush in lava, now :D"
         )
     );
 
@@ -563,9 +563,9 @@ public final class CultivationStacks {
         "CLT_BUSH_ROSEMARY",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 迷迭香",
+        "Cultivation Bush: Rosemary",
         List.of(
-            "一种灌木，它的气味使人想起星期天的午餐。"
+            "A bush whose smell reminds people of sunday lunches."
         )
     );
 
@@ -573,10 +573,10 @@ public final class CultivationStacks {
         "CLT_BUSH_SASSAFRAS",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 黄樟",
+        "Cultivation Bush: Sassafras",
         List.of(
-            "这种灌木喜欢被种植",
-            "在小水域附近"
+            "This bush love to be planted near small bodies",
+            "of water."
         )
     );
 
@@ -584,11 +584,11 @@ public final class CultivationStacks {
         "CLT_BUSH_SHISO",
         Skins.SPIKEY_PURPLE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 紫苏",
+        "Cultivation Bush: Shiso",
         List.of(
-            "我乐意认为这种灌木",
-            "是薄荷灌木和罗勒灌木的私生子",
-            "可惜很难育种!"
+            "I like to think this bush is the love child",
+            "of a mint bush and a basil bush. Too bad",
+            "bush breeding isn't a thing!"
         )
     );
 
@@ -596,10 +596,10 @@ public final class CultivationStacks {
         "CLT_BUSH_STAR_ANISE",
         Skins.SPIKEY_ORANGE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 八角",
+        "Cultivation Bush: Star Anise",
         List.of(
-            "从这种灌木上脱落的一小片茴香是如此独特",
-            "你简直无法相信。"
+            "A small comes off this bush that is so unique",
+            "to anise, you can't even believe."
         )
     );
 
@@ -607,9 +607,9 @@ public final class CultivationStacks {
         "CLT_BUSH_TARRAGON",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 龙蒿",
+        "Cultivation Bush: Tarragon",
         List.of(
-            "这棵灌木不喜欢引起太多的注意"
+            "This bush doesn't like to draw too much attention."
         )
     );
 
@@ -617,9 +617,9 @@ public final class CultivationStacks {
         "CLT_BUSH_THYME",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 百里香",
+        "Cultivation Bush: Thyme",
         List.of(
-            "这种灌木总是用光…百里香…*咳嗽*"
+            "This bush is always running out of... Thyme... *cough*"
         )
     );
 
@@ -627,10 +627,10 @@ public final class CultivationStacks {
         "CLT_BUSH_TURMERIC",
         Skins.SPIKEY_YELLOW_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 姜黄",
+        "Cultivation Bush: Turmeric",
         List.of(
-            "只要拿着这丛灌木",
-            "一股香料的味道就会扑鼻而来。"
+            "A waft of spice hits your nose just",
+            "holding this bush."
         )
     );
 
@@ -638,9 +638,9 @@ public final class CultivationStacks {
         "CLT_BUSH_VANILLA",
         Skins.SPIKEY_YELLOW_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 香子兰",
+        "Cultivation Bush: Vanilla",
         List.of(
-            "这种灌木长期存在于星巴克中。"
+            "This bush grows natively near StarBucks locations."
         )
     );
 
@@ -648,10 +648,10 @@ public final class CultivationStacks {
         "CLT_BUSH_WASABI",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 山萮菜",
+        "Cultivation Bush: Wasabi",
         List.of(
-            "这是从灌木丛中长出的另一根？",
-            "哎…"
+            "Another root growing off of a bush?",
+            "Sigh..."
         )
     );
 
@@ -659,10 +659,10 @@ public final class CultivationStacks {
         "CLT_BUSH_ARTICHOKE",
         Skins.SPIKEY_YELLOW_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 洋蓟",
+        "Cultivation Bush: Artichoke",
         List.of(
-            "迄今为止最好的能勒死艺术家的灌木",
-            "双关很难"
+            "By far the best bush to strangle an",
+            "artist with. Sigh. Puns be hard."
         )
     );
 
@@ -670,9 +670,9 @@ public final class CultivationStacks {
         "CLT_BUSH_AUBERGINE",
         Skins.SPIKEY_PURPLE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 茄冰蕉",
+        "Cultivation Bush: Aubergine",
         List.of(
-            "我拒绝用茄子这个词,因为我喜欢。"
+            "I refuse to use the word eggplant. I just do."
         )
     );
 
@@ -680,10 +680,10 @@ public final class CultivationStacks {
         "CLT_BUSH_ASPARAGUS",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 芦笋",
+        "Cultivation Bush: Asparagus",
         List.of(
-            "这种芦笋灌木",
-            "是很好的追踪者!"
+            "This asparagus bush makes a good",
+            "stalker!"
         )
     );
 
@@ -691,10 +691,10 @@ public final class CultivationStacks {
         "CLT_BUSH_BRUSSELS_SPROUTS",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 球芽甘蓝",
+        "Cultivation Bush: Brussels Sprouts",
         List.of(
-            "这种灌木",
-            "有时会产出有毒气体"
+            "A bush that can sometimes produce noxious",
+            "gas."
         )
     );
 
@@ -702,10 +702,10 @@ public final class CultivationStacks {
         "CLT_BUSH_CABBAGE",
         Skins.SPIKEY_PURPLE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 卷心菜",
+        "Cultivation Bush: Cabbage",
         List.of(
-            "伴随着大量情感的",
-            "卷心菜灌木。"
+            "A bush that comes with a large amount of",
+            "emotional cabbage."
         )
     );
 
@@ -713,10 +713,10 @@ public final class CultivationStacks {
         "CLT_BUSH_CAULIFLOWER",
         Skins.SPIKEY_YELLOW_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 花椰菜",
+        "Cultivation Bush: Cauliflower",
         List.of(
-            "能够结出令人开心的",
-            "小云彩"
+            "A bush capable of producing little clouds",
+            "of delight."
         )
     );
 
@@ -724,10 +724,10 @@ public final class CultivationStacks {
         "CLT_BUSH_CELERY",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 芹菜",
+        "Cultivation Bush: Celery",
         List.of(
-            "这个灌木丛是多余的。",
-            "Sefi不喜欢芹菜"
+            "This bush is redundant.",
+            "Sefi doesn't like Celery."
         )
     );
 
@@ -735,10 +735,10 @@ public final class CultivationStacks {
         "CLT_BUSH_KALE",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 羽衣甘蓝",
+        "Cultivation Bush: Kale",
         List.of(
-            "当你种植这株灌木时",
-            "你会觉得一切都将变成甘蓝。"
+            "When you plant this bush, you get the feeling",
+            "that everything is going to be o-kale."
         )
     );
 
@@ -746,9 +746,9 @@ public final class CultivationStacks {
         "CLT_BUSH_SPINACH",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 菠菜",
+        "Cultivation Bush: Spinach",
         List.of(
-            "这株灌木是大力水手最好的朋友"
+            "This bush is Popeye's best friend."
         )
     );
 
@@ -756,10 +756,10 @@ public final class CultivationStacks {
         "CLT_BUSH_BLACK_BEANS",
         Skins.SPIKEY_PURPLE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 黑豆",
+        "Cultivation Bush: Black Beans",
         List.of(
-            "这株灌木轻轻地对你低语:",
-            "你是一颗伟大的豆子。"
+            "This bush gently whispers to you:",
+            "You are a great human bean."
         )
     );
 
@@ -767,10 +767,10 @@ public final class CultivationStacks {
         "CLT_BUSH_GREEN_BEANS",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 四季豆",
+        "Cultivation Bush: Green Beans",
         List.of(
-            "将番茄酱倒在灌木上",
-            "来做烧烤。"
+            "Throw tomato sauce over this bush to make",
+            "baked beans."
         )
     );
 
@@ -778,10 +778,10 @@ public final class CultivationStacks {
         "CLT_BUSH_CHICKPEAS",
         Skins.SPIKEY_ORANGE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 鹰嘴豆",
+        "Cultivation Bush: Chickpeas",
         List.of(
-            "用豌豆和鸡繁殖而成的灌木",
-            "科技与狠活"
+            "A bush made by breeding a chicken with",
+            "a pea. SCIENCE."
         )
     );
 
@@ -789,10 +789,10 @@ public final class CultivationStacks {
         "CLT_BUSH_SOY_BEANS",
         Skins.SPIKEY_YELLOW_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 大豆",
+        "Cultivation Bush: Soy Beans",
         List.of(
-            "这种灌木能友好的享受",
-            "这让我很开心。"
+            "This bush is a friendly delight. It makes",
+            "me soy happy."
         )
     );
 
@@ -800,10 +800,10 @@ public final class CultivationStacks {
         "CLT_BUSH_PINTO_BEANS",
         Skins.SPIKEY_PURPLE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 斑豆",
+        "Cultivation Bush: Pinto Beans",
         List.of(
-            "用不了多久我们就能成功培育出直筒玉米煎饼",
-            "对吗？"
+            "It wont be long until we successfully breed",
+            "a direct-burrito bush, right?"
         )
     );
 
@@ -811,9 +811,9 @@ public final class CultivationStacks {
         "CLT_BUSH_RUNNER_BEANS",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 红花菜豆",
+        "Cultivation Bush: Runner Beans",
         List.of(
-            "这豆长脚了 o.o？"
+            "This bush has feet o.o?"
         )
     );
 
@@ -821,9 +821,9 @@ public final class CultivationStacks {
         "CLT_BUSH_NETTLES",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 荨麻",
+        "Cultivation Bush: Nettles",
         List.of(
-            "穿过这片灌木丛时要小心!"
+            "Be careful when walking through this bush!"
         )
     );
 
@@ -831,10 +831,10 @@ public final class CultivationStacks {
         "CLT_BUSH_OKRA",
         Skins.SPIKEY_PURPLE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 秋葵",
+        "Cultivation Bush: Okra",
         List.of(
-            "根据秋葵·温弗瑞的蔬菜俱乐部",
-            "它被评为头号蔬菜。"
+            "Voted the number 1 vegetable according to",
+            "Okra Winfrey's Vegetable Club."
         )
     );
 
@@ -842,10 +842,10 @@ public final class CultivationStacks {
         "CLT_BUSH_LEEK",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 韭葱",
+        "Cultivation Bush: Leek",
         List.of(
-            "你知道韭菜只是一个穿了紧身胸衣的洋葱吗？",
-            "这是真实的故事。"
+            "Did you know a leek is just an onion that",
+            "wears a corset? True story."
         )
     );
 
@@ -853,10 +853,10 @@ public final class CultivationStacks {
         "CLT_BUSH_SHALLOT",
         Skins.SPIKEY_PURPLE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 青葱",
+        "Cultivation Bush: Shallot",
         List.of(
-            "这种灌木很快就会长出可爱的迷你洋葱",
-            "幸运的是你不需要葱。"
+            "This bush rapidly produces lovely mini onions.",
+            "Luckily you don't need a shallot."
         )
     );
 
@@ -864,10 +864,10 @@ public final class CultivationStacks {
         "CLT_BUSH_JALAPENO",
         Skins.SPIKEY_RED_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 墨西哥胡椒",
+        "Cultivation Bush: Jalapeno",
         List.of(
-            "只要握住这根灌木",
-            "你就有1%的机会点燃它。"
+            "Just holding this bush gives you a",
+            "1% change to set ablaze."
         )
     );
 
@@ -875,11 +875,11 @@ public final class CultivationStacks {
         "CLT_BUSH_RADICCHIO",
         Skins.SPIKEY_PURPLE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 菊苣",
+        "Cultivation Bush: Radicchio",
         List.of(
-            "这听起来很花哨吗？",
-            "但是在任何一餐中加入菊苣 - 就如同卷心菜",
-            "让你看起来很精致"
+            "Want to sound fancy? But Radicchio into any",
+            "meal - it's basically like cabbage but",
+            "makes you seem refined."
         )
     );
 
@@ -887,10 +887,10 @@ public final class CultivationStacks {
         "CLT_BUSH_RHUBARB",
         Skins.SPIKEY_PURPLE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 大黄",
+        "Cultivation Bush: Rhubarb",
         List.of(
-            "你知道大黄是一种蔬菜吗？",
-            "我以为是一种锤子。"
+            "Did you know rhubarb was a vegetable?",
+            "I thought it was a type of hammer."
         )
     );
 
@@ -898,10 +898,10 @@ public final class CultivationStacks {
         "CLT_BUSH_CELERIAC",
         Skins.SPIKEY_ORANGE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 块根芹",
+        "Cultivation Bush: Celeriac",
         List.of(
-            "又一个从灌木丛中长出的根？",
-            "Sefi再见™"
+            "Yet another root growing off of a bush?",
+            "SefiDumb™"
         )
     );
 
@@ -909,10 +909,10 @@ public final class CultivationStacks {
         "CLT_BUSH_PARSNIP",
         Skins.SPIKEY_YELLOW_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 欧洲防风草",
+        "Cultivation Bush: Parsnip",
         List.of(
-            "跳过中间人",
-            "烤干灌木"
+            "Just skip the middleman and roast the bush",
+            "directly."
         )
     );
 
@@ -920,9 +920,9 @@ public final class CultivationStacks {
         "CLT_BUSH_RUTABAGA",
         Skins.SPIKEY_PURPLE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 芜菁甘蓝",
+        "Cultivation Bush: Rutabaga",
         List.of(
-            "瑞典人!它是瑞典人!"
+            "Swede. Its a swede."
         )
     );
 
@@ -930,10 +930,10 @@ public final class CultivationStacks {
         "CLT_BUSH_RADDISH",
         Skins.SPIKEY_RED_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 小红萝卜",
+        "Cultivation Bush: Raddish",
         List.of(
-            "这株植物刚刚表演了一个滑板魔术",
-            "太棒了…咦惹。"
+            "This plant just did a skateboarding trick.",
+            "Totally Rad...ish."
         )
     );
 
@@ -941,10 +941,10 @@ public final class CultivationStacks {
         "CLT_BUSH_SWEET_POTATO",
         Skins.SPIKEY_PURPLE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 甘薯",
+        "Cultivation Bush: Sweet Potato",
         List.of(
-            "这灌木太可爱了",
-            "你没听的时候我听到它在夸你。"
+            "This bush is just so sweet. I heard it",
+            "complimenting you while you weren't listening."
         )
     );
 
@@ -952,10 +952,10 @@ public final class CultivationStacks {
         "CLT_BUSH_TURNIP",
         Skins.SPIKEY_ORANGE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 大头菜",
+        "Cultivation Bush: Turnip",
         List.of(
-            "根据英国政府的说法",
-            "这棵灌木将解决我们所有的问题。"
+            "According to the British Government",
+            "this bush will solve all our problems."
         )
     );
 
@@ -963,10 +963,10 @@ public final class CultivationStacks {
         "CLT_BUSH_SWEETCORN",
         Skins.SPIKEY_YELLOW_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 甜玉米",
+        "Cultivation Bush: Sweetcorn",
         List.of(
-            "这片灌木丛迫切需要",
-            "被建成一个迷宫"
+            "This bush is just crying out to be built into",
+            "a maze."
         )
     );
 
@@ -974,10 +974,10 @@ public final class CultivationStacks {
         "CLT_BUSH_COURGETTE",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 西葫芦",
+        "Cultivation Bush: Courgette",
         List.of(
-            "为什么这棵灌木一直在喊西葫芦这个词",
-            "我猜一定是美国人？"
+            "Why does this bush just keep shouting the",
+            "word Zucchini? I guess it must be american?"
         )
     );
 
@@ -985,10 +985,10 @@ public final class CultivationStacks {
         "CLT_BUSH_CUCUMBER",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 黄瓜",
+        "Cultivation Bush: Cucumber",
         List.of(
-            "这种灌木是专为你可爱的",
-            "夏季沙拉而设计的。"
+            "This bush was designed solely for the purposes",
+            "of your lovely summer salads."
         )
     );
 
@@ -996,10 +996,10 @@ public final class CultivationStacks {
         "CLT_BUSH_MARROW",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 嫩葫芦",
+        "Cultivation Bush: Marrow",
         List.of(
-            "我很惊讶这灌木",
-            "能承受它自己的重量。"
+            "I'm surprised this bush can hold it's",
+            "own weight."
         )
     );
 
@@ -1007,10 +1007,10 @@ public final class CultivationStacks {
         "CLT_BUSH_AVOCADO",
         Skins.SPIKEY_GREEN_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 鳄梨",
+        "Cultivation Bush: Avocado",
         List.of(
-            "这种灌木是专门培育的",
-            "不需要太多的水。"
+            "This bush has been bred specifically to not",
+            "use too much water."
         )
     );
 
@@ -1018,11 +1018,11 @@ public final class CultivationStacks {
         "CLT_BUSH_GREEN_ONION",
         Skins.SPIKEY_GREEN_4.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 嫩葱",
+        "Cultivation Bush: Green Onion",
         List.of(
-            "也叫葱白。",
-            "大葱通常比大多数",
-            "洋葱味道温和"
+            "Also known as Scallions.",
+            "Green Onions generally have a",
+            "milder taste than most onions."
         )
     );
 
@@ -1030,11 +1030,11 @@ public final class CultivationStacks {
         "CLT_BUSH_PEPPER",
         Skins.SPIKEY_PURPLE_5.getPlayerHead(),
         CultivationThemes.BUSH,
-        "农耕工艺 - 灌木: 黑胡椒",
+        "Cultivation Bush: Black Pepper",
         List.of(
-            "早在希腊和罗马时代",
-            "黑胡椒就是印度和欧洲之间",
-            "香料贸易的重要主城部分。"
+            "Black Pepper was an important part of the",
+            "spice trade between India and Europe",
+            "as early as Greek and Roman times."
         )
     );
 
@@ -1046,12 +1046,13 @@ public final class CultivationStacks {
         "CLT_PLANT_DARKNESS",
         Skins.SEED_RED.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 原始植物: 黑暗",
+        "Primal Plant: Darkness",
         List.of(
-            "一种在无尽的愤怒中沸腾的植物。",
+            "A plant that seethes in unbridled",
+            "rage.",
             "",
-            Theme.WARNING.apply("原始植物不会生产物品，"),
-            Theme.WARNING.apply("仅用于培育。")
+            Theme.WARNING.apply("Primal plants dont produce items"),
+            Theme.WARNING.apply("and are just for breeding.")
         )
     );
 
@@ -1059,12 +1060,13 @@ public final class CultivationStacks {
         "CLT_PLANT_LIGHT",
         Skins.SEED_YELLOW.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 原始植物: 光明",
+        "Primal Plant: Light",
         List.of(
-            "一种散发着纯爱气息的植物。",
+            "A plant that exudes an aura",
+            "of pure love.",
             "",
-            Theme.WARNING.apply("原始植物不会生产物品，"),
-            Theme.WARNING.apply("仅用于培育。")
+            Theme.WARNING.apply("Primal plants dont produce items"),
+            Theme.WARNING.apply("and are just for breeding.")
         )
     );
 
@@ -1072,12 +1074,13 @@ public final class CultivationStacks {
         "CLT_PLANT_EARTH",
         Skins.SEED_GREEN.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 原始植物: 大地",
+        "Primal Plant: Earth",
         List.of(
-            "一种能填充周围世界的植物。",
+            "A plant that enriches the world",
+            "surrounding it.",
             "",
-            Theme.WARNING.apply("原始植物不会生产物品，"),
-            Theme.WARNING.apply("仅用于培育。")
+            Theme.WARNING.apply("Primal plants dont produce items"),
+            Theme.WARNING.apply("and are just for breeding.")
         )
     );
 
@@ -1085,13 +1088,13 @@ public final class CultivationStacks {
         "CLT_PLANT_WATER",
         Skins.SEED_BLUE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 原始植物: 水",
+        "Primal Plant: Water",
         List.of(
-            "一种能滋养周边生物,",
-            "也能提供生命的植物。",
+            "A plant that nurtures and provides",
+            "life to the surrounding area.",
             "",
-            Theme.WARNING.apply("原始植物不会生产物品，"),
-            Theme.WARNING.apply("仅用于培育。")
+            Theme.WARNING.apply("Primal plants dont produce items"),
+            Theme.WARNING.apply("and are just for breeding.")
         )
     );
 
@@ -1099,13 +1102,14 @@ public final class CultivationStacks {
         "CLT_PLANT_FIRE",
         Skins.SEED_RED.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 原始植物: 火",
+        "Primal Plant: Fire",
         List.of(
-            "一种同时提供了",
-            "毁灭与新生的植物。",
+            "A plant that both provides the",
+            "sources of destruction as well as",
+            "rebirth.",
             "",
-            Theme.WARNING.apply("原始植物不会生产物品，"),
-            Theme.WARNING.apply("仅用于培育。")
+            Theme.WARNING.apply("Primal plants dont produce items"),
+            Theme.WARNING.apply("and are just for breeding.")
         )
     );
 
@@ -1113,12 +1117,13 @@ public final class CultivationStacks {
         "CLT_PLANT_AIR",
         Skins.SEED_CYAN.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 原始植物: 空气",
+        "Primal Plant: Air",
         List.of(
-            "一种静静地哼唱着周围自然旋律的植物。",
+            "A plant that quietly hums with",
+            "the melody of the surrounding nature.",
             "",
-            Theme.WARNING.apply("原始植物不会生产物品，"),
-            Theme.WARNING.apply("仅用于培育。")
+            Theme.WARNING.apply("Primal plants dont produce items"),
+            Theme.WARNING.apply("and are just for breeding.")
         )
     );
 
@@ -1126,12 +1131,12 @@ public final class CultivationStacks {
         "CLT_PLANT_POWER",
         Skins.SEED_RED.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 原始植物: 力量",
+        "Primal Plant: Power",
         List.of(
-            "一种积极地散发力量的植物。",
+            "A plant that positively exudes power.",
             "",
-            Theme.WARNING.apply("原始植物不会生产物品，"),
-            Theme.WARNING.apply("仅用于培育。")
+            Theme.WARNING.apply("Primal plants dont produce items"),
+            Theme.WARNING.apply("and are just for breeding.")
         )
     );
 
@@ -1139,12 +1144,12 @@ public final class CultivationStacks {
         "CLT_PLANT_WEALTH",
         Skins.SEED_ORANGE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 原始植物: 财富",
+        "Primal Plant: Wealth",
         List.of(
-            "一种彰显荣华富贵的植物。",
+            "A plant that just screams exuberant wealth.",
             "",
-            Theme.WARNING.apply("原始植物不会生产物品，"),
-            Theme.WARNING.apply("仅用于培育。")
+            Theme.WARNING.apply("Primal plants dont produce items"),
+            Theme.WARNING.apply("and are just for breeding.")
         )
     );
 
@@ -1152,12 +1157,12 @@ public final class CultivationStacks {
         "CLT_PLANT_SPECTRUM",
         Skins.SEED_BLUE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 原始植物: 光谱",
+        "Primal Plant: Spectrum",
         List.of(
-            "一种轻微改变着颜色的植物。",
+            "A plant that slightly shifts it's color.",
             "",
-            Theme.WARNING.apply("原始植物不会生产物品，"),
-            Theme.WARNING.apply("仅用于培育。")
+            Theme.WARNING.apply("Primal plants dont produce items"),
+            Theme.WARNING.apply("and are just for breeding.")
         )
     );
 
@@ -1165,10 +1170,10 @@ public final class CultivationStacks {
         "CLT_PLANT_DIRT",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 泥土",
+        "Cultivation Plant: Dirt",
         List.of(
-            "表面肮脏，但包含了",
-            "孕育生命所需的方块。"
+            "Dirty on the surface but holding the",
+            "building blocks for life itself."
         )
     );
 
@@ -1176,9 +1181,10 @@ public final class CultivationStacks {
         "CLT_PLANT_GRASS",
         Skins.SEED_GREEN.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 草",
+        "Cultivation Plant: Grass",
         List.of(
-            "从地上长出生机蓬勃的生命。"
+            "The burgeoning life bound fourth",
+            "from the ground."
         )
     );
 
@@ -1186,9 +1192,9 @@ public final class CultivationStacks {
         "CLT_PLANT_FLOWER",
         Skins.SEED_ORANGE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 花卉",
+        "Cultivation Plant: Flowering",
         List.of(
-            "各种花卉被很好地展示出来。"
+            "A beautiful cornucopia presented well."
         )
     );
 
@@ -1196,9 +1202,10 @@ public final class CultivationStacks {
         "CLT_PLANT_VINE",
         Skins.SEED_GREEN.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 藤蔓",
+        "Cultivation Plant: Vine",
         List.of(
-            "一种能瞬间将自己缠绕起来的植物。"
+            "A plant that instantly tangles itself",
+            "up."
         )
     );
 
@@ -1206,9 +1213,10 @@ public final class CultivationStacks {
         "CLT_PLANT_SAND",
         Skins.SEED_YELLOW.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 沙子",
+        "Cultivation Plant: Sand",
         List.of(
-            "这种植物有时会一触即散。"
+            "This plant can sometimes crumble apart",
+            "at a single touch."
         )
     );
 
@@ -1216,10 +1224,10 @@ public final class CultivationStacks {
         "CLT_PLANT_RED_SAND",
         Skins.SEED_RED.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 红沙",
+        "Cultivation Plant: Red Sand",
         List.of(
-            "这种植物有时会一触即散，",
-            "不过更红一点。"
+            "This plant can sometimes crumble apart",
+            "at a single touch - but... red-er."
         )
     );
 
@@ -1227,9 +1235,9 @@ public final class CultivationStacks {
         "CLT_PLANT_MOSS",
         Skins.SEED_GREEN.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 苔藓",
+        "Cultivation Plant: Moss",
         List.of(
-            "这种植物往往会不受控制地往外扩散。"
+            "This plant tends to spread uncontrollably."
         )
     );
 
@@ -1237,9 +1245,9 @@ public final class CultivationStacks {
         "CLT_PLANT_SAPLING",
         Skins.SEED_GREEN.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 树苗",
+        "Cultivation Plant: Sapling",
         List.of(
-            "这种植物到底有什么意义呢…"
+            "This plant doesn't even make sense..."
         )
     );
 
@@ -1247,10 +1255,10 @@ public final class CultivationStacks {
         "CLT_PLANT_MUSHROOM",
         Skins.SEED_RED.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 蘑菇",
+        "Cultivation Plant: Mushroom",
         List.of(
-            "是的，可以长出蘑菇的植物。",
-            "这在粘液科技里再正常不过了。"
+            "Yup, a plant that makes mushrooms.",
+            "Everything is totally normal over here."
         )
     );
 
@@ -1258,10 +1266,10 @@ public final class CultivationStacks {
         "CLT_PLANT_WITHER_ROSE",
         Skins.SEED_RED.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 凋零玫瑰",
+        "Cultivation Plant: Wither Rose",
         List.of(
-            "这种植物不知何故",
-            "会在周围散发出有害的气息。"
+            "This plant, somehow, pulsates a harmful",
+            "aura around itself."
         )
     );
 
@@ -1269,9 +1277,9 @@ public final class CultivationStacks {
         "CLT_PLANT_DARK_FLORA",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 黑暗植物",
+        "Cultivation Plant: Dark Flora",
         List.of(
-            "种子中隐藏着沉默的恶魔。"
+            "A silent evil sits within this simple seed."
         )
     );
 
@@ -1279,9 +1287,9 @@ public final class CultivationStacks {
         "CLT_PLANT_GLOWING_VINE",
         Skins.SEED_YELLOW.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 发光藤蔓",
+        "Cultivation Plant: Glowing Vine",
         List.of(
-            "种子散发着微弱的光芒。"
+            "A faint light emits from within this seed."
         )
     );
 
@@ -1289,9 +1297,9 @@ public final class CultivationStacks {
         "CLT_PLANT_DIM_LIT",
         Skins.SEED_BLUE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 昏暗光线",
+        "Cultivation Plant: Dim Lit",
         List.of(
-            "种子散发着非常昏暗的光线。"
+            "A very dim light emits from within this seed."
         )
     );
 
@@ -1299,10 +1307,11 @@ public final class CultivationStacks {
         "CLT_PLANT_COW",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 牛",
+        "Cultivation Plant: Cow",
         List.of(
-            "如果你将这颗种子放在耳边，",
-            "你会偶尔听到牛叫。"
+            "If you hold this seed up to your ear",
+            "and listen very carefully, you can hear",
+            "an occasional mooing."
         )
     );
 
@@ -1310,11 +1319,12 @@ public final class CultivationStacks {
         "CLT_PLANT_CHICKEN",
         Skins.SEED_CYAN.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 鸡",
+        "Cultivation Plant: Chicken",
         List.of(
-            "传闻说，如果你举着这颗种子",
-            "从高处跳下，你会滑翔两年半",
-            "而不会摔落。"
+            "Rumour says that if you hold this",
+            "seed above your head and jump from a",
+            "high place, you will glide rather than",
+            "fall."
         )
     );
 
@@ -1322,9 +1332,9 @@ public final class CultivationStacks {
         "CLT_PLANT_FISH",
         Skins.SEED_BLUE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 鱼",
+        "Cultivation Plant: Fish",
         List.of(
-            "一股成熟的气味从种子中散发出来。"
+            "A ripe smell emanates from this seed."
         )
     );
 
@@ -1332,9 +1342,9 @@ public final class CultivationStacks {
         "CLT_PLANT_TURTLE",
         Skins.SEED_GREEN.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 海龟",
+        "Cultivation Plant: Turtle",
         List.of(
-            "被坚硬外壳包围的种子。"
+            "A seed surrounded by a rock hard shell."
         )
     );
 
@@ -1342,10 +1352,10 @@ public final class CultivationStacks {
         "CLT_PLANT_VILLAGER",
         Skins.SEED_YELLOW.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 村民",
+        "Cultivation Plant: Villager",
         List.of(
-            "是的，我们将村民的精华浓缩在植物里。",
-            "显然，这很伤村民。"
+            "Yup, we condensed the essence of a villager",
+            "into a plant. Apparently it hurt a lot."
         )
     );
 
@@ -1353,9 +1363,9 @@ public final class CultivationStacks {
         "CLT_PLANT_RABBIT",
         Skins.SEED_ORANGE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 兔子",
+        "Cultivation Plant: Rabbit",
         List.of(
-            "虫子会感到自豪。"
+            "Bugs would be proud."
         )
     );
 
@@ -1363,9 +1373,9 @@ public final class CultivationStacks {
         "CLT_PLANT_SHEEP",
         Skins.SEED_YELLOW.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 羊",
+        "Cultivation Plant: Sheep",
         List.of(
-            "这种植物有着粗糙的毛茸质地。"
+            "A plant with a coarse woolly texture."
         )
     );
 
@@ -1373,9 +1383,9 @@ public final class CultivationStacks {
         "CLT_PLANT_PIG",
         Skins.SEED_RED.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 猪",
+        "Cultivation Plant: Pig",
         List.of(
-            "这种植物会随机地发出哼叫声。"
+            "A plant that snorts randomly."
         )
     );
 
@@ -1383,9 +1393,9 @@ public final class CultivationStacks {
         "CLT_PLANT_BEE",
         Skins.SEED_YELLOW.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 蜜蜂",
+        "Cultivation Plant: Bee",
         List.of(
-            "这种植物有一对非常小而精致的翅膀。"
+            "A plant with a very small, delicate, set of wings."
         )
     );
 
@@ -1393,10 +1403,11 @@ public final class CultivationStacks {
         "CLT_PLANT_SQUID",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 鱿鱼",
+        "Cultivation Plant: Squid",
         List.of(
-            "小心，只要触碰到这株植物，",
-            "就有可能让这片区域充满墨汁。"
+            "Be careful, just touching this plant",
+            "has the chance to explode ink all over",
+            "the place."
         )
     );
 
@@ -1404,9 +1415,9 @@ public final class CultivationStacks {
         "CLT_PLANT_GLOW_SQUID",
         Skins.SEED_GREEN.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 发光鱿鱼",
+        "Cultivation Plant: Glow Squid",
         List.of(
-            "一种散发着微弱光芒的植物。"
+            "A glittering plant with a faint glow."
         )
     );
 
@@ -1414,9 +1425,9 @@ public final class CultivationStacks {
         "CLT_PLANT_FROG",
         Skins.SEED_GREEN.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 青蛙",
+        "Cultivation Plant: Frog",
         List.of(
-            "呱呱!"
+            "Ribbit!"
         )
     );
 
@@ -1424,10 +1435,10 @@ public final class CultivationStacks {
         "CLT_PLANT_GOAT",
         Skins.SEED_ORANGE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 山羊",
+        "Cultivation Plant: Goat",
         List.of(
-            "一种拥有随机暴力倾向的植物，",
-            "喜欢跳来跳去。"
+            "A randomly violent plant that loves",
+            "to jump around."
         )
     );
 
@@ -1435,10 +1446,10 @@ public final class CultivationStacks {
         "CLT_PLANT_RAINBOW",
         Skins.SEED_BLUE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 彩虹",
+        "Cultivation Plant: Rainbow",
         List.of(
-            "这种植物的尽头可能有装满金子的罐头，",
-            "也可能没有。"
+            "There may or may not be a pot of gold",
+            "at the end of this plant."
         )
     );
 
@@ -1446,10 +1457,10 @@ public final class CultivationStacks {
         "CLT_PLANT_WAXY",
         Skins.SEED_YELLOW.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 蜡",
+        "Cultivation Plant: Waxy",
         List.of(
-            "这种植物的汁液会自然形成",
-            "与蜡烛完全相似的蜡块。"
+            "The sap from this plant forms into",
+            "perfect candle shaped wax."
         )
     );
 
@@ -1457,10 +1468,9 @@ public final class CultivationStacks {
         "CLT_PLANT_WOOLLY",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 羊毛",
+        "Cultivation Plant: Woolly",
         List.of(
-            "一种从根茎到枝叶",
-            "完全被羊毛覆盖的植物。"
+            "A woolly plant, from root to petals!."
         )
     );
 
@@ -1468,9 +1478,9 @@ public final class CultivationStacks {
         "CLT_PLANT_TERRA",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 大地",
+        "Cultivation Plant: Terra",
         List.of(
-            "一种在受到压力时产生裂纹的坚硬植物。"
+            "A hard earthy plant that cracks under pressure."
         )
     );
 
@@ -1478,9 +1488,9 @@ public final class CultivationStacks {
         "CLT_PLANT_GLAZED",
         Skins.SEED_ORANGE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 釉",
+        "Cultivation Plant: Glazed",
         List.of(
-            "一种会长出复杂设计的植物。"
+            "A plant that grows with an intricate design."
         )
     );
 
@@ -1488,10 +1498,11 @@ public final class CultivationStacks {
         "CLT_PLANT_DUSTY",
         Skins.SEED_YELLOW.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 粉",
+        "Cultivation Plant: Dusty",
         List.of(
-            "这种植物需要特殊照顾，",
-            "即使微风也足以使其破碎。"
+            "This plant needs special care, the slightest",
+            "strong breeze can be enough to make it fall",
+            "apart."
         )
     );
 
@@ -1499,10 +1510,10 @@ public final class CultivationStacks {
         "CLT_PLANT_CONCRETE",
         Skins.SEED_CYAN.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 混凝土",
+        "Cultivation Plant: Concrete",
         List.of(
-            "这种植物很难生长，",
-            "因为它很快就会变硬。"
+            "This plant struggle to grow as it",
+            "hardens so quickly."
         )
     );
 
@@ -1510,10 +1521,10 @@ public final class CultivationStacks {
         "CLT_PLANT_STAINED",
         Skins.SEED_CYAN.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 染色",
+        "Cultivation Plant: Stained",
         List.of(
-            "这种植物将光分裂成真正的光谱，",
-            "照射到附近的物体上。"
+            "This plant splits light into a veritable",
+            "spectrum to nearby objects."
         )
     );
 
@@ -1521,9 +1532,9 @@ public final class CultivationStacks {
         "CLT_PLANT_COBBLESTONE",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 圆石",
+        "Cultivation Plant: Cobblestone",
         List.of(
-            "这种植物与岩石一样坚硬。"
+            "This plant is hard as a rock."
         )
     );
 
@@ -1531,10 +1542,10 @@ public final class CultivationStacks {
         "CLT_PLANT_GRAVEL",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 沙砾",
+        "Cultivation Plant: Gravel",
         List.of(
-            "这种植物完全不知道",
-            "如何保持自己的完整。"
+            "This plant really doesn't know how",
+            "to keep itself together."
         )
     );
 
@@ -1542,10 +1553,11 @@ public final class CultivationStacks {
         "CLT_PLANT_CLAY",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 粘土",
+        "Cultivation Plant: Clay",
         List.of(
-            "这种植物可以被自由地塑形与重塑。",
-            "虽然如此，这样做这并不是一个好主意！"
+            "This plant can be formed and reshaped freely.",
+            "That doesn't mean it's a good idea to do so,",
+            "though!"
         )
     );
 
@@ -1553,11 +1565,11 @@ public final class CultivationStacks {
         "CLT_PLANT_IGNEOUS",
         Skins.SEED_BLUE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 火成岩",
+        "Cultivation Plant: Igneous",
         List.of(
-            "这种植物是通过热和压力形成的。",
-            "不要这样看着我！",
-            "所有这些植物描述都是有意义的。"
+            "This plant has been formed by heat and",
+            "pressure. Don't look at me like that! All",
+            "these plant descriptions make total sense."
         )
     );
 
@@ -1565,9 +1577,9 @@ public final class CultivationStacks {
         "CLT_PLANT_DEEPSLATE",
         Skins.SEED_BLUE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 深板岩",
+        "Cultivation Plant: Deepslate",
         List.of(
-            "深层，板岩，<在此插入说明>。"
+            "Deep, slatey, <insert lore here>."
         )
     );
 
@@ -1575,10 +1587,10 @@ public final class CultivationStacks {
         "CLT_PLANT_REINFORCED",
         Skins.SEED_BLUE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 强化",
+        "Cultivation Plant: Reinforced",
         List.of(
-            "这种植物能够通过任何方式",
-            "支撑起自己。"
+            "A plant that is able to hold itself up",
+            "through anything."
         )
     );
 
@@ -1586,9 +1598,9 @@ public final class CultivationStacks {
         "CLT_PLANT_BLACKSTONE",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 黑石",
+        "Cultivation Plant: Blackstone",
         List.of(
-            "这种植物据说可以吸收光线。"
+            "A plant that has been known to absorb light."
         )
     );
 
@@ -1596,10 +1608,10 @@ public final class CultivationStacks {
         "CLT_PLANT_NETHERRACK",
         Skins.SEED_RED.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 下界岩",
+        "Cultivation Plant: Netherrack",
         List.of(
-            "这种坚韧的植物",
-            "能够在大多数地方生存。"
+            "A tough hardy plant able to survive",
+            "in most locales."
         )
     );
 
@@ -1607,9 +1619,10 @@ public final class CultivationStacks {
         "CLT_PLANT_DARK_GRASS",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 黑草",
+        "Cultivation Plant: Dark Grass",
         List.of(
-            "这种植物已经失去自我。"
+            "A plant that has really lost it's",
+            "identity."
         )
     );
 
@@ -1617,10 +1630,10 @@ public final class CultivationStacks {
         "CLT_PLANT_MAGMA",
         Skins.SEED_RED.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 岩浆",
+        "Cultivation Plant: Magma",
         List.of(
-            "这种植物很烫，",
-            "会燃烧周围的一切。"
+            "A plant that's so hot it burns it's",
+            "surroundings."
         )
     );
 
@@ -1628,9 +1641,10 @@ public final class CultivationStacks {
         "CLT_PLANT_SOUL",
         Skins.SEED_RED.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 灵魂",
+        "Cultivation Plant: Soul",
         List.of(
-            "这种植物在安静时会发出尖叫声。"
+            "A plant that can be heard screaming",
+            "when its quiet."
         )
     );
 
@@ -1638,9 +1652,9 @@ public final class CultivationStacks {
         "CLT_PLANT_BASALT",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 玄武岩",
+        "Cultivation Plant: Basalt",
         List.of(
-            "这种植物非常无聊和乏味。"
+            "A very boring and dull plant."
         )
     );
 
@@ -1648,10 +1662,10 @@ public final class CultivationStacks {
         "CLT_PLANT_GLASS",
         Skins.SEED_YELLOW.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 玻璃",
+        "Cultivation Plant: Glass",
         List.of(
-            "只要角度合适，",
-            "你一定能看到植物的内部。"
+            "At the right angle, you could",
+            "swear you can see through this plant."
         )
     );
 
@@ -1659,9 +1673,10 @@ public final class CultivationStacks {
         "CLT_PLANT_MUD",
         Skins.SEED_BLUE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 泥巴",
+        "Cultivation Plant: Mud",
         List.of(
-            "这种植物几乎和它来自的土地一样肮脏。"
+            "A plant that is nearly as dirty as",
+            "the ground it comes from."
         )
     );
 
@@ -1669,9 +1684,9 @@ public final class CultivationStacks {
         "CLT_PLANT_END_STONE",
         Skins.SEED_YELLOW.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 末地石",
+        "Cultivation Plant: End Stone",
         List.of(
-            "这种植物会发出虚空的嗡鸣声。"
+            "A plant that hums with the void."
         )
     );
 
@@ -1679,10 +1694,10 @@ public final class CultivationStacks {
         "CLT_PLANT_PURPUR",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 紫珀",
+        "Cultivation Plant: Purpur",
         List.of(
-            "一种奇怪的植物，",
-            "似乎比大多数植物轻得多。"
+            "An odd plant, seems far lighter",
+            "than most."
         )
     );
 
@@ -1690,9 +1705,9 @@ public final class CultivationStacks {
         "CLT_PLANT_COAL",
         Skins.SEED_RED.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 煤炭",
+        "Cultivation Plant: Coal",
         List.of(
-            "这种植物有着巨大的潜力。"
+            "A plant that holds such potential."
         )
     );
 
@@ -1700,10 +1715,10 @@ public final class CultivationStacks {
         "CLT_PLANT_RAW_IRON",
         Skins.SEED_RED.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 粗铁",
+        "Cultivation Plant: Raw Iron",
         List.of(
-            "这种坚固的植物",
-            "能承受大多数环境。"
+            "A sturdy plant able to withstand most",
+            "environments."
         )
     );
 
@@ -1711,10 +1726,10 @@ public final class CultivationStacks {
         "CLT_PLANT_RAW_COPPER",
         Skins.SEED_ORANGE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 粗铜",
+        "Cultivation Plant: Raw Copper",
         List.of(
-            "如果放任不管，这种植物",
-            "有时会吸引闪电。"
+            "If left alone, this plant sometimes",
+            "attracts lightning."
         )
     );
 
@@ -1722,10 +1737,10 @@ public final class CultivationStacks {
         "CLT_PLANT_RAW_GOLD",
         Skins.SEED_YELLOW.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 粗金",
+        "Cultivation Plant: Raw Gold",
         List.of(
-            "如果猪灵在边上，",
-            "那这种植物一定会被偷走。"
+            "This plant is commonly stolen by piglins",
+            "if nearby."
         )
     );
 
@@ -1733,9 +1748,9 @@ public final class CultivationStacks {
         "CLT_PLANT_REDSTONE",
         Skins.SEED_RED.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 红石",
+        "Cultivation Plant: Redstone",
         List.of(
-            "这种植物充满了能量。"
+            "A plant brimming with power throughout."
         )
     );
 
@@ -1743,9 +1758,9 @@ public final class CultivationStacks {
         "CLT_PLANT_LAPIS",
         Skins.SEED_BLUE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 青金石",
+        "Cultivation Plant: Lapis",
         List.of(
-            "这种植物有着微弱的魔法光环。"
+            "A plant with a faint magical aura."
         )
     );
 
@@ -1753,9 +1768,9 @@ public final class CultivationStacks {
         "CLT_PLANT_DIAMOND",
         Skins.SEED_BLUE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 钻石",
+        "Cultivation Plant: Diamond",
         List.of(
-            "这种植物象征着财富。"
+            "A plant that just speaks of riches."
         )
     );
 
@@ -1763,10 +1778,10 @@ public final class CultivationStacks {
         "CLT_PLANT_EMERALD",
         Skins.SEED_GREEN.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 绿宝石",
+        "Cultivation Plant: Emerald",
         List.of(
-            "这种植物的拥有着必须",
-            "花费很大的代价才能负担得起。"
+            "Owners of this plant have to jump",
+            "through hoops just to be able to afford it."
         )
     );
 
@@ -1774,9 +1789,10 @@ public final class CultivationStacks {
         "CLT_PLANT_NETHER_QUARTZ",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 下界石英",
+        "Cultivation Plant: Nether Quartz",
         List.of(
-            "这种植物的刺非常锋利，很难处理。"
+            "This plant has thorns so sharp that",
+            "it's hard to work with."
         )
     );
 
@@ -1784,10 +1800,10 @@ public final class CultivationStacks {
         "CLT_PLANT_SCRAPPY",
         Skins.SEED_RED.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 碎片",
+        "Cultivation Plant: Scrappy",
         List.of(
-            "这种植物象征着",
-            "园艺学的巅峰。"
+            "This plant really is the pinnacle of",
+            "horticulturalism."
         )
     );
 
@@ -1795,10 +1811,10 @@ public final class CultivationStacks {
         "CLT_PLANT_AMETHYST",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 紫水晶",
+        "Cultivation Plant: Amethyst",
         List.of(
-            "这种植物喜欢在深邃",
-            "且黑暗的地方茁壮成长。"
+            "This plant loves to flourish in deep, dark",
+            "locales."
         )
     );
 
@@ -1806,9 +1822,10 @@ public final class CultivationStacks {
         "CLT_PLANT_ECHO",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 回声",
+        "Cultivation Plant: Echo",
         List.of(
-            "这种植物知道回家的路。"
+            "This plant always knows how to find",
+            "its way home."
         )
     );
 
@@ -1816,10 +1833,9 @@ public final class CultivationStacks {
         "CLT_PLANT_SKELETON",
         Skins.SEED_GREEN.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 骷髅",
+        "Cultivation Plant: Skeleton",
         List.of(
-            "这种植物在摇摆时",
-            "会发出咔嗒声。"
+            "A plant that rattles as it sways."
         )
     );
 
@@ -1827,9 +1843,9 @@ public final class CultivationStacks {
         "CLT_PLANT_SPIDER",
         Skins.SEED_RED.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 蜘蛛",
+        "Cultivation Plant: Spider",
         List.of(
-            "快！赶快！杀了它!"
+            "Kill it, kill it NAO!"
         )
     );
 
@@ -1837,9 +1853,9 @@ public final class CultivationStacks {
         "CLT_PLANT_CREEPER",
         Skins.SEED_GREEN.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 苦力怕",
+        "Cultivation Plant: Creeper",
         List.of(
-            "Aw man…"
+            "Tsssssssssttt..."
         )
     );
 
@@ -1847,9 +1863,9 @@ public final class CultivationStacks {
         "CLT_PLANT_ZOMBIE",
         Skins.SEED_GREEN.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 僵尸",
+        "Cultivation Plant: Zombie",
         List.of(
-            "这种植物正在滴落…什么东西…"
+            "This plant is dripping... something..."
         )
     );
 
@@ -1857,9 +1873,10 @@ public final class CultivationStacks {
         "CLT_PLANT_DROWNED",
         Skins.SEED_BLUE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 溺尸",
+        "Cultivation Plant: Drowned",
         List.of(
-            "这种植物总是湿漉漉的。"
+            "A Plant that is dripping wet, all",
+            "the time."
         )
     );
 
@@ -1867,10 +1884,10 @@ public final class CultivationStacks {
         "CLT_PLANT_GUARDIAN",
         Skins.SEED_BLUE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 守卫者",
+        "Cultivation Plant: Guardian",
         List.of(
-            "触摸植物时，",
-            "会释放尖刺。"
+            "When touched, this plant releases",
+            "spines."
         )
     );
 
@@ -1878,10 +1895,10 @@ public final class CultivationStacks {
         "CLT_PLANT_ELDER_GUARDIAN",
         Skins.SEED_BLUE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 远古守卫者",
+        "Cultivation Plant: Elder Guardian",
         List.of(
-            "靠近这种植物时，",
-            "人们会变得迟钝。"
+            "Being near this plants makes people",
+            "sluggish."
         )
     );
 
@@ -1889,9 +1906,10 @@ public final class CultivationStacks {
         "CLT_PLANT_GHAST",
         Skins.SEED_YELLOW.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 恶魂",
+        "Cultivation Plant: Ghast",
         List.of(
-            "这种植物据说会随机发射火球。"
+            "A plant that has been known to",
+            "randomly shoot fire balls."
         )
     );
 
@@ -1899,9 +1917,9 @@ public final class CultivationStacks {
         "CLT_PLANT_SLIME",
         Skins.SEED_GREEN.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 史莱姆",
+        "Cultivation Plant: Slime",
         List.of(
-            "为什么它这么黏？"
+            "Why is it so sticky?"
         )
     );
 
@@ -1909,10 +1927,10 @@ public final class CultivationStacks {
         "CLT_PLANT_MAGMA_CUBE",
         Skins.SEED_RED.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 岩浆怪",
+        "Cultivation Plant: Magma Cube",
         List.of(
-            "当没人注意时，",
-            "这种植物喜欢上下弹跳。"
+            "When not being watched, this plant",
+            "likes to bounce up and down."
         )
     );
 
@@ -1920,9 +1938,9 @@ public final class CultivationStacks {
         "CLT_PLANT_BLAZE",
         Skins.SEED_RED.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 烈焰人",
+        "Cultivation Plant: Blaze",
         List.of(
-            "这种植物的边缘被烧焦了。"
+            "A plant that is scorched around the edges."
         )
     );
 
@@ -1930,9 +1948,9 @@ public final class CultivationStacks {
         "CLT_PLANT_WITHER_SKELETON",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 凋灵骷髅",
+        "Cultivation Plant: Wither Skeleton",
         List.of(
-            "这种植物以难以捉摸和坚韧著称。"
+            "A plant known to be elusive and hardy."
         )
     );
 
@@ -1940,9 +1958,10 @@ public final class CultivationStacks {
         "CLT_PLANT_WITHER",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 凋灵",
+        "Cultivation Plant: Wither",
         List.of(
-            "这种致命的植物必须小心对待。"
+            "A deadly plant that must be treated",
+            "with care."
         )
     );
 
@@ -1950,9 +1969,9 @@ public final class CultivationStacks {
         "CLT_PLANT_PHANTOM",
         Skins.SEED_BLUE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 幻翼",
+        "Cultivation Plant: Phantom",
         List.of(
-            "这种植物有高耸的叶子。"
+            "A plant with lofty leaves."
         )
     );
 
@@ -1960,9 +1979,10 @@ public final class CultivationStacks {
         "CLT_PLANT_SHULKER",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 潜影盒",
+        "Cultivation Plant: Shulker",
         List.of(
-            "这种植物经常从地面上浮起来。"
+            "A plant that often levitates off",
+            "of the ground."
         )
     );
 
@@ -1970,10 +1990,10 @@ public final class CultivationStacks {
         "CLT_PLANT_ENDERMAN",
         Skins.SEED_GREEN.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 末影人",
+        "Cultivation Plant: Enderman",
         List.of(
-            "如果不小心处理，",
-            "这种植物可能会随机传送!"
+            "If not treated carefully, this plant",
+            "may teleport randomly!"
         )
     );
 
@@ -1981,9 +2001,9 @@ public final class CultivationStacks {
         "CLT_PLANT_ENDER_DRAGON",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 末影龙",
+        "Cultivation Plant: Ender Dragon",
         List.of(
-            "真正的首领植物。"
+            "A real boss of a plant."
         )
     );
 
@@ -1991,10 +2011,10 @@ public final class CultivationStacks {
         "CLT_PLANT_WITCH",
         Skins.SEED_PURPLE.getPlayerHead(),
         CultivationThemes.PLANT,
-        "农耕工艺 - 植物: 女巫",
+        "Cultivation Plant: Witch",
         List.of(
-            "这种植物听起来像是",
-            "在低声咕哝咒语。"
+            "A plant that sounds like it's softly",
+            "muttering spells."
         )
     );
 
@@ -2011,23 +2031,24 @@ public final class CultivationStacks {
         "CLT_CROP_STICKS",
         Material.STICK,
         CultivationThemes.TOOL,
-        "作物架",
-        "必须给放置的种子添加作物架",
-        "才能让种子生长。",
-        "放置第二个作物架",
-        "可以进行作物培育。"
+        "Crop Sticks",
+        "Crop sticks must be applied to a",
+        "placed seed in order for it to grow.",
+        "Placing a second set will cross-crop",
+        "the plant allowing it to spread and/or",
+        "breed."
     );
 
     public static final SlimefunItemStack HARVESTING_TOOL_SIMPLE = Theme.themedSlimefunItemStack(
         "CLT_HARVESTING_TOOL_SIMPLE",
         Material.TRIPWIRE_HOOK,
         CultivationThemes.TOOL,
-        "简易收获工具",
-        "一个非常简单的工具",
-        "可以收集农耕工艺植物。",
-        Theme.WARNING + "仅适用于 T1 植物",
+        "Simple Harvesting Tool",
+        "A very basic tool that allows",
+        "the user to harvest Cultivation Plants.",
+        Theme.WARNING + "Works on Tier 1 plants",
         "",
-        Theme.applyThemeAsTitle(Theme.CLICK_INFO, "右键点击", "收获完全生长的农耕工艺植物"),
+        Theme.applyThemeAsTitle(Theme.CLICK_INFO, "Right Click", "Harvests a fully grown Cultivation Plant"),
         "",
         LoreBuilder.usesLeft(50)
     );
@@ -2036,11 +2057,11 @@ public final class CultivationStacks {
         "CLT_TRIMMING_TOOL_SIMPLE",
         Material.SHEARS,
         CultivationThemes.TOOL,
-        "简易修剪工具",
-        "一个非常简单的工具",
-        "可以收集农耕工艺灌木。",
+        "Simple Trimming Tool",
+        "A very basic tool that allows",
+        "the user to trim Cultivation Bushes.",
         "",
-        Theme.applyThemeAsTitle(Theme.CLICK_INFO, "右键点击", "收获农耕工艺灌木"),
+        Theme.applyThemeAsTitle(Theme.CLICK_INFO, "Right Click", "Takes a trimming of a fully grown Cultivation Bush"),
         "",
         LoreBuilder.usesLeft(50)
     );
@@ -2049,37 +2070,37 @@ public final class CultivationStacks {
         "CLT_PLANT_ANALYSER",
         Material.DIAMOND,
         CultivationThemes.TOOL,
-        "植物分析仪",
-        "一个基本的工具",
-        "可以查看植物的信息",
+        "Plant Analyser",
+        "A very basic tool that allows",
+        "you to see a growing plant's details",
         "",
         Theme.applyThemeAsTitle(
             Theme.CLICK_INFO,
-            "右键点击",
-            "查看植物种类与生长情况。"
+            "Right Click",
+            "Lets you know the species and growth details of a plant."
         ),
-        Theme.applyThemeAsTitle(Theme.CLICK_INFO, "潜行+右键点击", "显示植物/灌木的名称。")
+        Theme.applyThemeAsTitle(Theme.CLICK_INFO, "Shift Right Click", "Displays a plant or bushes name.")
     );
 
     public static final SlimefunItemStack RECIPE_UNLOCK = Theme.themedSlimefunItemStack(
         "CLT_RECIPE_UNLOCK",
         Material.PAPER,
         CultivationThemes.TOOL,
-        "农耕工艺知识",
-        "右键点击来学习一个",
-        "农耕工艺的培育配方",
+        "Cultivation Knowledge Script",
+        "Right click to learn a Cultivation",
+        "breeding recipe.",
         "",
-        Theme.CLICK_INFO.asTitle("解锁", "{0}")
+        Theme.CLICK_INFO.asTitle("Unlocks", "{0}")
     );
 
     public static final SlimefunItemStack SEED_PACK = Theme.themedSlimefunItemStack(
         "CLT_SEED_PACK",
         Material.COMPOSTER,
         CultivationThemes.TOOL,
-        "种子袋",
-        "右键点击以打开。",
+        "Seed Pack",
+        "Right click to open this pack.",
         "",
-        Theme.CLICK_INFO.asTitle("设置为", "空")
+        Theme.CLICK_INFO.asTitle("Set to", "Nothing")
     );
 
     // endregion
@@ -2090,143 +2111,143 @@ public final class CultivationStacks {
         "CLT_GARDEN_CLOCHE",
         Material.GLASS,
         CultivationThemes.MACHINE,
-        "园艺玻璃罩",
-        "自动种植植物。",
+        "Garden Cloche",
+        "Grows plants inside it automatically.",
         "",
-        Theme.CLICK_INFO.asTitle("每粘液刻消耗电力", 100)
+        Theme.CLICK_INFO.asTitle("Power per Tick", 100)
     );
 
     public static final SlimefunItemStack COUNTER_NOTHING = Theme.themedSlimefunItemStack(
         "CLT_COUNTER_NOTHING",
         Material.STRIPPED_DARK_OAK_LOG,
         CultivationThemes.MACHINE,
-        "厨房柜台: 空",
-        "仅用于装饰!",
+        "Kitchen Counter: Empty",
+        "Just for decoration!",
         "",
-        Theme.CLICK_INFO + "提示：放置后，可通过潜行+右键点击",
-        Theme.CLICK_INFO + "来将当前手持的物品作为厨房的新外观。",
-        Theme.CLICK_INFO + "快去试试吧！"
+        Theme.CLICK_INFO + "Pro Tip! When placed, you can shift + right",
+        Theme.CLICK_INFO + "click and the block(s) you're holding will",
+        Theme.CLICK_INFO + "change the kitchen design. Try it out!"
     );
 
     public static final SlimefunItemStack COUNTER_CHOPPING = Theme.themedSlimefunItemStack(
         "CLT_COUNTER_CHOPPING",
         Material.SMITHING_TABLE,
         CultivationThemes.MACHINE,
-        "厨房柜台: 砧板",
-        "右键点击进行切碎。",
+        "Kitchen Counter: Chopping Board",
+        "Right click this block to chop produce.",
         "",
-        Theme.CLICK_INFO + "提示：放置后，可通过潜行+右键点击",
-        Theme.CLICK_INFO + "来将当前手持的物品作为厨房的新外观。",
-        Theme.CLICK_INFO + "快去试试吧！"
+        Theme.CLICK_INFO + "Pro Tip! When placed, you can shift + right",
+        Theme.CLICK_INFO + "click and the block(s) you're holding will",
+        Theme.CLICK_INFO + "change the kitchen design. Try it out!"
     );
 
     public static final SlimefunItemStack COUNTER_SLICING = Theme.themedSlimefunItemStack(
         "CLT_COUNTER_SLICING",
         Material.CARTOGRAPHY_TABLE,
         CultivationThemes.MACHINE,
-        "厨房柜台: 切片板",
-        "右键点击进行切片。",
+        "Kitchen Counter: Slicing Board",
+        "Right click this block to slice produce.",
         "",
-        Theme.CLICK_INFO + "提示：放置后，可通过潜行+右键点击",
-        Theme.CLICK_INFO + "来将当前手持的物品作为厨房的新外观。",
-        Theme.CLICK_INFO + "快去试试吧！"
+        Theme.CLICK_INFO + "Pro Tip! When placed, you can shift + right",
+        Theme.CLICK_INFO + "click and the block(s) you're holding will",
+        Theme.CLICK_INFO + "change the kitchen design. Try it out!"
     );
 
     public static final SlimefunItemStack COUNTER_MASHER = Theme.themedSlimefunItemStack(
         "CLT_COUNTER_MASHER",
         Material.CRAFTING_TABLE,
         CultivationThemes.MACHINE,
-        "厨房柜台: 捣碎碗",
-        "右键点击进行捣碎。",
+        "Kitchen Counter: Mashing Bowl",
+        "Right click this block to mash produce.",
         "",
-        Theme.CLICK_INFO + "提示：放置后，可通过潜行+右键点击",
-        Theme.CLICK_INFO + "来将当前手持的物品作为厨房的新外观。",
-        Theme.CLICK_INFO + "快去试试吧！"
+        Theme.CLICK_INFO + "Pro Tip! When placed, you can shift + right",
+        Theme.CLICK_INFO + "click and the block(s) you're holding will",
+        Theme.CLICK_INFO + "change the kitchen design. Try it out!"
     );
 
     public static final SlimefunItemStack COUNTER_GRINDER = Theme.themedSlimefunItemStack(
         "CLT_COUNTER_GRINDER",
         Material.CAULDRON,
         CultivationThemes.MACHINE,
-        "厨房柜台: 研磨杵和研钵",
-        "右键点击进行剁碎。",
+        "Kitchen Counter: Grinding Pestle and Mortar",
+        "Right click this block to grind produce.",
         "",
-        Theme.CLICK_INFO + "提示：放置后，可通过潜行+右键点击",
-        Theme.CLICK_INFO + "来将当前手持的物品作为厨房的新外观。",
-        Theme.CLICK_INFO + "快去试试吧！"
+        Theme.CLICK_INFO + "Pro Tip! When placed, you can shift + right",
+        Theme.CLICK_INFO + "click and the block(s) you're holding will",
+        Theme.CLICK_INFO + "change the kitchen design. Try it out!"
     );
 
     public static final SlimefunItemStack COUNTER_BLENDER = Theme.themedSlimefunItemStack(
         "CLT_COUNTER_BLENDER",
         Material.FLETCHING_TABLE,
         CultivationThemes.MACHINE,
-        "厨房柜台: 搅拌机",
-        "右键点击进行搅拌。",
+        "Kitchen Counter: Blender",
+        "Right click this block to blend produce.",
         "",
-        Theme.CLICK_INFO + "提示：放置后，可通过潜行+右键点击",
-        Theme.CLICK_INFO + "来将当前手持的物品作为厨房的新外观。",
-        Theme.CLICK_INFO + "快去试试吧！"
+        Theme.CLICK_INFO + "Pro Tip! When placed, you can shift + right",
+        Theme.CLICK_INFO + "click and the block(s) you're holding will",
+        Theme.CLICK_INFO + "change the kitchen design. Try it out!"
     );
 
     public static final SlimefunItemStack COUNTER_OVEN = Theme.themedSlimefunItemStack(
         "CLT_COUNTER_OVEN",
         Material.FURNACE,
         CultivationThemes.MACHINE,
-        "厨房柜台: 烤箱",
-        "可以进行烘焙。",
+        "Kitchen Counter: Oven",
+        "Can bake certain produce items.",
         "",
-        Theme.CLICK_INFO + "提示：放置后，可通过潜行+右键点击",
-        Theme.CLICK_INFO + "来将当前手持的物品作为厨房的新外观。",
-        Theme.CLICK_INFO + "快去试试吧！"
+        Theme.CLICK_INFO + "Pro Tip! When placed, you can shift + right",
+        Theme.CLICK_INFO + "click and the block(s) you're holding will",
+        Theme.CLICK_INFO + "change the kitchen design. Try it out!"
     );
 
     public static final SlimefunItemStack COUNTER_FRYER = Theme.themedSlimefunItemStack(
         "CLT_COUNTER_FRYING",
         Material.BLACK_STAINED_GLASS,
         CultivationThemes.MACHINE,
-        "厨房柜台: 煎锅",
-        "可进行油炸。",
+        "Kitchen Counter: Frying Pan",
+        "Can fry certain produce items.",
         "",
-        Theme.CLICK_INFO + "提示：放置后，可通过潜行+右键点击",
-        Theme.CLICK_INFO + "来将当前手持的物品作为厨房的新外观。",
-        Theme.CLICK_INFO + "快去试试吧！"
+        Theme.CLICK_INFO + "Pro Tip! When placed, you can shift + right",
+        Theme.CLICK_INFO + "click and the block(s) you're holding will",
+        Theme.CLICK_INFO + "change the kitchen design. Try it out!"
     );
 
     public static final SlimefunItemStack COUNTER_BOILING = Theme.themedSlimefunItemStack(
         "CLT_COUNTER_BOILING",
         Material.BLACK_STAINED_GLASS,
         CultivationThemes.MACHINE,
-        "厨房柜台: 大锅",
-        "可以进行煮沸。",
+        "Kitchen Counter: Boiling Pot",
+        "Can boil certain items.",
         "",
-        Theme.CLICK_INFO + "提示：放置后，可通过潜行+右键点击",
-        Theme.CLICK_INFO + "来将当前手持的物品作为厨房的新外观。",
-        Theme.CLICK_INFO + "快去试试吧！"
+        Theme.CLICK_INFO + "Pro Tip! When placed, you can shift + right",
+        Theme.CLICK_INFO + "click and the block(s) you're holding will",
+        Theme.CLICK_INFO + "change the kitchen design. Try it out!"
     );
 
     public static final SlimefunItemStack COUNTER_GRILL = Theme.themedSlimefunItemStack(
         "CLT_COUNTER_GRILL",
         Material.CAMPFIRE,
         CultivationThemes.MACHINE,
-        "厨房柜台: 烤架",
-        "可进行烧烤。",
+        "Kitchen Counter: Grill",
+        "Can grill certain produce items.",
         "",
-        Theme.CLICK_INFO + "提示：放置后，可通过潜行+右键点击",
-        Theme.CLICK_INFO + "来将当前手持的物品作为厨房的新外观。",
-        Theme.CLICK_INFO + "快去试试吧！"
+        Theme.CLICK_INFO + "Pro Tip! When placed, you can shift + right",
+        Theme.CLICK_INFO + "click and the block(s) you're holding will",
+        Theme.CLICK_INFO + "change the kitchen design. Try it out!"
     );
 
     public static final SlimefunItemStack COUNTER_FINISHING = Theme.themedSlimefunItemStack(
         "CLT_COUNTER_FINISHING",
         Material.CRAFTING_TABLE,
         CultivationThemes.MACHINE,
-        "厨房柜台: 上菜",
-        "可将产品/副产品制作为",
-        "食物或其他副产品。",
+        "Kitchen Counter: Finishing",
+        "Used to craft products/by-products into",
+        "other by-products or finished foods.",
         "",
-        Theme.CLICK_INFO + "提示：放置后，可通过潜行+右键点击",
-        Theme.CLICK_INFO + "来将当前手持的物品作为厨房的新外观。",
-        Theme.CLICK_INFO + "快去试试吧！"
+        Theme.CLICK_INFO + "Pro Tip! When placed, you can shift + right",
+        Theme.CLICK_INFO + "click and the block(s) you're holding will",
+        Theme.CLICK_INFO + "change the kitchen design. Try it out!"
     );
 
     // endregion
@@ -2237,806 +2258,803 @@ public final class CultivationStacks {
         "CLT_BANANA",
         Skins.BANANA.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "香蕉",
-        "我喜欢这东西！"
+        "Banana",
+        "I like the look and peel of this!"
     );
 
     public static final SlimefunItemStack LEMON = Theme.themedSlimefunItemStack(
         "CLT_LEMON",
         Skins.LEMON.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "柠檬",
-        "为什么愁眉苦脸？"
+        "Lemon",
+        "Why the sour look?"
     );
 
     public static final SlimefunItemStack ORANGE = Theme.themedSlimefunItemStack(
         "CLT_ORANGE",
         Skins.ORANGE.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "橘子",
-        "难道这不应该上个发条么？"
+        "Orange",
+        "Isn't this meant to be clockwork?"
     );
 
     public static final SlimefunItemStack GREEN_APPLE = Theme.themedSlimefunItemStack(
         "CLT_GREEN_APPLE",
         Skins.GREEN_APPLE.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "青苹果",
-        "这张纸条上写着…亲爱的老师？？"
+        "Green Apple",
+        "The note says... Dear Teacher?"
     );
 
     public static final SlimefunItemStack PINEAPPLE = Theme.themedSlimefunItemStack(
         "CLT_PINEAPPLE",
         Skins.PINEAPPLE.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "菠萝",
-        "这应该加到每一块披萨上。",
-        "怎么？你想打一架吗！"
+        "Pineapple",
+        "This belongs on every pizza in existence.",
+        "Wanna fight about it!?"
     );
 
     public static final SlimefunItemStack MANGO = Theme.themedSlimefunItemStack(
         "CLT_MANGO",
         Skins.MANGO.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "芒果",
+        "Mango",
         "MAN, I gotta GO.",
-        "写物品描述真的很难…"
+        "Lore is hard..."
     );
 
     public static final SlimefunItemStack PEACH = Theme.themedSlimefunItemStack(
         "CLT_PEACH",
         Skins.PEACH.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "桃子",
-        "我们不想讨论Emoji。"
+        "Peach",
+        "We don't talk about the Emoji"
     );
 
     public static final SlimefunItemStack APRICOT = Theme.themedSlimefunItemStack(
         "CLT_APRICOT",
         Skins.APRICOT.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "杏子",
-        "你可以用这些制作精灵球。",
-        "…",
-        "什么意思，为什么你说那是不同的东西…？"
+        "Apricot",
+        "You can make Pokéballs out of these.",
+        "...",
+        "What do you mean that's different thing...?"
     );
 
     public static final SlimefunItemStack PEAR = Theme.themedSlimefunItemStack(
         "CLT_PEAR",
         Skins.PEAR.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "梨",
-        "你不觉得这看上去很不戳吗？"
+        "Pear",
+        "Wouldn't you say this looks pear-fect?"
     );
 
     public static final SlimefunItemStack CHERRY = Theme.themedSlimefunItemStack(
         "CLT_CHERRY",
         Skins.CHERRY.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "樱桃",
-        "哦，我以为它们是冰糖渍的，真遗憾!"
+        "Cherry",
+        "Oh, I thought they grew Glacé'd, shame!"
     );
 
     public static final SlimefunItemStack KIWI = Theme.themedSlimefunItemStack(
         "CLT_KIWI",
         Skins.KIWI.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "奇异果",
-        "我是勉强把这个加进来的。",
-        "奇异果是邪恶的，",
-        "任何人接触到奇异果",
-        "都会丢失100分。"
+        "Kiwi",
+        "I put this in the addon under duress.",
+        "Kiwis are evil and anyone who",
+        "uses them will automatically lose",
+        "100 points."
     );
 
     public static final SlimefunItemStack LIME = Theme.themedSlimefunItemStack(
         "CLT_LIME",
         Skins.KIWI.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "酸橙",
-        "从前有一种美味的水果…"
+        "Lime",
+        "One upon a lime there was a delicious fruit..."
     );
 
     public static final SlimefunItemStack CHESTNUT = Theme.themedSlimefunItemStack(
         "CLT_CHESTNUT",
         Skins.CHESTNUT.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "板栗",
-        "应该立即烘烤。"
+        "Chestnut",
+        "Designed to be baked, immediately."
     );
 
     public static final SlimefunItemStack HAZELNUT = Theme.themedSlimefunItemStack(
         "CLT_HAZELNUT",
         Skins.HAZELNUT.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "榛子",
-        "我不管你怎样，",
-        "你现在必须把它做成咖啡！"
+        "Hazelnut",
+        "Do whatever you need to turn this into",
+        "a coffee for me, now!"
     );
 
     public static final SlimefunItemStack PECAN = Theme.themedSlimefunItemStack(
         "CLT_PECAN",
         Skins.PECAN.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "山核桃",
-        "非常适合做成派。"
+        "Pecan",
+        "Just begging to be made into a pie."
     );
 
     public static final SlimefunItemStack GRAPE = Theme.themedSlimefunItemStack(
         "CLT_GRAPE",
         Skins.GRAPE.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "葡萄",
-        "非常饱满!"
+        "Grape",
+        "So plump!"
     );
 
     public static final SlimefunItemStack PEANUT = Theme.themedSlimefunItemStack(
         "CLT_PEANUT",
         Skins.PEANUT.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "花生",
-        "Reece's 我来了！"
+        "Peanut",
+        "Reece's here I come!"
     );
 
     public static final SlimefunItemStack STRAWBERRY = Theme.themedSlimefunItemStack(
         "CLT_STRAWBERRY",
         Skins.STRAWBERRY.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "草莓",
-        "只要加奶油!"
+        "Strawberry",
+        "Just add cream!"
     );
 
     public static final SlimefunItemStack RICE = Theme.themedSlimefunItemStack(
         "CLT_RICE",
         Skins.RICE.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "大米",
-        "真是太香了！"
+        "Rice",
+        "Remember, you only live rice!"
     );
 
     public static final SlimefunItemStack GARLIC = Theme.themedSlimefunItemStack(
         "CLT_GARLIC",
         Skins.GARLIC.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "大蒜",
-        "赶紧，在吸血鬼来之前！"
+        "Garlic",
+        "Quick, before the vampires come!"
     );
 
     public static final SlimefunItemStack CAYENNE_PEPPER = Theme.themedSlimefunItemStack(
         "CLT_CAYENNE_PEPPER",
         Skins.PEPPERS.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "卡宴辣椒",
-        "辛辣。"
+        "Cayenne Pepper",
+        "A soft spicy treat."
     );
 
     public static final SlimefunItemStack TOMATO = Theme.themedSlimefunItemStack(
         "CLT_TOMATO",
         Skins.TOMATO.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "番茄",
-        "直接从藤蔓上…灌木丛中采摘？"
+        "Tomato",
+        "Right off of the vine.... err... bush?"
     );
 
     public static final SlimefunItemStack BELL_PEPPER = Theme.themedSlimefunItemStack(
         "CLT_BELL_PEPPER",
         Skins.BELL_PEPPER.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "甜椒",
-        "真的会触发警报。"
+        "Bell Pepper",
+        "Really rings true."
     );
 
     public static final SlimefunItemStack ONION = Theme.themedSlimefunItemStack(
         "CLT_ONION",
         Skins.ONION.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "洋葱",
-        "等等，你为什么在哭？"
+        "Onion",
+        "Wait, why are you crying?"
     );
 
     public static final SlimefunItemStack PEA = Theme.themedSlimefunItemStack(
         "CLT_PEA",
         Skins.GREEN_APPLE.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "豌豆",
-        "常常在一个豆荚中成对出现，",
-        "我听说是这样的。"
+        "Peas",
+        "Often found in pairs within a pod, or so I hear."
     );
 
     public static final SlimefunItemStack RAPESEED = Theme.themedSlimefunItemStack(
         "CLT_RAPESEED",
         new ItemStack(Material.MELON_SEEDS),
         CultivationThemes.PRODUCE,
-        "油菜",
-        "通常用来产油。"
+        "Rapeseed",
+        "Oft-used to create oils."
     );
 
     public static final SlimefunItemStack LETTUCE = Theme.themedSlimefunItemStack(
         "CLT_LETTUCE",
         Skins.LETTUCE.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "生菜",
-        "稀薄，水分多，很美味。"
+        "Lettuce",
+        "Thin, watery and yet delicious."
     );
 
     public static final SlimefunItemStack MUSTARD_SEEDS = Theme.themedSlimefunItemStack(
         "CLT_MUSTARD_SEEDS",
         new ItemStack(Material.PUMPKIN_SEEDS),
         CultivationThemes.PRODUCE,
-        "芥菜种子",
-        "咀嚼它们，我敢打赌！"
+        "Mustard Seeds",
+        "Chew them, I dare you!"
     );
 
     public static final SlimefunItemStack BROCCOLI = Theme.themedSlimefunItemStack(
         "CLT_BROCCOLI",
         Skins.BROCCOLI.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "西兰花",
-        "你是拿着树的巨人吗？",
-        "不，只是一棵小树 :)"
+        "Broccoli",
+        "Are you a giant holding a tree?",
+        "Naw, just a tiny tree :)"
     );
 
     public static final SlimefunItemStack CINNAMON = Theme.themedSlimefunItemStack(
         "CLT_CINNAMON",
         new ItemStack(Material.STICK),
         CultivationThemes.PRODUCE,
-        "肉桂",
-        "做成棒咀嚼的时候还是挺好吃的。"
+        "Cinnamon",
+        "Great to chew on in it's stick form."
     );
 
     public static final SlimefunItemStack BASIL = Theme.themedSlimefunItemStack(
         "CLT_BASIL",
         new ItemStack(Material.SMALL_DRIPLEAF),
         CultivationThemes.PRODUCE,
-        "罗勒",
-        "一片甜美的叶子，带着柔和的胡椒味，回味无穷。"
+        "Basil",
+        "A sweet leaf with a soft peppery aftertaste."
     );
 
     public static final SlimefunItemStack BAY_LEAF = Theme.themedSlimefunItemStack(
         "CLT_BAY_LEAF",
         new ItemStack(Material.LILY_PAD),
         CultivationThemes.PRODUCE,
-        "香叶",
-        "一种具有多种用途的香料。"
+        "Bay Leaf",
+        "A strong aromat with many uses."
     );
 
     public static final SlimefunItemStack CILANTRO = Theme.themedSlimefunItemStack(
         "CLT_CILANTRO",
         new ItemStack(Material.MANGROVE_LEAVES),
         CultivationThemes.PRODUCE,
-        "香菜",
-        "一种柔和的香料，带有柑橘的味道。"
+        "Cilantro",
+        "A soft spice with a hit of citrus."
     );
 
     public static final SlimefunItemStack CHICORY = Theme.themedSlimefunItemStack(
         "CLT_CHICORY",
         new ItemStack(Material.BLUE_ORCHID),
         CultivationThemes.PRODUCE,
-        "菊苣",
-        "一种有坚果味的苦味根茎。"
+        "Chicory",
+        "A nutty, bitter root."
     );
 
     public static final SlimefunItemStack CHIVES = Theme.themedSlimefunItemStack(
         "CLT_CHIVES",
         new ItemStack(Material.SEAGRASS),
         CultivationThemes.PRODUCE,
-        "韭菜",
-        "感觉像洋葱的调料。"
+        "Chives",
+        "A sweat, onion-tasting, herb."
     );
 
     public static final SlimefunItemStack CLOVE = Theme.themedSlimefunItemStack(
         "CLT_CLOVE",
         new ItemStack(Material.POPPY),
         CultivationThemes.PRODUCE,
-        "丁香",
-        "超级温暖，有强烈的味道。"
+        "Clove",
+        "A super warm and intense flavour."
     );
 
     public static final SlimefunItemStack CUMIN = Theme.themedSlimefunItemStack(
         "CLT_CUMIN",
         new ItemStack(Material.DANDELION),
         CultivationThemes.PRODUCE,
-        "孜然",
-        "温暖的柑橘类植物。"
+        "Cumin",
+        "A warm citrusy plant."
     );
 
     public static final SlimefunItemStack CHILLI_PEPPER = Theme.themedSlimefunItemStack(
         "CLT_CHILLY_PEPPER",
         Skins.PEPPERS.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "辣椒",
-        "我能吃下整个辣椒，面色不改。",
-        "好吧，一半。",
-        "嘶…四分之一。",
-        "…",
-        "好的，我可以用舌头舔一下。"
+        "Chilly Pepper",
+        "I can eat a whole pepper without crying.",
+        "Well, half.",
+        "WEEEELLL.... 1/4",
+        "...",
+        "Ok I can touch one on my tounge"
     );
 
     public static final SlimefunItemStack CURRY_LEAF = Theme.themedSlimefunItemStack(
         "CLT_CURRY_LEAF",
         new ItemStack(Material.KELP),
         CultivationThemes.PRODUCE,
-        "咖喱叶",
-        "是许多美食的基础。"
+        "Curry Leaf",
+        "The basis of so many wonderful foods."
     );
 
     public static final SlimefunItemStack DILL = Theme.themedSlimefunItemStack(
         "CLT_DILL",
-        new ItemStack(Material.GRASS),
+        new ItemStack(Material.SHORT_GRASS),
         CultivationThemes.PRODUCE,
-        "莳萝",
-        "吃起来有点像草。",
-        "为什么会有人喜欢这个呢？"
+        "Dill",
+        "Just taste like grass to me. Why",
+        "do people like this?"
     );
 
     public static final SlimefunItemStack FENNEL = Theme.themedSlimefunItemStack(
         "CLT_FENNEL",
         new ItemStack(Material.OXEYE_DAISY),
         CultivationThemes.PRODUCE,
-        "茴香",
-        "像是八角和甘草的混合物。"
+        "Fennel",
+        "Like a mix of Anise and Liquorice."
     );
 
     public static final SlimefunItemStack GINGER = Theme.themedSlimefunItemStack(
         "CLT_GINGER",
         new ItemStack(Material.HANGING_ROOTS),
         CultivationThemes.PRODUCE,
-        "姜",
-        "切碎的生姜放入沸水中，",
-        "可治疗所有疾病!"
+        "Ginger",
+        "Chopped Ginger in boiling water, heals all ailments!"
     );
 
     public static final SlimefunItemStack HORSERADISH = Theme.themedSlimefunItemStack(
         "CLT_HORSERADISH",
         new ItemStack(Material.HANGING_ROOTS),
         CultivationThemes.PRODUCE,
-        "辣根",
-        "如果你能咬住你就能获得$100。"
+        "Horseradish",
+        "$100 if you bite right into it."
     );
 
     public static final SlimefunItemStack JASMINE = Theme.themedSlimefunItemStack(
         "CLT_JASMINE",
         new ItemStack(Material.WHITE_TULIP),
         CultivationThemes.PRODUCE,
-        "茉莉",
-        "用来制作好茶。"
+        "Jasmine",
+        "Makes for a wonderful tea."
     );
 
     public static final SlimefunItemStack JUNIPER_BERRY = Theme.themedSlimefunItemStack(
         "CLT_JUNIPER_BERRY",
         new ItemStack(Material.GLOW_BERRIES),
         CultivationThemes.PRODUCE,
-        "杜松子",
-        "晒一晒就好。"
+        "Juniper Berries",
+        "Dried to a peppery perfection."
     );
 
     public static final SlimefunItemStack KAFFIR_LIME = Theme.themedSlimefunItemStack(
         "CLT_KAFFIR_LIME",
         new ItemStack(Material.KELP),
         CultivationThemes.PRODUCE,
-        "泰国青柠叶",
-        "一片具有强大活力的叶子。"
+        "Kaffir Lime Leaf",
+        "A leaf with a mighty zest."
     );
 
     public static final SlimefunItemStack LAVENDER = Theme.themedSlimefunItemStack(
         "CLT_LAVENDER",
         new ItemStack(Material.PURPLE_DYE),
         CultivationThemes.PRODUCE,
-        "薰衣草",
-        "能让我缓慢地进入梦乡。"
+        "Lavender",
+        "A smell that can make me drift slowly to sleep."
     );
 
     public static final SlimefunItemStack LICORICE = Theme.themedSlimefunItemStack(
         "CLT_LICORICE",
         new ItemStack(Material.HANGING_ROOTS),
         CultivationThemes.PRODUCE,
-        "甘草",
-        "快，快跑!"
+        "Licorice",
+        "Run, run away now!"
     );
 
     public static final SlimefunItemStack MACE = Theme.themedSlimefunItemStack(
         "CLT_MACE",
         new ItemStack(Material.RED_DYE),
         CultivationThemes.PRODUCE,
-        "肉豆蔻",
-        "用来甩到攻击者的脸上。",
-        "…",
-        "什么叫这不是狼牙棒？"
+        "Mace",
+        "Used to spray in the face of attackers.",
+        "...",
+        "What do you mean that's not the right type of mace?"
     );
 
     public static final SlimefunItemStack MARJORAM = Theme.themedSlimefunItemStack(
         "CLT_MARJORAM",
         new ItemStack(Material.DARK_OAK_LEAVES),
         CultivationThemes.PRODUCE,
-        "马郁兰",
-        "我现在有点急事，",
-        "我们能不能晚点再谈？"
+        "Marjoram",
+        "I'm in a bit of a curry, could we talk later?"
     );
 
     public static final SlimefunItemStack MINT = Theme.themedSlimefunItemStack(
         "CLT_MINT",
         new ItemStack(Material.MANGROVE_LEAVES),
         CultivationThemes.PRODUCE,
-        "薄荷",
-        "嚼嚼嚼。"
+        "Mint",
+        "Chew chew chew."
     );
 
     public static final SlimefunItemStack OREGANO = Theme.themedSlimefunItemStack(
         "CLT_OREGANO",
         new ItemStack(Material.SPRUCE_LEAVES),
         CultivationThemes.PRODUCE,
-        "牛至",
-        "厨房常备的调料。"
+        "Oregano",
+        "A classic staple cupboard herb."
     );
 
     public static final SlimefunItemStack PARSLEY = Theme.themedSlimefunItemStack(
         "CLT_PARSLEY",
         new ItemStack(Material.ACACIA_LEAVES),
         CultivationThemes.PRODUCE,
-        "欧芹",
-        "史上最难吃的调料。"
+        "Parsley",
+        "Worst. Herb. Ever."
     );
 
     public static final SlimefunItemStack ROSEMARY = Theme.themedSlimefunItemStack(
         "CLT_ROSEMARY",
         new ItemStack(Material.BIRCH_LEAVES),
         CultivationThemes.PRODUCE,
-        "迷迭香",
-        "经常与百里香搞混。"
+        "Rosemary",
+        "Often misses thyme."
     );
 
     public static final SlimefunItemStack SASSAFRAS = Theme.themedSlimefunItemStack(
         "CLT_SASSAFRAS",
         new ItemStack(Material.OAK_LEAVES),
         CultivationThemes.PRODUCE,
-        "黄樟",
-        "可食用的根汁啤酒。",
-        "真的，你去搜一下，我马上去买。"
+        "Sassafras",
+        "Edible Root Beer, seriously google",
+        "it, I buy it constantly now."
     );
 
     public static final SlimefunItemStack SHISO = Theme.themedSlimefunItemStack(
         "CLT_SHISO",
         new ItemStack(Material.MANGROVE_LEAVES),
         CultivationThemes.PRODUCE,
-        "紫苏",
-        "薄荷与爱的结合。"
+        "Shiso",
+        "Mint with a side of love."
     );
 
     public static final SlimefunItemStack STAR_ANISE = Theme.themedSlimefunItemStack(
         "CLT_STAR_ANISE",
         new ItemStack(Material.NETHER_STAR),
         CultivationThemes.PRODUCE,
-        "八角",
-        "最佳和最独特的口味之一。"
+        "Star Anise",
+        "One of the best and most unique flavours."
     );
 
     public static final SlimefunItemStack TARRAGON = Theme.themedSlimefunItemStack(
         "CLT_TARRAGON",
         new ItemStack(Material.JUNGLE_LEAVES),
         CultivationThemes.PRODUCE,
-        "龙蒿",
-        "我会把这个放在任何东西上。",
-        "其实我并不是一个好厨师。"
+        "Tarragon",
+        "I literally put this on anything.",
+        "Spoiler: Im not a good chef."
     );
 
     public static final SlimefunItemStack THYME = Theme.themedSlimefunItemStack(
         "CLT_THYME",
         new ItemStack(Material.BIRCH_LEAVES),
         CultivationThemes.PRODUCE,
-        "百里香",
-        "经常与迷迭香搞混。"
+        "Thyme",
+        "Often missed rosemary."
     );
 
     public static final SlimefunItemStack TURMERIC = Theme.themedSlimefunItemStack(
         "CLT_TURMERIC",
         new ItemStack(Material.YELLOW_DYE),
         CultivationThemes.PRODUCE,
-        "姜黄",
-        "强烈的麝香味使许多菜肴更加丰富。"
+        "Turmeric",
+        "A strong musky presence to fill out many dishes."
     );
 
     public static final SlimefunItemStack VANILLA = Theme.themedSlimefunItemStack(
         "CLT_VANILLA",
         new ItemStack(Material.BLACK_DYE),
         CultivationThemes.PRODUCE,
-        "香子兰",
-        "说明：直接倒进一杯拿铁里。"
+        "Vanilla",
+        "Instructions: Dip directly into a Latte"
     );
 
     public static final SlimefunItemStack WASABI = Theme.themedSlimefunItemStack(
         "CLT_WASABI",
         new ItemStack(Material.HANGING_ROOTS),
         CultivationThemes.PRODUCE,
-        "山萮菜",
-        "救命…芥末…"
+        "Wasabi",
+        "Help... wasabi..."
     );
 
     public static final SlimefunItemStack ARTICHOKE = Theme.themedSlimefunItemStack(
         "CLT_ARTICHOKE",
         Skins.CABBAGE.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "洋蓟",
-        "撕开它的心脏!"
+        "Artichoke",
+        "Rip out it's HEART!"
     );
 
     public static final SlimefunItemStack AUBERGINE = Theme.themedSlimefunItemStack(
         "CLT_AUBERGINE",
         Skins.AUBERGINE.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "茄冰蕉",
-        "有着明亮的紫色，100%不是鸡蛋的形状。",
-        "最好叫它茄子，对吧？"
+        "Aubergine",
+        "Bright purple and 100% NOT egg shaped.",
+        "Better call it an eggplant, right?"
     );
 
     public static final SlimefunItemStack ASPARAGUS = Theme.themedSlimefunItemStack(
         "CLT_ASPARAGUS",
         Skins.ASPARAGUS.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "芦笋",
-        "以后去厕所的时候小心点。"
+        "Asparagus",
+        "Careful when visiting the bathroom later."
     );
 
     public static final SlimefunItemStack BRUSSELS_SPROUTS = Theme.themedSlimefunItemStack(
         "CLT_BRUSSELS_SPROUTS",
         Skins.KALE.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "球芽甘蓝",
-        "一种喜悦。"
+        "Brussels Sprouts",
+        "A gassious delight."
     );
 
     public static final SlimefunItemStack CABBAGE = Theme.themedSlimefunItemStack(
         "CLT_CABBAGE",
         Skins.CABBAGE.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "卷心菜",
-        "一包卷心菜。"
+        "Cabbage",
+        "A baggage of cabbage."
     );
 
     public static final SlimefunItemStack CAULIFLOWER = Theme.themedSlimefunItemStack(
         "CLT_CAULIFLOWER",
         Skins.CAULIFLOWER.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "花椰菜",
-        "小型云!"
+        "Cauliflower",
+        "A portable cloud!"
     );
 
     public static final SlimefunItemStack CELERY = Theme.themedSlimefunItemStack(
         "CLT_CELERY",
         new ItemStack(Material.BAMBOO),
         CultivationThemes.PRODUCE,
-        "芹菜",
-        "真的只是粘稠的水，",
-        "除非你能说服我。"
+        "Celery",
+        "Literally just stringy water. Convince",
+        "me otherwise."
     );
 
     public static final SlimefunItemStack KALE = Theme.themedSlimefunItemStack(
         "CLT_KALE",
         Skins.KALE.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "羽衣甘蓝",
-        "我只是!"
+        "Kale",
+        "Help, im a 2020 smoothie hipster!"
     );
 
     public static final SlimefunItemStack SPINACH = Theme.themedSlimefunItemStack(
         "CLT_SPINACH",
         new ItemStack(Material.KELP),
         CultivationThemes.PRODUCE,
-        "菠菜",
-        "因爱而枯萎。"
+        "Spinach",
+        "Wilted with love."
     );
 
     public static final SlimefunItemStack BLACK_BEANS = Theme.themedSlimefunItemStack(
         "CLT_BLACK_BEANS",
         new ItemStack(Material.MELON_SEEDS),
         CultivationThemes.PRODUCE,
-        "黑豆",
-        "美味的素食蛋白质。"
+        "Black Beans",
+        "A delicious vegetarian protein."
     );
 
     public static final SlimefunItemStack GREEN_BEANS = Theme.themedSlimefunItemStack(
         "CLT_GREEN_BEANS",
         new ItemStack(Material.FROGSPAWN),
         CultivationThemes.PRODUCE,
-        "四季豆",
-        "这命名真有创造性！"
+        "Green Beans",
+        "How creatively named!"
     );
 
     public static final SlimefunItemStack CHICKPEAS = Theme.themedSlimefunItemStack(
         "CLT_CHICKPEAS",
         new ItemStack(Material.BEETROOT_SEEDS),
         CultivationThemes.PRODUCE,
-        "鹰嘴豆",
-        "黑眼豆可以唱歌，",
-        "鹰嘴豆只能做成泥。"
+        "Chickpeas",
+        "Black eyed peas can sing a tune, chickpeas can only hummus one."
     );
 
     public static final SlimefunItemStack SOY_BEANS = Theme.themedSlimefunItemStack(
         "CLT_SOY_BEANS",
         new ItemStack(Material.MELON_SEEDS),
         CultivationThemes.PRODUCE,
-        "大豆",
-        "大豆奶来咯。"
+        "Soy Beans",
+        "Soy milk cometh."
     );
 
     public static final SlimefunItemStack PINTO_BEANS = Theme.themedSlimefunItemStack(
         "CLT_PINTO_BEANS",
         new ItemStack(Material.MELON_SEEDS),
         CultivationThemes.PRODUCE,
-        "斑豆",
-        "现在是墨西哥卷饼时间。"
+        "Pinto Beans",
+        "Kaching! It's burrito time."
     );
 
     public static final SlimefunItemStack RUNNER_BEANS = Theme.themedSlimefunItemStack(
         "CLT_RUNNER_BEANS",
         new ItemStack(Material.KELP),
         CultivationThemes.PRODUCE,
-        "红花菜豆",
-        "总是试图逃跑。"
+        "Runner Beans",
+        "Always trying to get away."
     );
 
     public static final SlimefunItemStack NETTLES = Theme.themedSlimefunItemStack(
         "CLT_NETTLES",
         new ItemStack(Material.AZALEA_LEAVES),
         CultivationThemes.PRODUCE,
-        "荨麻",
-        "请在拿起之前带上手套。"
+        "Nettles",
+        "Please put on your gloves before holding these."
     );
 
     public static final SlimefunItemStack OKRA = Theme.themedSlimefunItemStack(
         "CLT_OKRA",
         Skins.LETTUCE.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "秋葵",
-        "它应该在俄克拉荷马州有很多，对吧？"
+        "Okra",
+        "Grown alot in okra-homa... right, RIGHT?"
     );
 
     public static final SlimefunItemStack LEEK = Theme.themedSlimefunItemStack(
         "CLT_LEEK",
         Skins.LEEK.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "韭葱",
-        "因为某些原因它在滴水？",
-        "也许是长出了韭菜？"
+        "Leek",
+        "for some reason it's dripping with water?",
+        "Perhaps it's sprung a leek?"
     );
 
     public static final SlimefunItemStack SHALLOT = Theme.themedSlimefunItemStack(
         "CLT_SHALLOT",
         Skins.ONION.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "青葱",
-        "我确实很喜欢葱。"
+        "Shallot",
+        "I do love a lot of shallot."
     );
 
     public static final SlimefunItemStack JALAPENO = Theme.themedSlimefunItemStack(
         "CLT_JALAPENO",
         Skins.PEPPERS.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "墨西哥胡椒",
-        "辣辣辣。"
+        "Jalapeno",
+        "HOT HOT HOT."
     );
 
     public static final SlimefunItemStack RADICCHIO = Theme.themedSlimefunItemStack(
         "CLT_RADICCHIO",
         Skins.RADDISH.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "菊苣",
-        "写这些物品描述真的花了很久。",
-        "我不需要菊苣。"
+        "Radicchio",
+        "Writing all this lore takes so long.",
+        "It's radicchio-less."
     );
 
     public static final SlimefunItemStack RHUBARB = Theme.themedSlimefunItemStack(
         "CLT_RHUBARB",
         Skins.LEEK.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "大黄",
-        "记得去掉叶子!"
+        "Rhubarb",
+        "Just be sure to remove the leaves!"
     );
 
     public static final SlimefunItemStack CELERIAC = Theme.themedSlimefunItemStack(
         "CLT_CELERIAC",
         Skins.PARSNIP.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "块根芹",
-        "在许多传统食谱中都用到的根茎。"
+        "Celeriac",
+        "A hearty root that's rooted (heh) in many",
+        "traditional recipes."
     );
 
     public static final SlimefunItemStack PARSNIP = Theme.themedSlimefunItemStack(
         "CLT_PARSNIP",
         Skins.PARSNIP.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "欧洲防风草",
-        "需要马上烤干。"
+        "Parsnip",
+        "Requires roasting immediately."
     );
 
     public static final SlimefunItemStack RUTABAGA = Theme.themedSlimefunItemStack(
         "CLT_RUTABAGA",
         Skins.RUTABAGA.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "芜菁甘蓝",
-        "不说这个是斯威德，其实是很痛苦的。"
+        "Rutabaga",
+        "It actually hurts not calling this a swede."
     );
 
     public static final SlimefunItemStack RADDISH = Theme.themedSlimefunItemStack(
         "CLT_RADDISH",
         Skins.RADDISH.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "小红萝卜",
-        "新鲜、清脆、阳光。"
+        "Raddish",
+        "Little pockets of fresh, crisp, sunshine."
     );
 
     public static final SlimefunItemStack SWEET_POTATO = Theme.themedSlimefunItemStack(
         "CLT_SWEET_POTATO",
         new ItemStack(Material.BEETROOT),
         CultivationThemes.PRODUCE,
-        "甘薯",
-        "Yam yam yam。"
+        "Sweet Potato",
+        "Yam yam yam."
     );
 
     public static final SlimefunItemStack TURNIP = Theme.themedSlimefunItemStack(
         "CLT_TURNIP",
         Skins.TURNIP.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "大头菜",
-        "将解决生活中的所有问题。"
+        "Turnip",
+        "Will solve all of life's problems."
     );
 
     public static final SlimefunItemStack SWEETCORN = Theme.themedSlimefunItemStack(
         "CLT_SWEETCORN",
         Skins.CORN.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "甜玉米",
-        "也许是最好的蔬菜。"
+        "Sweetcorn",
+        "Perhaps the best vegetable around."
     );
 
     public static final SlimefunItemStack COURGETTE = Theme.themedSlimefunItemStack(
         "CLT_COURGETTE",
         new ItemStack(Material.BAMBOO),
         CultivationThemes.PRODUCE,
-        "西葫芦",
-        "专家建议：将其研磨到任何",
-        "意大利空心粉酱中",
-        "已获得深度和质感。"
+        "Courgette",
+        "Pro Tip: Grate this into any pasta sauce",
+        "for depth and texture."
     );
 
     public static final SlimefunItemStack CUCUMBER = Theme.themedSlimefunItemStack(
         "CLT_CUCUMBER",
         new ItemStack(Material.BAMBOO),
         CultivationThemes.PRODUCE,
-        "黄瓜",
-        "就是水在绿色壳子中，",
-        "除非你证明我错了。"
+        "Cucumber",
+        "Water in a green shell, prove me",
+        "wrong."
     );
 
     public static final SlimefunItemStack MARROW = Theme.themedSlimefunItemStack(
         "CLT_MARROW",
         Skins.SQUASH.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "嫩葫芦",
-        "你知道嫩葫芦可以在你骨头里吗？",
-        "（这单词还有髓的意思）"
+        "Marrow",
+        "Did you know marrows are found within",
+        "your bones?",
+        "Yup, Sefi Smort."
     );
 
     public static final SlimefunItemStack AVOCADO = Theme.themedSlimefunItemStack(
         "CLT_AVOCADO",
         Skins.AVOCADO.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "鳄梨",
-        "潮人的梦乡。"
+        "Avocado",
+        "What hipsters dream about."
     );
 
     public static final SlimefunItemStack GREEN_ONION = Theme.themedSlimefunItemStack(
         "CLT_GREEN_ONION",
         Skins.GREEN_ONION.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "嫩葱",
-        "很适合做玉米饼!"
+        "Green Onion",
+        "Goes great on tacos!"
     );
 
     public static final SlimefunItemStack BLACK_PEPPER = Theme.themedSlimefunItemStack(
         "CLT_PEPPER",
         Skins.BLACK_PEPPER.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "黑胡椒",
-        "比盐辣一点。"
+        "Black Pepper",
+        "Spicier than salt."
     );
 
     // endregion
@@ -3047,154 +3065,154 @@ public final class CultivationStacks {
         "CLT_PEANUT_BUTTER",
         Skins.PEANUT_BUTTER.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "花生酱",
-        "类似于液体黄金。"
+        "Peanut Butter",
+        "Akin only to liquid gold."
     );
 
     public static final SlimefunItemStack GRAPE_JELLY = Theme.themedSlimefunItemStack(
         "CLT_GRAPE_JELLY",
         Skins.JAM_JAR_BLUE.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "葡萄酱",
-        "用勺子吃是犯罪。"
+        "Grape Jelly",
+        "Eating it with a spoon is a criminal offence."
     );
 
     public static final SlimefunItemStack STRAWBERRY_JELLY = Theme.themedSlimefunItemStack(
         "CLT_STRAWBERRY_JELLY",
         Skins.JAM_JAR_RED.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "草莓酱",
-        "用勺子吃是犯罪。"
+        "Strawberry Jelly",
+        "Eating it with a spoon is a criminal offence."
     );
 
     public static final SlimefunItemStack OIL = Theme.themedSlimefunItemStack(
         "CLT_OIL",
         Skins.SPICE_YELLOW.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "油",
-        "容易滋生霉菌。"
+        "Oil",
+        "Oil. Need I say more?"
     );
 
     public static final SlimefunItemStack MAYONNAISE = Theme.themedSlimefunItemStack(
         "CLT_MAYONNAISE",
         new ItemStack(Material.MILK_BUCKET),
         CultivationThemes.PRODUCE,
-        "蛋黄酱",
-        "丝滑的蛋黄酱，几乎可以搭配任何食物。"
+        "Mayonnaise",
+        "A silky smooth mayo that can go with nearly anything."
     );
 
     public static final SlimefunItemStack EGG_SALAD = Theme.themedSlimefunItemStack(
         "CLT_EGG_SALAD",
         Skins.SPICE_YELLOW.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "鸡蛋沙拉",
-        "你敢在火车上打开这个吗？"
+        "Egg Salad",
+        "Open this on a train, I dare you!"
     );
 
     public static final SlimefunItemStack PIE_CRUST = Theme.themedSlimefunItemStack(
         "CLT_PIE_CRUST",
         Skins.PIE_CRUST.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "馅饼皮",
-        "直接把这个当主食吃",
-        "应该也是可以的。"
+        "Pie Crust",
+        "If it were legal to eat this own it's own",
+        "it'd be my main food source."
     );
 
     public static final SlimefunItemStack PASTA = Theme.themedSlimefunItemStack(
         "CLT_PASTA",
         Skins.PASTA.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "意大利通心粉",
-        "只是普通的通心粉，简单但美味。"
+        "Pasta",
+        "Just plain pasta, simple yet wonderful."
     );
 
     public static final SlimefunItemStack BISCUIT_DOUGH = Theme.themedSlimefunItemStack(
         "CLT_BISCUIT_DOUGH",
         new ItemStack(Material.BROWN_DYE),
         CultivationThemes.PRODUCE,
-        "饼干面团",
-        "记得提醒自己“不要生吃”"
+        "Biscuit Dough",
+        "Just remind yourself \"Don't eat it raw.\""
     );
 
     public static final SlimefunItemStack BISCUIT_BASE = Theme.themedSlimefunItemStack(
         "CLT_BISCUIT_BASE",
         new ItemStack(Material.OAK_TRAPDOOR),
         CultivationThemes.PRODUCE,
-        "定型的饼干",
-        "虽然现在是平的，",
-        "但你并不能吃。"
+        "Biscuit Base",
+        "Just 'cause it's flat now doesnt mean",
+        "you can eat it raw."
     );
 
     public static final SlimefunItemStack MEATBALLS = Theme.themedSlimefunItemStack(
         "CLT_MEATBALLS",
         new ItemStack(Material.BROWN_DYE),
         CultivationThemes.PRODUCE,
-        "肉球",
-        "肉做成的球。"
+        "Meatballs",
+        "Balls of meat, who'd-a-thunk it."
     );
 
     public static final SlimefunItemStack PEPPERONI = Theme.themedSlimefunItemStack(
         "CLT_PEPPERONI",
         Skins.PEPPERONI.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "意大利香肠",
-        "我可以请以吃掉一整根。"
+        "Pepperoni",
+        "I could eat an entire log of this, easy."
     );
 
     public static final SlimefunItemStack DOUGH = Theme.themedSlimefunItemStack(
         "CLT_DOUGH",
         Skins.DOUGH.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "面团",
-        "只是普通的面团。"
+        "Dough",
+        "Just plain ol' dough!"
     );
 
     public static final SlimefunItemStack CREAM_CHEESE = Theme.themedSlimefunItemStack(
         "CLT_CREAM_CHEESE",
         new ItemStack(Material.MILK_BUCKET),
         CultivationThemes.PRODUCE,
-        "奶油芝士",
-        "奶油味比芝士味更重一些。"
+        "Cream Cheese",
+        "More creamy than cheesy."
     );
 
     public static final SlimefunItemStack KETCHUP = Theme.themedSlimefunItemStack(
         "CLT_KETCHUP",
         Skins.JAM_JAR_RED.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "蕃茄酱",
-        "奶油形态的西红柿。"
+        "Ketchup",
+        "Just tomatoes in a creamy form."
     );
 
     public static final SlimefunItemStack MUSTARD = Theme.themedSlimefunItemStack(
         "CLT_MUSTARD",
         Skins.JAM_JAR_YELLOW.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "芥末",
-        "有点刺激!"
+        "Mustard",
+        "Has a little kick to it!"
     );
 
     public static final SlimefunItemStack TORTILLAS = Theme.themedSlimefunItemStack(
         "CLT_TORTILLAS",
         Skins.TORILLAS.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "玉米粉圆饼",
-        "玉米面点心"
+        "Tortillas",
+        "Corn-flour delights"
     );
 
     public static final SlimefunItemStack PICO_DE_GALLO = Theme.themedSlimefunItemStack(
         "CLT_PICO_DE_GALLO",
         Skins.SALSA.getPlayerHead(),
         CultivationThemes.PRODUCE,
-        "墨西哥莎莎酱",
-        "充满纯正美味的温和莎莎酱。"
+        "Pico de Gallo",
+        "A mild salsa full of pure delicious."
     );
 
     public static final SlimefunItemStack COOKED_BURGER_PATTY = Theme.themedSlimefunItemStack(
         "CLT_COOKED_BURGER_PATTY",
         new ItemStack(Material.COOKED_BEEF),
         CultivationThemes.PRODUCE,
-        "熟汉堡肉饼",
-        "正在流汁"
+        "Cooked Burger Patty",
+        "Practically dripping"
     );
 
     // endregion
@@ -3205,454 +3223,453 @@ public final class CultivationStacks {
         "CLT_PEANUT_BUTTER_JELLY_SANDWICH",
         Skins.PEANUT_BUTTER_JELLY_SANDWICH.getPlayerHead(),
         CultivationThemes.FOOD,
-        "花生酱果冻三明治",
-        "三明治的巅峰之作。",
+        "Peanut Butter Jelly Sandwich",
+        "It really is the pinnacle of sandwich technology.",
         "",
-        Theme.CLICK_INFO.asTitle("治疗", "10 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "力量 + 3")
+        Theme.CLICK_INFO.asTitle("Healing", "5 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Power + 3")
     );
 
     public static final SlimefunItemStack EGG_SALAD_SANDWICH = Theme.themedSlimefunItemStack(
         "CLT_EGG_SALAD_SANDWICH",
         Skins.CHEESY_SANDWICH.getPlayerHead(),
         CultivationThemes.FOOD,
-        "鸡蛋沙拉三明治",
-        "闻起来有点怪，但是很好吃!",
+        "Egg Salad Sandwich",
+        "Smells a bit, but tastes amazing!",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "10 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "急迫 + 2")
+        Theme.CLICK_INFO.asTitle("Healing", "5 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Haste + 2")
     );
 
     public static final SlimefunItemStack BACON_SANDWICH = Theme.themedSlimefunItemStack(
         "CLT_BACON_SANDWICH",
         Skins.MEATY_SANDWICH.getPlayerHead(),
         CultivationThemes.FOOD,
-        "培根三明治",
-        "简单的经典!",
+        "Bacon Sandwich",
+        "A simple classic!",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "4 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "力量 + 1"),
-        Theme.CLICK_INFO.asTitle("效果 2", "速度 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "2 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Power + 1"),
+        Theme.CLICK_INFO.asTitle("Effect 2", "Speed + 1")
     );
 
     public static final SlimefunItemStack SALMON_NIGIRI = Theme.themedSlimefunItemStack(
         "CLT_SALMON_NIGIRI",
         Skins.SUSHI_SALMON.getPlayerHead(),
         CultivationThemes.FOOD,
-        "三文鱼寿司",
-        "令人愉悦又微妙的味道。",
+        "Salmon Nigiri",
+        "A delightful yet subtle flavour.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "4 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "生命恢复 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "2 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Regen + 1")
     );
 
     public static final SlimefunItemStack CAJUN_GARLIC_BUTTER_COD = Theme.themedSlimefunItemStack(
         "CLT_CAJUN_GARLIC_BUTTER_COD",
         Skins.MEAL_RED_GREEN_BROWN.getPlayerHead(),
         CultivationThemes.FOOD,
-        "卡津大蒜黄油鳕鱼",
-        "一道非常简单的美味佳肴。",
+        "Cajun Garlic Butter Cod",
+        "A very simple dish busting with flavour.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "8 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "生命恢复 + 2"),
-        Theme.CLICK_INFO.asTitle("效果 2", "速度 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "4 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Regen + 2"),
+        Theme.CLICK_INFO.asTitle("Effect 2", "Speed + 1")
     );
 
     public static final SlimefunItemStack SHAKSHUKA = Theme.themedSlimefunItemStack(
         "CLT_SHAKSHUKA",
         Skins.SHAKSHUKA.getPlayerHead(),
         CultivationThemes.FOOD,
-        "沙卡蔬卡",
-        "一道温暖人心的菜，可以吃上好几天的鸡蛋。",
+        "Shakshuka",
+        "A heart warming dish with eggs for days.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "8 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "村庄英雄 + 1"),
-        Theme.CLICK_INFO.asTitle("效果 2", "幸运 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "4 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Hero of the Village + 1"),
+        Theme.CLICK_INFO.asTitle("Effect 2", "Luck + 1")
     );
 
     public static final SlimefunItemStack FUGU = Theme.themedSlimefunItemStack(
         "CLT_FUGU",
         Skins.SUSHI_TUNA.getPlayerHead(),
         CultivationThemes.FOOD,
-        "河豚",
-        "准备投掷骰子？",
+        "Fugu",
+        "Ready to roll the dice?",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "2 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "力量 + 5"),
-        Theme.CLICK_INFO.asTitle("效果 2", "有 33% 几率直接死亡！")
+        Theme.CLICK_INFO.asTitle("Healing", "1 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Power + 5"),
+        Theme.CLICK_INFO.asTitle("Effect 2", "33% Chance to just die!")
     );
 
     public static final SlimefunItemStack SHEPHERDS_PIE = Theme.themedSlimefunItemStack(
         "CLT_SHEPHERDS_PIE",
         Skins.MEAL_YELLOW_RED_BROWN.getPlayerHead(),
         CultivationThemes.FOOD,
-        "牧羊人派",
-        "温暖、丰盛、简单而美好。",
+        "Shepherds Pie",
+        "Warm, hearty and simply wonderful.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "20 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "生命恢复 + 2")
+        Theme.CLICK_INFO.asTitle("Healing", "10 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Regen + 2")
     );
 
     public static final SlimefunItemStack CHICKEN_POT_PIE = Theme.themedSlimefunItemStack(
         "CLT_CHICKEN_POT_PIE",
         Skins.PIE_BROWN.getPlayerHead(),
         CultivationThemes.FOOD,
-        "鸡肉馅饼",
-        "真正打动人心温暖之餐。",
+        "Chicken Pot Pie",
+        "A warming meal that really hits home.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "20 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "跳跃提升 + 2"),
-        Theme.CLICK_INFO.asTitle("效果 2", "饱和 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "10 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Jump + 2"),
+        Theme.CLICK_INFO.asTitle("Effect 2", "Saturation + 1")
     );
 
     public static final SlimefunItemStack CHICKEN_PASTA_BAKE = Theme.themedSlimefunItemStack(
         "CLT_CHICKEN_PASTA_BAKE",
         Skins.PASTA_BAKE.getPlayerHead(),
         CultivationThemes.FOOD,
-        "烤鸡意大利面",
-        "学生的主食。",
+        "Chicken Pasta Bake",
+        "A student staple.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "10 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "夜视 + 1"),
-        Theme.CLICK_INFO.asTitle("效果 2", "水下呼吸 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "5 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Night Vision + 1"),
+        Theme.CLICK_INFO.asTitle("Effect 2", "Water Breathing + 1")
     );
 
     public static final SlimefunItemStack CHICKEN_ALFREDO_MAC_AND_CHEESE = Theme.themedSlimefunItemStack(
         "CLT_CHICKEN_ALFREDO_MAC_AND_CHEESE",
         Skins.MAC_AND_CHEESE.getPlayerHead(),
         CultivationThemes.FOOD,
-        "鸡肉白酱通心粉",
-        "普通经典的华丽转折。",
+        "Chicken Alfredo Mac and Cheese",
+        "A posh twist on a common classic.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "2 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "防火 + 2"),
-        Theme.CLICK_INFO.asTitle("效果 2", "抗性提升 + 3")
+        Theme.CLICK_INFO.asTitle("Healing", "1 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Fire Resistance + 2"),
+        Theme.CLICK_INFO.asTitle("Effect 2", "Damage Resistance + 3")
     );
 
     public static final SlimefunItemStack KEY_LIME_PIE = Theme.themedSlimefunItemStack(
         "CLT_KEY_LIME_PIE",
         Skins.PIE_LIME.getPlayerHead(),
         CultivationThemes.FOOD,
-        "青柠派",
-        "最好的派。",
+        "Key Lime Pie",
+        "Simply the best!",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "12 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "急迫 + 4")
+        Theme.CLICK_INFO.asTitle("Healing", "6 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Haste + 4")
     );
 
     public static final SlimefunItemStack FRUIT_SALAD = Theme.themedSlimefunItemStack(
         "CLT_FRUIT_SALAD",
         Skins.FRUIT_SALAD.getPlayerHead(),
         CultivationThemes.FOOD,
-        "水果沙拉",
-        "如果你觉得这是沙拉, ",
-        "你想吃多少就吃多少, ",
-        "因为它很健康。",
+        "Fruit Salad",
+        "If you call it a salad, you can eat as much",
+        "as you like, 'cause it's healthy.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "4 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "速度 + 3")
+        Theme.CLICK_INFO.asTitle("Healing", "2 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Speed + 3")
     );
 
     public static final SlimefunItemStack CAESAR_SALAD = Theme.themedSlimefunItemStack(
         "CLT_CAESAR_SALAD",
         Skins.FRUIT_SALAD.getPlayerHead(),
         CultivationThemes.FOOD,
-        "凯撒沙拉",
-        "健康经典。",
+        "Caesar Salad",
+        "A healthy classic.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "8 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "速度 + 1"),
-        Theme.CLICK_INFO.asTitle("效果 2", "隐身 + 1"),
-        Theme.CLICK_INFO.asTitle("效果 3", "缓降 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "4 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Speed + 1"),
+        Theme.CLICK_INFO.asTitle("Effect 2", "Invisibility + 1"),
+        Theme.CLICK_INFO.asTitle("Effect 3", "Slow Falling + 1")
     );
 
     public static final SlimefunItemStack BISCUIT = Theme.themedSlimefunItemStack(
         "CLT_BISCUIT",
         new ItemStack(Material.COOKIE),
         CultivationThemes.FOOD,
-        "饼干",
-        "味道不错的小点心。",
+        "Biscuit",
+        "A little snack with a huge taste.",
         "",
-        Theme.CLICK_INFO.asTitle("效果 1", "将你射向空中")
+        Theme.CLICK_INFO.asTitle("Effect 1", "Launches you into the air")
     );
 
     public static final SlimefunItemStack COMPRESSED_BISCUIT = Theme.themedSlimefunItemStack(
         "CLT_COMPRESSED_BISCUIT",
         new ItemStack(Material.COOKIE),
         CultivationThemes.FOOD,
-        "压缩饼干",
-        "味道更不错的小点心。",
+        "Compressed Biscuit",
+        "A little snack with a huge-er taste.",
         "",
-        Theme.CLICK_INFO.asTitle("效果 1", "将你射向空中")
+        Theme.CLICK_INFO.asTitle("Effect 1", "Launches you into the air")
     );
 
     public static final SlimefunItemStack LEMON_DROP = Theme.themedSlimefunItemStack(
         "CLT_LEMON_DROP",
         new ItemStack(Material.YELLOW_DYE),
         CultivationThemes.FOOD,
-        "柠檬糖",
-        "调色盘清洗剂。",
+        "Lemon Drop",
+        "A palette cleanser.",
         "",
-        Theme.CLICK_INFO.asTitle("效果 1", "清除所有的效果，让你可以再次食用。")
+        Theme.CLICK_INFO.asTitle("Effect 1", "Clears all effects and makes you hungry again.")
     );
 
     public static final SlimefunItemStack GRILLED_SALMON_SALAD = Theme.themedSlimefunItemStack(
         "CLT_GRILLED_SALMON_SALAD",
         Skins.MEAL_SALAD.getPlayerHead(),
         CultivationThemes.FOOD,
-        "烤三文鱼沙拉",
-        "酥脆可口，调料丰富。",
+        "Grilled Salmon Salad",
+        "Delightfully flaky and brilliantly seasoned.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "8 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "生命恢复 + 1"),
-        Theme.CLICK_INFO.asTitle("效果 2", "生命提升 + 5")
+        Theme.CLICK_INFO.asTitle("Healing", "4 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Regeneration + 1"),
+        Theme.CLICK_INFO.asTitle("Effect 2", "Health Boost + 5")
     );
 
     public static final SlimefunItemStack WITHER_ROSE_SALAD = Theme.themedSlimefunItemStack(
         "CLT_WITHER_ROSE_SALAD",
         Skins.MEAL_SALAD.getPlayerHead(),
         CultivationThemes.FOOD,
-        "凋灵玫瑰沙拉",
-        "充满力量但是有很大的副作用。",
+        "Wither Rose Salad",
+        "Teeming with power but with a harsh side-effect.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "满"),
-        Theme.CLICK_INFO.asTitle("效果 1", "生命提升 + 20"),
-        Theme.CLICK_INFO.asTitle("效果 2", "凋零 + 2")
+        Theme.CLICK_INFO.asTitle("Healing", "Full"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Health Boost + 20"),
+        Theme.CLICK_INFO.asTitle("Effect 2", "Wither + 2")
     );
 
     public static final SlimefunItemStack ORANGE_JUICE = Theme.themedSlimefunItemStack(
         "CLT_ORANGE_JUICE",
         ItemStackGenerators.createPotion(Color.YELLOW),
         CultivationThemes.FOOD,
-        "橙汁",
-        "这真是开始一天的最好方式。",
+        "Orange Juice",
+        "It really is the best way to start the day.",
         "",
-        Theme.CLICK_INFO.asTitle("效果 1", "速度 + 4")
+        Theme.CLICK_INFO.asTitle("Effect 1", "Speed + 4")
     );
 
     public static final SlimefunItemStack LASAGNA = Theme.themedSlimefunItemStack(
         "CLT_LASAGNA",
         Skins.MEAL_YELLOW_RED_BROWN.getPlayerHead(),
         CultivationThemes.FOOD,
-        "宽面",
-        "层层的美味。",
+        "Lasagna",
+        "Layers of awesomeness.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "满"),
-        Theme.CLICK_INFO.asTitle("效果 1", "生命恢复 + 1"),
-        Theme.CLICK_INFO.asTitle("效果 2", "抗性提升 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "Full"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Regeneration + 1"),
+        Theme.CLICK_INFO.asTitle("Effect 2", "Damage Reduction + 1")
     );
 
     public static final SlimefunItemStack SPAGHETTI = Theme.themedSlimefunItemStack(
         "CLT_SPAGHETTI",
         Skins.SPAGHETTI.getPlayerHead(),
         CultivationThemes.FOOD,
-        "意大利面",
-        "真好吃。",
+        "Spaghetti",
+        "Just keep slurping.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "2 点血量")
+        Theme.CLICK_INFO.asTitle("Healing", "1 Heart")
     );
 
     public static final SlimefunItemStack SPAGHETTI_AND_MEATBALLS = Theme.themedSlimefunItemStack(
         "CLT_SPAGHETTI_AND_MEATBALLS",
         Skins.SPAGHETTI.getPlayerHead(),
         CultivationThemes.FOOD,
-        "肉球意大利面",
-        "简单，经典，丰盛。",
+        "Spaghetti and Meatballs",
+        "Simple, classic and hearty.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "8 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "不祥之兆 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "4 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Bad Omen + 1")
     );
 
     public static final SlimefunItemStack PIZZA_CHEESE = Theme.themedSlimefunItemStack(
         "CLT_PIZZA_CHEESE",
         Skins.PIZZA_CHEESE.getPlayerHead(),
         CultivationThemes.FOOD,
-        "芝士披萨",
-        "为什么有人会只要芝士？我不知道。",
+        "Cheese Pizza",
+        "Why anyone would order just cheese? I dont know.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "8 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "缓慢 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "4 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Slowness + 1")
     );
 
     public static final SlimefunItemStack PIZZA_MUSHROOM = Theme.themedSlimefunItemStack(
         "CLT_PIZZA_MUSHROOM",
         Skins.PIZZA_MUSHROOM.getPlayerHead(),
         CultivationThemes.FOOD,
-        "蘑菇披萨",
-        "简单的富含蛋白质的素披萨。",
+        "Mushroom Pizza",
+        "A simple vegetarian pizza full of proteins.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "12 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "缓慢 + 1"),
-        Theme.CLICK_INFO.asTitle("效果 1", "急迫 + 2")
+        Theme.CLICK_INFO.asTitle("Healing", "6 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Slowness + 1"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Haste + 2")
     );
 
     public static final SlimefunItemStack PIZZA_PEPPERONI = Theme.themedSlimefunItemStack(
         "CLT_PIZZA_PEPPERONI",
         Skins.PIZZA_PEPPERONI.getPlayerHead(),
         CultivationThemes.FOOD,
-        "意大利香肠披萨",
-        "风味十足的纽约经典。",
+        "Pepperoni Pizza",
+        "A New York classic full of flavour.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "12 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "速度 + 1"),
-        Theme.CLICK_INFO.asTitle("效果 1", "急迫 + 1"),
-        Theme.CLICK_INFO.asTitle("效果 1", "跳跃提升 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "6 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Speed + 1"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Haste + 1"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Jump + 1")
     );
 
     public static final SlimefunItemStack CHEESY_SCALLOPED_COURGETTE = Theme.themedSlimefunItemStack(
         "CLT_CHEESY_SCALLOPED_COURGETTE",
         Skins.MEAL_RED_GREEN_BROWN.getPlayerHead(),
         CultivationThemes.FOOD,
-        "芝士西葫芦",
-        "经典美食的低碳版本。",
+        "Cheesy Scalloped Courgette",
+        "A low carb version of an amazing classic.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "4 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "夜视 + 1"),
-        Theme.CLICK_INFO.asTitle("效果 1", "隐身 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "2 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Night Vision + 1"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Invisibility + 1")
     );
 
     public static final SlimefunItemStack PECAN_PIE = Theme.themedSlimefunItemStack(
         "CLT_PECAN_PIE",
         Skins.PIE_BROWN.getPlayerHead(),
         CultivationThemes.FOOD,
-        "山核桃派",
-        "唯一一个不会被批判的",
-        "吃纯糖的方法。",
+        "Pecan Pie",
+        "The only way to eat pure sugar without",
+        "being totally judged.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "8 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "漂浮 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "4 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Levitation + 1")
     );
 
     public static final SlimefunItemStack GARLIC_BUTTER_MUSHROOMS = Theme.themedSlimefunItemStack(
         "CLT_GARLIC_BUTTER_MUSHROOMS",
         new ItemStack(Material.MUSHROOM_STEW),
         CultivationThemes.FOOD,
-        "蒜蓉黄油蘑菇",
-        "也许是全世界最好吃的。",
+        "Garlic Butter Mushrooms",
+        "May easily be the best food item on earth.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "4 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "发光 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "2 Hearts"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Glowing + 1")
     );
 
     public static final SlimefunItemStack RAMEN_BEEF = Theme.themedSlimefunItemStack(
         "CLT_RAMEN_BEEF",
         Skins.RAMEN_BEEF.getPlayerHead(),
         CultivationThemes.FOOD,
-        "牛肉拉面",
-        "并不是健康的选择。",
+        "Ramen (Beef)",
+        "A not-so-healthy choice.",
         "",
-        Theme.CLICK_INFO.asTitle("效果 1", "生命提升 + 1")
+        Theme.CLICK_INFO.asTitle("Effect 1", "Health Boost + 1")
     );
 
     public static final SlimefunItemStack RAMEN_CHICKEN = Theme.themedSlimefunItemStack(
         "CLT_RAMEN_CHICKEN",
         Skins.RAMEN_CHICKEN.getPlayerHead(),
         CultivationThemes.FOOD,
-        "鸡肉拉面",
-        "并不是充实的选择。",
+        "Ramen (Chicken)",
+        "A not-so-filling choice.",
         "",
-        Theme.CLICK_INFO.asTitle("效果 1", "生命提升 + 1")
+        Theme.CLICK_INFO.asTitle("Effect 1", "Health Boost + 1")
     );
 
     public static final SlimefunItemStack RAMEN_SEAFOOD = Theme.themedSlimefunItemStack(
         "CLT_RAMEN_SEAFOOD",
         Skins.RAMEN_SEAFOOD.getPlayerHead(),
         CultivationThemes.FOOD,
-        "海鲜拉面",
-        "并不是令人满意的选择。",
+        "Ramen (Seafood)",
+        "A not-so-satisfying choice.",
         "",
-        Theme.CLICK_INFO.asTitle("效果 1", "生命提升 + 1")
+        Theme.CLICK_INFO.asTitle("Effect 1", "Health Boost + 1")
     );
 
     public static final SlimefunItemStack RAMEN_BEEF_HEARTY = Theme.themedSlimefunItemStack(
         "CLT_RAMEN_BEEF_HEARTY",
         Skins.RAMEN_HEARTY.getPlayerHead(),
         CultivationThemes.FOOD,
-        "丰盛的牛肉拉面",
-        "健康的选择。",
+        "Ramen (Beef) (Hearty)",
+        "A healthy choice.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "满"),
-        Theme.CLICK_INFO.asTitle("效果 1", "生命提升 + 2"),
-        Theme.CLICK_INFO.asTitle("效果 2", "速度 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "Full"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Health Boost + 2"),
+        Theme.CLICK_INFO.asTitle("Effect 2", "Speed + 1")
     );
 
     public static final SlimefunItemStack RAMEN_CHICKEN_HEARTY = Theme.themedSlimefunItemStack(
         "CLT_RAMEN_CHICKEN_HEARTY",
         Skins.RAMEN_HEARTY.getPlayerHead(),
         CultivationThemes.FOOD,
-        "丰盛的鸡肉拉面",
-        "充实的选择。",
+        "Ramen (Chicken) (Hearty)",
+        "A filling choice.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "满"),
-        Theme.CLICK_INFO.asTitle("效果 1", "生命提升 + 2"),
-        Theme.CLICK_INFO.asTitle("效果 2", "速度 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "Full"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Health Boost + 2"),
+        Theme.CLICK_INFO.asTitle("Effect 2", "Speed + 1")
     );
 
     public static final SlimefunItemStack RAMEN_SEAFOOD_HEARTY = Theme.themedSlimefunItemStack(
         "CLT_RAMEN_SEAFOOD_HEARTY",
         Skins.RAMEN_HEARTY.getPlayerHead(),
         CultivationThemes.FOOD,
-        "丰盛的海鲜拉面",
-        "令人满意的选择。",
+        "Ramen (Seafood) (Hearty)",
+        "A satisfying choice.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "满"),
-        Theme.CLICK_INFO.asTitle("效果 1", "生命提升 + 2"),
-        Theme.CLICK_INFO.asTitle("效果 2", "速度 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "Full"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Health Boost + 2"),
+        Theme.CLICK_INFO.asTitle("Effect 2", "Speed + 1")
     );
 
     public static final SlimefunItemStack BAGEL = Theme.themedSlimefunItemStack(
         "CLT_BAGEL",
         Skins.BAGEL.getPlayerHead(),
         CultivationThemes.FOOD,
-        "贝果",
-        "是烤的？还是…",
+        "Bagel",
+        "Toasted? or...",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "5 点血量")
+        Theme.CLICK_INFO.asTitle("Healing", "5")
     );
 
     public static final SlimefunItemStack BAGEL_BITE = Theme.themedSlimefunItemStack(
         "CLT_BAGEL_BITE",
         Skins.BAGEL_BITE.getPlayerHead(),
         CultivationThemes.FOOD,
-        "贝果零食",
-        "在任何时间都可以吃披萨！",
+        "Bagel Bite",
+        "Eat pizza anytime!",
         "",
-        Theme.CLICK_INFO.asTitle("效果 1", "每吃一口都感觉烧起来了！")
+        Theme.CLICK_INFO.asTitle("Effect 1", "Burns your mouth with every bite!")
     );
 
     public static final SlimefunItemStack BAGEL_CREAM_CHEESE = Theme.themedSlimefunItemStack(
         "CLT_BAGEL_CREAM_CHEESE",
         Skins.BAGEL_EVERYTHING.getPlayerHead(),
         CultivationThemes.FOOD,
-        "奶油芝士贝果",
-        "真的很好吃，你也许会想再来一个。",
+        "Bagel (Cream Cheese)",
+        "It's so good you'll probably want another.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "10 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "生命提升 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "10"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Health Boost + 1")
     );
 
     public static final SlimefunItemStack MEATLOAF = Theme.themedSlimefunItemStack(
         "CLT_MEATLOAF",
         Skins.MEATLOAF.getPlayerHead(),
         CultivationThemes.FOOD,
-        "肉饼",
-        "没有什么比这更好了！",
+        "Meatloaf",
+        "Nothing like it! Let's go.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "满"),
-        Theme.CLICK_INFO.asTitle("效果 1", "生命提升 + 4"),
-        Theme.CLICK_INFO.asTitle("效果 2", "抗性提升 + 3"),
-        Theme.CLICK_INFO.asTitle("效果 3", "急迫 + 2"),
-        Theme.CLICK_INFO.asTitle("效果 4", "缓慢 + 2")
+        Theme.CLICK_INFO.asTitle("Healing", "Full"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Health Boost + 4"),
+        Theme.CLICK_INFO.asTitle("Effect 2", "Damage Reduction + 3"),
+        Theme.CLICK_INFO.asTitle("Effect 3", "Haste + 2"),
+        Theme.CLICK_INFO.asTitle("Effect 4", "Slowness + 2")
     );
 
     public static final SlimefunItemStack SAUSAGE = Theme.themedSlimefunItemStack(
         "CLT_SAUSAGE",
         Skins.SAUSAGE.getPlayerHead(),
         CultivationThemes.FOOD,
-        "香肠",
-        "培根的兄弟。",
+        "Sausage",
+        "Bacon's brother.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "2 点血量")
+        Theme.CLICK_INFO.asTitle("Healing", "2")
     );
 
     public static final SlimefunItemStack SOYLENT = Theme.themedSlimefunItemStack(
@@ -3660,111 +3677,110 @@ public final class CultivationStacks {
         ItemStackGenerators.createPotion(Color.WHITE),
         CultivationThemes.FOOD,
         "Soylent",
-        "包含身体所需的所有营养！",
+        "Everything the body needs!",
         "",
-        Theme.CLICK_INFO.asTitle("效果 1", "不祥之兆 + 1"),
-        Theme.CLICK_INFO.asTitle("效果 2", "虚弱 + 4")
+        Theme.CLICK_INFO.asTitle("Effect 1", "Bad Omen + 1"),
+        Theme.CLICK_INFO.asTitle("Effect 2", "Weakness + 4")
     );
 
     public static final SlimefunItemStack TATER_TOTS = Theme.themedSlimefunItemStack(
         "CLT_TATER_TOTS",
         Skins.TATER_TOT.getPlayerHead(),
         CultivationThemes.FOOD,
-        "土豆饼",
-        "小土豆烤饼。",
+        "Tater Tots",
+        "Little potato poppables.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "1 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "速度 + 2")
+        Theme.CLICK_INFO.asTitle("Healing", "1"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Speed + 2")
     );
 
     public static final SlimefunItemStack SWEET_BEEHIVE = Theme.themedSlimefunItemStack(
         "CLT_SWEET_BEEHIVE",
         Skins.BEEHIVE.getPlayerHead(),
         CultivationThemes.FOOD,
-        "甜蜂巢",
-        "不知道为什么你要做这个!",
+        "Sweet Beehive",
+        "Not sure what made you want to cook this!",
         "",
-        Theme.CLICK_INFO.asTitle("效果 1", "召唤蜜蜂")
+        Theme.CLICK_INFO.asTitle("Effect 1", "Summons some bees!")
     );
 
     public static final SlimefunItemStack TAQUITO = Theme.themedSlimefunItemStack(
         "CLT_TAQUITO",
         Skins.TAQUITO.getPlayerHead(),
         CultivationThemes.FOOD,
-        "塔基托",
-        "Zim 会感到自豪的！",
+        "Taquito",
+        "Zim would be proud!",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "4 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "召唤Gir来帮忙（放松，只是个铁傀儡）。")
+        Theme.CLICK_INFO.asTitle("Healing", "4"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Summons Gir to help (It's an Iron Golem, relax).")
     );
 
     public static final SlimefunItemStack BOWL_OF_STEVE = Theme.themedSlimefunItemStack(
         "CLT_BOWL_OF_STEVE",
         Skins.STEVE_HEAD_BOWL.getPlayerHead(),
         CultivationThemes.FOOD,
-        "一碗…史蒂夫？",
-        "什么玩意 &%£$",
+        "Bowl of... Steve?",
+        "What the actual &%£$",
         "",
-        Theme.CLICK_INFO.asTitle("效果 1", "血量减少至 1 点"),
-        Theme.CLICK_INFO.asTitle("效果 2", "挖掘疲劳 + 10"),
-        Theme.CLICK_INFO.asTitle("效果 3", "缓慢 + 5"),
-        Theme.CLICK_INFO.asTitle("效果 4", "力量 + 10")
+        Theme.CLICK_INFO.asTitle("Effect 1", "Reduces you to 1/2 heart"),
+        Theme.CLICK_INFO.asTitle("Effect 2", "Fatigue + 10"),
+        Theme.CLICK_INFO.asTitle("Effect 3", "Slow + 5"),
+        Theme.CLICK_INFO.asTitle("Effect 4", "Damage + 10")
     );
 
     public static final SlimefunItemStack CHEESE_BURGER = Theme.themedSlimefunItemStack(
         "CLT_CHEESE_BURGER",
         Skins.BURGER.getPlayerHead(),
         CultivationThemes.FOOD,
-        "汉堡",
-        "一个很简单的芝士汉堡，",
-        "但没有什么比这更好的了！",
+        "Burger",
+        "A simple cheese burger, but nothing beats it!",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "4 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "生命恢复 + 3")
+        Theme.CLICK_INFO.asTitle("Healing", "4"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Regen + 3")
     );
 
     public static final SlimefunItemStack CINNAMON_ROLL = Theme.themedSlimefunItemStack(
         "CLT_CINNAMON_ROLL",
         Skins.CINNAMON_ROLL.getPlayerHead(),
         CultivationThemes.FOOD,
-        "肉桂卷",
-        "一种甜美的美食卷，让人感到愉悦。",
-        "食用后会让世界翻转！",
+        "Cinnamon Roll",
+        "A sweet delight rolled up for fun.",
+        "Eating it turns the world on it's head!",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "4 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "漂浮 + 1"),
-        Theme.CLICK_INFO.asTitle("效果 2", "缓降 + 1")
+        Theme.CLICK_INFO.asTitle("Healing", "4"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Levitation + 1"),
+        Theme.CLICK_INFO.asTitle("Effect 2", "Slow Falling + 1")
     );
 
     public static final SlimefunItemStack BLUE_CANDY = Theme.themedSlimefunItemStack(
         "CLT_BLUE_CANDY",
         Skins.BLUE_CANDY.getPlayerHead(),
         CultivationThemes.FOOD,
-        "蓝色糖果",
-        "令人愉快的甜美糖果。",
+        "Candy (Blue)",
+        "A delightfully sweet candy.",
         "",
-        Theme.CLICK_INFO.asTitle("效果 1", "召唤一只悦灵")
+        Theme.CLICK_INFO.asTitle("Effect 1", "Spawns an Allay")
     );
 
     public static final SlimefunItemStack SOFT_BOILED_EGG = Theme.themedSlimefunItemStack(
         "CLT_SOFT_BOILED_EGG",
         Skins.BOILED_EGG.getPlayerHead(),
         CultivationThemes.FOOD,
-        "水煮蛋",
-        "只是普通的水煮蛋，没什么好说的。",
+        "Soft Boiled Egg",
+        "Just a boiled egg, what's more to say.",
         "",
-        Theme.CLICK_INFO.asTitle("恢复", "1 点血量"),
-        Theme.CLICK_INFO.asTitle("效果 1", "有时会召唤出一只坤坤。")
+        Theme.CLICK_INFO.asTitle("Healing", "1"),
+        Theme.CLICK_INFO.asTitle("Effect 1", "Can sometimes call a chicken to your aid.")
     );
 
     public static final SlimefunItemStack SUGARED_SKULL = Theme.themedSlimefunItemStack(
         "CLT_SUGARED_SKULL",
         Skins.SUGARED_SKULL.getPlayerHead(),
         CultivationThemes.FOOD,
-        "加糖的骷髅头",
-        "这真的是食物吗…？",
+        "Sugared Skull",
+        "Is this even food...?",
         "",
-        Theme.CLICK_INFO.asTitle("效果 1", "黑暗 + 3")
+        Theme.CLICK_INFO.asTitle("Effect 1", "Darkness + 3")
     );
 
     // end region
