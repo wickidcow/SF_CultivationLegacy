@@ -94,10 +94,15 @@ public class GardenCloche extends SlimefunItem implements DisplayInteractable, E
 
                 @Override
                 public void tick(Block block, SlimefunItem item, SlimefunBlockData data) {
-                    BlockMenu blockMenu = StorageCacheUtils.getMenu(block.getLocation());
+                    Location location = block.getLocation();
+                    BlockMenu blockMenu = StorageCacheUtils.getMenu(location);
+                    if (blockMenu == null) {
+                        return;
+                    }
+
                     ItemStack possiblePlant = blockMenu.getItemInSlot(PLANT_SLOT);
                     SlimefunItem slimefunItem = SlimefunItem.getByItem(possiblePlant);
-                    Location location = block.getLocation();
+
                     if (slimefunItem instanceof HarvestablePlant plant) {
                         if (!hasDisplayPlant(location)) {
                             Bukkit.getScheduler().runTask(
@@ -109,16 +114,16 @@ public class GardenCloche extends SlimefunItem implements DisplayInteractable, E
                         }
                         FloraLevelProfile profile = FloraLevelProfile.fromItemStack(possiblePlant);
                         double growthRate = plant.getGrowthRate(profile);
-                        double rand = ThreadLocalRandom.current().nextDouble();
-                        if (rand < growthRate) {
+                        if (ThreadLocalRandom.current().nextDouble() < growthRate) {
                             ItemStack itemStack = plant.getRandomItemWithDropModifier(profile);
-                            blockMenu.pushItem(itemStack, OUTPUT_SLOTS);
-                            removeCharge(location, POWER_REQUIREMENT);
+                            if (itemStack != null) {
+                                blockMenu.pushItem(itemStack, OUTPUT_SLOTS);
+                                removeCharge(location, POWER_REQUIREMENT);
+                            }
                         }
-                    } else {
+                    } else if (hasDisplayPlant(location)) {
                         Bukkit.getScheduler().runTask(
-                            Cultivation.getInstance(),
-                            () -> removePlantFromDisplay(location)
+                            Cultivation.getInstance(), () -> hidePlantInDisplay(location)
                         );
                     }
                 }
@@ -134,7 +139,7 @@ public class GardenCloche extends SlimefunItem implements DisplayInteractable, E
             public void init() {
                 ItemStack backgroundInput = new CustomItemStack(
                     Material.GREEN_STAINED_GLASS_PANE,
-                    Theme.PASSIVE.apply("放入植物")
+                    Theme.PASSIVE.apply("Insert Plant")
                 );
                 drawBackground(BACKGROUND);
                 drawBackground(backgroundInput, PLANT_SLOT_BACKGROUND);
@@ -172,6 +177,8 @@ public class GardenCloche extends SlimefunItem implements DisplayInteractable, E
         if (group != null) {
             group.remove();
         }
+        StorageCacheUtils.removeData(location, KEY_PLANT);
+        StorageCacheUtils.removeData(location, KEY_UUID);
     }
 
     private void addPlantToDisplay(@Nonnull Location location) {
@@ -182,12 +189,12 @@ public class GardenCloche extends SlimefunItem implements DisplayInteractable, E
         }
     }
 
-    private void removePlantFromDisplay(@Nonnull Location location) {
+    private void hidePlantInDisplay(@Nonnull Location location) {
         DisplayGroup displayGroup = getDisplayGroup(location);
         if (displayGroup != null) {
-            DisplayGroupGenerators.removePlantFromCloche(displayGroup);
-            StorageCacheUtils.removeData(location, KEY_PLANT);
+            DisplayGroupGenerators.hidePlantInCloche(displayGroup);
         }
+        StorageCacheUtils.removeData(location, KEY_PLANT);
     }
 
     @Nullable
@@ -207,7 +214,6 @@ public class GardenCloche extends SlimefunItem implements DisplayInteractable, E
         }
         return DisplayGroup.fromUUID(uuid);
     }
-
 
     @NotNull
     @Override
