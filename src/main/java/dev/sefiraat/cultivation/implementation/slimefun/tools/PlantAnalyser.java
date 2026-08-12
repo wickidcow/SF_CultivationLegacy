@@ -65,9 +65,9 @@ public class PlantAnalyser extends SimpleSlimefunItem<ItemUseHandler> implements
             profileHolder.setLevelProfile(block.getLocation(), profile);
             Player player = event.getPlayer();
             player.sendMessage(Theme.CLICK_INFO.apply(item.getItemName()));
-            player.sendMessage(Theme.CLICK_INFO.asTitle("等级", profile.getLevel()));
-            player.sendMessage(Theme.CLICK_INFO.asTitle("速率", profile.getSpeed()));
-            player.sendMessage(Theme.CLICK_INFO.asTitle("强度", profile.getStrength()));
+            player.sendMessage(Theme.CLICK_INFO.asTitle("Drop Level", profile.getLevel()));
+            player.sendMessage(Theme.CLICK_INFO.asTitle("Growth Speed", profile.getSpeed()));
+            player.sendMessage(Theme.CLICK_INFO.asTitle("Breed Strength", profile.getStrength()));
         }
     }
 

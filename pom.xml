@@ -75,6 +75,8 @@
                             <artifact>*:*</artifact>
                             <excludes>
                                 <exclude>META-INF/*</exclude>
+                                <exclude>acf-core_*.properties</exclude>
+                                <exclude>acf-minecraft_*.properties</exclude>
                             </excludes>
                         </filter>
                     </filters>

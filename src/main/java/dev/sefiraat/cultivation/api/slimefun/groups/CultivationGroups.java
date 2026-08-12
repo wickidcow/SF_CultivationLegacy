@@ -21,11 +21,11 @@ public final class CultivationGroups {
 
     public static final SimpleFlexGroup MAIN = new SimpleFlexGroup(
         Cultivation.getInstance(),
-        "农耕工艺",
+        "Cultivation",
         Keys.newKey("main"),
         new CustomItemStack(
             new ItemStack(Material.AZURE_BLUET),
-            CultivationThemes.MAIN.color("农耕工艺")
+            CultivationThemes.MAIN.color("Cultivation")
         )
     );
 
@@ -33,8 +33,8 @@ public final class CultivationGroups {
         Keys.newKey("hidden"),
         new CustomItemStack(
             Material.BARRIER,
-            "隐藏物品",
-            "这些物品不应该被直接访问。"
+            "Hidden",
+            "Items that should not be accessed directly."
         )
     );
 
@@ -42,7 +42,7 @@ public final class CultivationGroups {
         Keys.newKey("crafting"),
         new CustomItemStack(
             new ItemStack(Material.STICK),
-            CultivationThemes.MAIN.color("合成材料")
+            CultivationThemes.MAIN.color("Crafting Items")
         )
     );
 
@@ -50,7 +50,7 @@ public final class CultivationGroups {
         Keys.newKey("tools"),
         new CustomItemStack(
             new ItemStack(Material.COMPASS),
-            CultivationThemes.MAIN.color("工具")
+            CultivationThemes.MAIN.color("Tools")
         )
     );
 
@@ -58,7 +58,7 @@ public final class CultivationGroups {
         Keys.newKey("machines"),
         new CustomItemStack(
             new ItemStack(Material.GLASS),
-            CultivationThemes.MAIN.color("机器")
+            CultivationThemes.MAIN.color("Machines")
         )
     );
 
@@ -66,7 +66,7 @@ public final class CultivationGroups {
         Keys.newKey("plants"),
         new CustomItemStack(
             new ItemStack(Material.MELON_SEEDS),
-            CultivationThemes.MAIN.color("植物")
+            CultivationThemes.MAIN.color("Plants")
         )
     );
 
@@ -74,7 +74,7 @@ public final class CultivationGroups {
         Keys.newKey("bushes"),
         new CustomItemStack(
             new ItemStack(Material.SWEET_BERRIES),
-            CultivationThemes.MAIN.color("灌木")
+            CultivationThemes.MAIN.color("Bushes")
         )
     );
 
@@ -82,7 +82,7 @@ public final class CultivationGroups {
         Keys.newKey("trees"),
         new CustomItemStack(
             new ItemStack(Material.ACACIA_SAPLING),
-            CultivationThemes.MAIN.color("树木")
+            CultivationThemes.MAIN.color("Trees")
         )
     );
 
@@ -90,7 +90,7 @@ public final class CultivationGroups {
         Keys.newKey("produce"),
         new CustomItemStack(
             new ItemStack(Material.APPLE),
-            CultivationThemes.MAIN.color("产品")
+            CultivationThemes.MAIN.color("Produce")
         )
     );
 
@@ -98,7 +98,7 @@ public final class CultivationGroups {
         Keys.newKey("by-products"),
         new CustomItemStack(
             new ItemStack(Material.BEETROOT_SEEDS),
-            CultivationThemes.MAIN.color("副产品")
+            CultivationThemes.MAIN.color("By-Products")
         )
     );
 
@@ -106,7 +106,7 @@ public final class CultivationGroups {
         Keys.newKey("foods"),
         new CustomItemStack(
             new ItemStack(Material.BEETROOT_SOUP),
-            CultivationThemes.MAIN.color("食物")
+            CultivationThemes.MAIN.color("Foods")
         )
     );
 
@@ -114,7 +114,7 @@ public final class CultivationGroups {
         Keys.newKey("plant_codex"),
         new CustomItemStack(
             new ItemStack(Material.BEETROOT_SEEDS),
-            CultivationThemes.MAIN.color("植物宝典")
+            CultivationThemes.MAIN.color("Plants Codex")
         )
     );
 

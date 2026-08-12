@@ -104,12 +104,12 @@ public class PoweredKitchenMachineComplex extends KitchenRecipeMachineComplex im
             public void init() {
                 ItemStack backgroundOutput = new CustomItemStack(
                     Material.ORANGE_STAINED_GLASS_PANE,
-                    Theme.PASSIVE.apply("成品")
+                    Theme.PASSIVE.apply("Cooked Output")
                 );
                 ItemStack cookButton = new CustomItemStack(
                     Material.RED_STAINED_GLASS_PANE,
-                    Theme.CLICK_INFO.apply("烹饪"),
-                    Theme.CLICK_INFO.asTitle("需要电力", powerRequirement)
+                    Theme.CLICK_INFO.apply("Cook Produce"),
+                    Theme.CLICK_INFO.asTitle("Power Required", powerRequirement)
                 );
                 drawBackground(BACKGROUND);
                 drawBackground(backgroundOutput, OUTPUT_SLOT_BACKGROUND);
@@ -120,7 +120,7 @@ public class PoweredKitchenMachineComplex extends KitchenRecipeMachineComplex im
             public void newInstance(@NotNull BlockMenu menu, @NotNull Block b) {
                 menu.addMenuClickHandler(COOK_SLOT, (p, slot, item, action) -> {
                     if (getCharge(menu.getLocation()) < powerRequirement) {
-                        p.sendMessage(Theme.ERROR.apply("电力不足."));
+                        p.sendMessage(Theme.ERROR.apply("Not enough power."));
                         return false;
                     }
                     ItemStack[] itemStacks = new ItemStack[9];
@@ -130,11 +130,11 @@ public class PoweredKitchenMachineComplex extends KitchenRecipeMachineComplex im
                     ItemStack result = testRecipe(itemStacks);
                     SlimefunItem slimefunItem = SlimefunItem.getByItem(result);
                     if (slimefunItem != null && slimefunItem.isDisabled()) {
-                        p.sendMessage(Theme.ERROR.apply("配方不可用."));
+                        p.sendMessage(Theme.ERROR.apply("This recipe is disabled."));
                         return false;
                     }
                     if (result == null || !menu.fits(result, OUTPUT_SLOT)) {
-                        p.sendMessage(Theme.ERROR.apply("没有合适的配方."));
+                        p.sendMessage(Theme.ERROR.apply("No matching recipe."));
                         return false;
                     }
 
@@ -150,7 +150,7 @@ public class PoweredKitchenMachineComplex extends KitchenRecipeMachineComplex im
                             inputItem.setAmount(inputItem.getAmount() - 1);
                         }
                     }
-                    p.sendMessage(Theme.SUCCESS.apply("美味新鲜出炉!"));
+                    p.sendMessage(Theme.SUCCESS.apply("Tasty!"));
                     return false;
                 });
             }

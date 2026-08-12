@@ -38,7 +38,7 @@ public class CultivationTree extends SlimefunItem {
         ItemMeta itemMeta = this.getItem().getItemMeta();
         List<String> lore = itemMeta.getLore();
         lore.add("");
-        lore.add(Theme.CLICK_INFO.asTitle("设计者", treeDesign.author));
+        lore.add(Theme.CLICK_INFO.asTitle("Design By", treeDesign.author));
         itemMeta.setLore(lore);
         this.getItem().setItemMeta(itemMeta);
     }

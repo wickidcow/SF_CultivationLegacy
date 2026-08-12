@@ -46,7 +46,7 @@ public class SeedPack extends SlimefunItem {
             ItemStack itemStack = playerRightClickEvent.getItem();
             Player player = playerRightClickEvent.getPlayer();
             if (itemStack.getAmount() > 1) {
-                player.sendMessage(Theme.ERROR.apply("你不能在堆叠时打开种子袋。"));
+                player.sendMessage(Theme.ERROR.apply("You must unstack your pack(s) first."));
                 return;
             }
             SeedPackGui gui = new SeedPackGui(itemStack);
@@ -76,25 +76,25 @@ public class SeedPack extends SlimefunItem {
 
         protected static final ItemStack SET_BACKGROUND_STACK = new CustomItemStack(
             Material.GREEN_STAINED_GLASS_PANE,
-            Theme.PASSIVE.apply("在此设置种子")
+            Theme.PASSIVE.apply("Set seed here")
         );
 
         protected static final ItemStack PICKUP_BACKGROUND_STACK = new CustomItemStack(
             Material.GREEN_STAINED_GLASS_PANE,
-            Theme.PASSIVE.apply("取出种子")
+            Theme.PASSIVE.apply("Retrieve here")
         );
 
         protected static final ItemStack NO_SEED_SET_STACK = new CustomItemStack(
             Material.ORANGE_STAINED_GLASS_PANE,
-            Theme.WARNING.apply("未设置种子"),
-            Theme.PASSIVE.apply("拿起一个种子并点击"),
-            Theme.PASSIVE.apply("左侧格子来设置种子")
+            Theme.WARNING.apply("No Seed Set"),
+            Theme.PASSIVE.apply("Click the left hand side icon"),
+            Theme.PASSIVE.apply("While holding a seed to set pack.")
         );
 
         protected static final ItemStack EMPTY_SEED_SET = new CustomItemStack(
             Material.RED_STAINED_GLASS_PANE,
-            Theme.WARNING.apply("空"),
-            Theme.PASSIVE.apply("你没有任何满足要求的种子.")
+            Theme.WARNING.apply("Empty Set"),
+            Theme.PASSIVE.apply("given criteria.")
         );
 
         private int level = 1;
@@ -105,7 +105,7 @@ public class SeedPack extends SlimefunItem {
         private SeedPackInstance instance;
 
         public SeedPackGui(@Nonnull ItemStack packStack) {
-            super("种子袋");
+            super("Seed Pack");
             ItemMeta itemMeta = packStack.getItemMeta();
 
             this.packStack = packStack;
@@ -131,38 +131,38 @@ public class SeedPack extends SlimefunItem {
             addItem(SEED_SET_SLOT, NO_SEED_SET_STACK, this::onClickSeedSetSlot);
             addItem(SEED_PICKUP_SLOT, NO_SEED_SET_STACK, this::onClickSeedGetSlot);
 
-            addItem(INCREMENT_LEVEL_SLOT, getIncrementStack("等级", 1), (p, slot, item, action) -> {
+            addItem(INCREMENT_LEVEL_SLOT, getIncrementStack("Level", 1), (p, slot, item, action) -> {
                 int value;
                 if (action.isRightClicked()) {
                     value = Math.max(level - 1, 1);
                 } else {
                     value = Math.min(level + 1, 10);
                 }
-                replaceExistingItem(INCREMENT_LEVEL_SLOT, getIncrementStack("等级", value));
+                replaceExistingItem(INCREMENT_LEVEL_SLOT, getIncrementStack("Level", value));
                 this.level = value;
                 setOutputStack();
                 return false;
             });
-            addItem(INCREMENT_SPEED_SLOT, getIncrementStack("速率", 1), (p, slot, item, action) -> {
+            addItem(INCREMENT_SPEED_SLOT, getIncrementStack("Speed", 1), (p, slot, item, action) -> {
                 int value;
                 if (action.isRightClicked()) {
                     value = Math.max(speed - 1, 1);
                 } else {
                     value = Math.min(speed + 1, 10);
                 }
-                replaceExistingItem(INCREMENT_SPEED_SLOT, getIncrementStack("速率", value));
+                replaceExistingItem(INCREMENT_SPEED_SLOT, getIncrementStack("Speed", value));
                 this.speed = value;
                 setOutputStack();
                 return false;
             });
-            addItem(INCREMENT_STRENGTH_SLOT, getIncrementStack("强度", 1), (p, slot, item, action) -> {
+            addItem(INCREMENT_STRENGTH_SLOT, getIncrementStack("Strength", 1), (p, slot, item, action) -> {
                 int value;
                 if (action.isRightClicked()) {
                     value = Math.max(strength - 1, 1);
                 } else {
                     value = Math.min(strength + 1, 10);
                 }
-                replaceExistingItem(INCREMENT_STRENGTH_SLOT, getIncrementStack("强度", value));
+                replaceExistingItem(INCREMENT_STRENGTH_SLOT, getIncrementStack("Strength", value));
                 this.strength = value;
                 setOutputStack();
                 return false;
@@ -180,12 +180,12 @@ public class SeedPack extends SlimefunItem {
 
             SlimefunItem slimefunItem = SlimefunItem.getByItem(itemStack);
             if (!(slimefunItem instanceof CultivationPlant plant)) {
-                player.sendMessage(Theme.WARNING.apply("物品必须为农耕工艺的植物种子。"));
+                player.sendMessage(Theme.WARNING.apply("The item must be a Cultivation Plant Seed"));
                 return false;
             }
 
             if (!instance.isEmpty()) {
-                player.sendMessage(Theme.WARNING.apply("在更改种子类型之前必须清空种子袋。"));
+                player.sendMessage(Theme.WARNING.apply("You must empty a pack before changing the type."));
                 return false;
             }
 
@@ -199,13 +199,13 @@ public class SeedPack extends SlimefunItem {
         private boolean onClickSeedGetSlot(Player player, int slot, ItemStack item, ClickAction action) {
             SlimefunItem slimefunItem = SlimefunItem.getById(instance.storedItemId);
             if (!(slimefunItem instanceof CultivationPlant plant)) {
-                player.sendMessage(Theme.WARNING.apply("你还没有设置植物。"));
+                player.sendMessage(Theme.WARNING.apply("You have not set a plant yet."));
                 return false;
             }
 
             int amount = instance.getAmount(level, speed, strength);
             if (amount < 1) {
-                player.sendMessage(Theme.WARNING.apply("你当前没有任何这种种子。"));
+                player.sendMessage(Theme.WARNING.apply("You dont have any of this seed currently."));
                 return false;
             }
 
@@ -248,7 +248,7 @@ public class SeedPack extends SlimefunItem {
             ItemMeta itemMeta = this.packStack.getItemMeta();
             PersistentDataAPI.set(itemMeta, SeedPackDataType.KEY, SeedPackDataType.TYPE, this.instance);
             List<String> lore = itemMeta.getLore();
-            lore.set(3, Theme.CLICK_INFO.asTitle("设置为", plant.getItemName()));
+            lore.set(3, Theme.CLICK_INFO.asTitle("Set to", plant.getItemName()));
             itemMeta.setLore(lore);
             this.packStack.setItemMeta(itemMeta);
         }
@@ -257,7 +257,7 @@ public class SeedPack extends SlimefunItem {
         private ItemStack getSeedDisplayStack(@Nonnull CultivationPlant plant) {
             ItemStack itemStack = plant.getItem().clone();
             ItemMeta itemMeta = itemStack.getItemMeta();
-            itemMeta.setDisplayName(Theme.CLICK_INFO.apply("目前收集的种子：" + itemMeta.getDisplayName()));
+            itemMeta.setDisplayName(Theme.CLICK_INFO.apply("Stored Seed Type: " + itemMeta.getDisplayName()));
             itemStack.setItemMeta(itemMeta);
             return itemStack;
         }
@@ -269,7 +269,7 @@ public class SeedPack extends SlimefunItem {
             }
             ItemStack itemStack = plant.getItem().clone();
             ItemMeta itemMeta = itemStack.getItemMeta();
-            itemMeta.setDisplayName(Theme.CLICK_INFO.apply("取出种子：" + itemMeta.getDisplayName()));
+            itemMeta.setDisplayName(Theme.CLICK_INFO.apply("Remove Seed: " + itemMeta.getDisplayName()));
             itemStack.setItemMeta(itemMeta);
             itemStack.setAmount(Math.min(amount, 64));
             return itemStack;
@@ -279,10 +279,10 @@ public class SeedPack extends SlimefunItem {
             return new CustomItemStack(
                 Material.YELLOW_STAINED_GLASS_PANE,
                 Theme.CLICK_INFO.apply(name),
-                Theme.CLICK_INFO.asTitle("左键点击", "增加" + name),
-                Theme.CLICK_INFO.asTitle("右键点击", "减少" + name),
+                Theme.CLICK_INFO.asTitle("Left Click", "Increase " + name),
+                Theme.CLICK_INFO.asTitle("Right Click", "Decrease " + name),
                 "",
-                Theme.CLICK_INFO.asTitle("当前", value)
+                Theme.CLICK_INFO.asTitle("Current", value)
             );
         }
     }

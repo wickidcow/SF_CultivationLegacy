@@ -71,17 +71,17 @@ public class PlantCodexFlexGroup extends FlexItemGroup {
 
     private static final ItemStack MOTHER_INFO = new CustomItemStack(
         Material.LIGHT_BLUE_STAINED_GLASS_PANE,
-        Theme.PASSIVE + "'母' 植物"
+        Theme.PASSIVE + "'Mother' Plant"
     );
 
     private static final ItemStack FATHER_INFO = new CustomItemStack(
         Material.LIGHT_BLUE_STAINED_GLASS_PANE,
-        Theme.PASSIVE + "'父' 植物"
+        Theme.PASSIVE + "'Father' Plant"
     );
 
     private static final ItemStack CHILD_INFO = new CustomItemStack(
         Material.LIGHT_BLUE_STAINED_GLASS_PANE,
-        Theme.PASSIVE + "'子' 植物"
+        Theme.PASSIVE + "'Child' Plant"
     );
 
     private static final ItemStack HELD_SLOT = new CustomItemStack(
@@ -104,7 +104,7 @@ public class PlantCodexFlexGroup extends FlexItemGroup {
     @Override
     @ParametersAreNonnullByDefault
     public void open(Player p, PlayerProfile profile, SlimefunGuideMode mode) {
-        ChestMenu chestMenu = new ChestMenu(CultivationThemes.MAIN.getColor() + "植物宝典");
+        ChestMenu chestMenu = new ChestMenu(CultivationThemes.MAIN.getColor() + "Plants Codex");
 
         for (int slot : HEADER) {
             chestMenu.addItem(slot, ChestMenuUtils.getBackground(), (player1, i1, itemStack, clickAction) -> false);
@@ -294,9 +294,9 @@ public class PlantCodexFlexGroup extends FlexItemGroup {
             CultivationThemes.DISCOVEREY,
             seed.getItemName(),
             List.of(
-                Theme.ERROR + "未发现",
-                "你还不清楚如何",
-                "培育该植物!"
+                Theme.ERROR + "Not Discovered",
+                "You have not yet discovered how",
+                "to breed this plant!"
             )
         );
     }
@@ -305,7 +305,7 @@ public class PlantCodexFlexGroup extends FlexItemGroup {
     public static ItemStack getGrowthRate(@Nonnull CultivationPlant seed) {
         return new CustomItemStack(
             Material.WHEAT_SEEDS,
-            Theme.CLICK_INFO.asTitle("生长速率", FORMAT.format(seed.getDefaultGrowthRate()))
+            Theme.CLICK_INFO.asTitle("Growth Rate", FORMAT.format(seed.getDefaultGrowthRate()))
         );
     }
 }
