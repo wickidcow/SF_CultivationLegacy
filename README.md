@@ -39,6 +39,8 @@ Cultivation Legacy does **not** require ExoticGarden and does not require other 
 
 GitHub Actions builds are named `SF_Cultivation1.1.x.jar`. The build workflow compiles against the released Slimefun Legacy JAR rather than a Gugu Slimefun dependency.
 
+Community-fork fixes are cherry-picked selectively and validated against Slimefun Legacy rather than importing another fork wholesale.
+
 ## Credits
 
 All credit for the original Cultivation design and content belongs to the original authors and contributors, especially **Sefiraat**, **J3fftw**, and **JustAHuman**.
