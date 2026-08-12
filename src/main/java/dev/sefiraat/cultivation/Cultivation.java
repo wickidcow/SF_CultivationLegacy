@@ -16,22 +16,15 @@ import dev.sefiraat.cultivation.managers.SupportedPluginManager;
 import dev.sefiraat.cultivation.managers.TaskManager;
 import dev.sefiraat.sefilib.entity.display.DisplayGroupManager;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-import net.guizhanss.guizhanlibplugin.updater.GuizhanUpdater;
-import net.guizhanss.slimefun4.utils.WikiUtils;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.text.MessageFormat;
-import java.util.logging.Level;
 
 public class Cultivation extends JavaPlugin implements SlimefunAddon {
     private static Cultivation instance;
-    private final String username;
-    private final String repo;
-    private final String branch;
 
     private ConfigManager configManager;
     private SupportedPluginManager supportedPluginManager;
@@ -41,33 +34,17 @@ public class Cultivation extends JavaPlugin implements SlimefunAddon {
     private DisplayGroupManager displayGroupManager;
     private Registry registry;
 
-    public Cultivation() {
-        this.username = "SlimefunGuguProject";
-        this.repo = "Cultivation";
-        this.branch = "main";
-    }
-
     @Override
     public void onEnable() {
         instance = this;
 
-        if (!getServer().getPluginManager().isPluginEnabled("GuizhanLibPlugin")) {
-            getLogger().log(Level.SEVERE, "本插件需要 鬼斩前置库插件(GuizhanLibPlugin) 才能运行!");
-            getLogger().log(Level.SEVERE, "从此处下载: https://50l.cc/gzlib");
-            getServer().getPluginManager().disablePlugin(this);
-            return;
-        }
-
         getLogger().info("########################################");
-        getLogger().info("         Cultivation 农耕工艺            ");
-        getLogger().info("        By Sefiraat and J3fftw         ");
-        getLogger().info("         粘液科技简中汉化组 汉化           ");
+        getLogger().info("          Cultivation Legacy            ");
+        getLogger().info("   Originally by Sefiraat and J3fftw    ");
         getLogger().info("########################################");
 
         saveDefaultConfig();
         this.configManager = new ConfigManager();
-        tryUpdate();
-
         this.supportedPluginManager = new SupportedPluginManager();
         this.listenerManager = new ListenerManager();
         this.taskManager = new TaskManager();
@@ -89,21 +66,12 @@ public class Cultivation extends JavaPlugin implements SlimefunAddon {
         Products.setup(this);
         Ingredients.setup(this);
         Foods.setup(this);
-
-        // wiki
-        WikiUtils.setupJson(this);
     }
 
     @Override
     public void onDisable() {
         if (this.configManager != null) {
             this.configManager.saveAll();
-        }
-    }
-
-    public void tryUpdate() {
-        if (configManager.isAutoUpdate() && getDescription().getVersion().startsWith("Build")) {
-            GuizhanUpdater.start(this, getFile(), this.username, this.repo, this.branch);
         }
     }
 
@@ -116,16 +84,11 @@ public class Cultivation extends JavaPlugin implements SlimefunAddon {
     @Nullable
     @Override
     public String getBugTrackerURL() {
-        return MessageFormat.format("https://github.com/{0}/{1}/issues/", this.username, this.repo);
-    }
-
-    @Nonnull
-    public String getWikiURL() {
-        return "https://slimefun-addons-wiki.guizhanss.cn/cultivation/{0}";
+        return "https://github.com/wickidcow/SF_CultivationLegacy/issues/";
     }
 
     private void setupStats() {
-        Metrics metrics = new Metrics(this, 18184);
+        new Metrics(this, 18184);
     }
 
     public static Cultivation getInstance() {
