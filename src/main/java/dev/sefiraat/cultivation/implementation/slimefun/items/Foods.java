@@ -98,7 +98,7 @@ public final class Foods {
         CultivationStacks.CAJUN_GARLIC_BUTTER_COD,
         RecipeTypes.BAKING,
         new ItemStack[]{
-            Products.COD.getFriedItem(), SlimefunItems.BUTTER.item(), null,
+            Products.COD.getFriedItem(), SlimefunItems.BUTTER, null,
             Products.GARLIC.getChoppedItem(), Products.CAYENNE_PEPPER.getGroundItem(), null,
             null, null, null
         },
@@ -147,7 +147,7 @@ public final class Foods {
         CultivationStacks.SHEPHERDS_PIE,
         RecipeTypes.BAKING,
         new ItemStack[]{
-            SlimefunItems.CHEESE.item(), Products.POTATO.getMashedItem(), SlimefunItems.CHEESE.item(),
+            SlimefunItems.CHEESE, Products.POTATO.getMashedItem(), SlimefunItems.CHEESE,
             Products.CARROT.getChoppedItem(), Products.PEA.getItem(), Products.ONION.getFriedItem(),
             Products.BEEF.getGroundItem(), Products.BEEF.getGroundItem(), Products.BEEF.getGroundItem()
         },
@@ -179,7 +179,7 @@ public final class Foods {
         new ItemStack[]{
             null, Ingredients.PIE_CRUST.getItem(), null,
             Products.CARROT.getChoppedItem(), Products.CHICKEN.getChoppedItem(), Products.ONION.getChoppedItem(),
-            SlimefunItems.BUTTER.item(), new ItemStack(Material.MILK_BUCKET), Products.MUSTARD_SEEDS.getGroundItem()
+            SlimefunItems.BUTTER, new ItemStack(Material.MILK_BUCKET), Products.MUSTARD_SEEDS.getGroundItem()
         },
         player -> simplePlayerEffect(
             player,
@@ -193,7 +193,7 @@ public final class Foods {
         CultivationStacks.CHICKEN_PASTA_BAKE,
         RecipeTypes.BAKING,
         new ItemStack[]{
-            SlimefunItems.CHEESE.item(), SlimefunItems.CHEESE.item(), SlimefunItems.CHEESE.item(),
+            SlimefunItems.CHEESE, SlimefunItems.CHEESE, SlimefunItems.CHEESE,
             Ingredients.PASTA.getItem(), Ingredients.PASTA.getItem(), Ingredients.PASTA.getItem(),
             Products.GARLIC.getGroundItem(), new ItemStack(Material.MILK_BUCKET), Products.MUSTARD_SEEDS.getGroundItem()
         },
@@ -209,15 +209,15 @@ public final class Foods {
         CultivationStacks.CHICKEN_ALFREDO_MAC_AND_CHEESE,
         RecipeTypes.BAKING,
         new ItemStack[]{
-            SlimefunItems.CHEESE.item(), Products.BROCCOLI.getChoppedItem(), SlimefunItems.CHEESE.item(),
+            SlimefunItems.CHEESE, Products.BROCCOLI.getChoppedItem(), SlimefunItems.CHEESE,
             Ingredients.PASTA.getItem(), Products.CHICKEN.getSlicedItem(), Ingredients.PASTA.getItem(),
-            Products.GARLIC.getGroundItem(), SlimefunItems.HEAVY_CREAM.item(), Products.ONION.getChoppedItem()
+            Products.GARLIC.getGroundItem(), SlimefunItems.HEAVY_CREAM, Products.ONION.getChoppedItem()
         },
         player -> simplePlayerEffect(
             player,
             2,
             new Pair<>(PotionEffectType.FIRE_RESISTANCE, 1),
-            new Pair<>(PotionEffectType.RESISTANCE, 2)
+            new Pair<>(PotionEffectType.DAMAGE_RESISTANCE, 2)
         )
     ).buildRegister(Cultivation.getInstance());
 
@@ -236,8 +236,8 @@ public final class Foods {
         CultivationStacks.KEY_LIME_PIE,
         RecipeTypes.BAKING,
         new ItemStack[]{
-            Products.LIME.getBlendedItem(), SlimefunItems.HEAVY_CREAM.item(), Products.LIME.getGroundItem(),
-            new ItemStack(Material.SUGAR), new ItemStack(Material.EGG), SlimefunItems.BUTTER.item(),
+            Products.LIME.getBlendedItem(), SlimefunItems.HEAVY_CREAM, Products.LIME.getGroundItem(),
+            new ItemStack(Material.SUGAR), new ItemStack(Material.EGG), SlimefunItems.BUTTER,
             Ingredients.BISCUIT_BASE.getItem(), Ingredients.BISCUIT_BASE.getItem(), Ingredients.BISCUIT_BASE.getItem(),
         },
         player -> simplePlayerEffect(
@@ -251,7 +251,7 @@ public final class Foods {
         CultivationStacks.TAQUITO,
         RecipeTypes.BAKING,
         new ItemStack[]{
-            SlimefunItems.CHEESE.item(), Products.CHICKEN.getChoppedItem(), Ingredients.PICO_DE_GALLO.getItem(),
+            SlimefunItems.CHEESE, Products.CHICKEN.getChoppedItem(), Ingredients.PICO_DE_GALLO.getItem(),
             Products.CUMIN.getGroundItem(), Products.CHILLI_PEPPER.getChoppedItem(), Products.BLACK_PEPPER.getGroundItem(),
             Ingredients.TORTILLAS.getItem(), Ingredients.TORTILLAS.getItem(), Ingredients.TORTILLAS.getItem(),
         },
@@ -387,16 +387,16 @@ public final class Foods {
         CultivationStacks.LASAGNA,
         RecipeTypes.BAKING,
         new ItemStack[]{
-            Ingredients.PASTA.getItem(), SlimefunItems.CHEESE.item(), Products.TOMATO.getChoppedItem(),
-            SlimefunItems.HEAVY_CREAM.item(), Ingredients.PASTA.getItem(), SlimefunItems.CHEESE.item(),
-            Products.TOMATO.getChoppedItem(), SlimefunItems.CHEESE.item(), Ingredients.PASTA.getItem()
+            Ingredients.PASTA.getItem(), SlimefunItems.CHEESE, Products.TOMATO.getChoppedItem(),
+            SlimefunItems.HEAVY_CREAM, Ingredients.PASTA.getItem(), SlimefunItems.CHEESE,
+            Products.TOMATO.getChoppedItem(), SlimefunItems.CHEESE, Ingredients.PASTA.getItem()
         },
         player -> {
             simplePlayerEffect(
                 player,
                 0,
                 new Pair<>(PotionEffectType.REGENERATION, 1),
-                new Pair<>(PotionEffectType.RESISTANCE, 1)
+                new Pair<>(PotionEffectType.DAMAGE_RESISTANCE, 1)
             );
             simplePlayerEffect(player, 999);
         }
@@ -429,7 +429,7 @@ public final class Foods {
         RecipeTypes.FINISHING,
         new ItemStack[]{
             null, new ItemStack(Material.BREAD), null,
-            SlimefunItems.CHEESE.item(), Ingredients.COOKED_BURGER_PATTY.getItem(), Products.TOMATO.getSlicedItem(),
+            SlimefunItems.CHEESE, Ingredients.COOKED_BURGER_PATTY.getItem(), Products.TOMATO.getSlicedItem(),
             null, new ItemStack(Material.BREAD), null
         },
         player -> simplePlayerEffect(player, 8, new Pair<>(PotionEffectType.REGENERATION, 2))
@@ -439,7 +439,7 @@ public final class Foods {
         CultivationStacks.PIZZA_CHEESE,
         RecipeTypes.BAKING,
         new ItemStack[]{
-            SlimefunItems.CHEESE.item(), SlimefunItems.CHEESE.item(), SlimefunItems.CHEESE.item(),
+            SlimefunItems.CHEESE, SlimefunItems.CHEESE, SlimefunItems.CHEESE,
             Products.TOMATO.getBlendedItem(), Products.TOMATO.getBlendedItem(), Products.TOMATO.getBlendedItem(),
             Ingredients.DOUGH.getItem(), Ingredients.DOUGH.getItem(), Ingredients.DOUGH.getItem()
         },
@@ -450,7 +450,7 @@ public final class Foods {
         CultivationStacks.PIZZA_MUSHROOM,
         RecipeTypes.BAKING,
         new ItemStack[]{
-            SlimefunItems.CHEESE.item(), Products.RED_MUSHROOM.getSlicedItem(), SlimefunItems.CHEESE.item(),
+            SlimefunItems.CHEESE, Products.RED_MUSHROOM.getSlicedItem(), SlimefunItems.CHEESE,
             Products.TOMATO.getBlendedItem(), Products.TOMATO.getBlendedItem(), Products.TOMATO.getBlendedItem(),
             Ingredients.DOUGH.getItem(), Ingredients.DOUGH.getItem(), Ingredients.DOUGH.getItem()
         },
@@ -466,7 +466,7 @@ public final class Foods {
         CultivationStacks.PIZZA_PEPPERONI,
         RecipeTypes.BAKING,
         new ItemStack[]{
-            SlimefunItems.CHEESE.item(), Ingredients.PEPPERONI.getSlicedItem(), SlimefunItems.CHEESE.item(),
+            SlimefunItems.CHEESE, Ingredients.PEPPERONI.getSlicedItem(), SlimefunItems.CHEESE,
             Products.TOMATO.getBlendedItem(), Products.TOMATO.getBlendedItem(), Products.TOMATO.getBlendedItem(),
             Ingredients.DOUGH.getItem(), Ingredients.DOUGH.getItem(), Ingredients.DOUGH.getItem()
         },
@@ -483,9 +483,9 @@ public final class Foods {
         CultivationStacks.CHEESY_SCALLOPED_COURGETTE,
         RecipeTypes.BAKING,
         new ItemStack[]{
-            SlimefunItems.CHEESE.item(), Products.COURGETTE.getSlicedItem(), SlimefunItems.CHEESE.item(),
+            SlimefunItems.CHEESE, Products.COURGETTE.getSlicedItem(), SlimefunItems.CHEESE,
             Products.COURGETTE.getSlicedItem(), new ItemStack(Material.MILK_BUCKET), Products.COURGETTE.getSlicedItem(),
-            Products.THYME.getChoppedItem(), SlimefunItems.SALT.item(), SlimefunItems.BUTTER.item()
+            Products.THYME.getChoppedItem(), SlimefunItems.SALT, SlimefunItems.BUTTER
         },
         player -> simplePlayerEffect(
             player,
@@ -500,7 +500,7 @@ public final class Foods {
         RecipeTypes.BAKING,
         new ItemStack[]{
             Products.PECAN.getChoppedItem(), Products.PECAN.getChoppedItem(), Products.PECAN.getChoppedItem(),
-            new ItemStack(Material.EGG), new ItemStack(Material.SUGAR), SlimefunItems.HEAVY_CREAM.item(),
+            new ItemStack(Material.EGG), new ItemStack(Material.SUGAR), SlimefunItems.HEAVY_CREAM,
             Ingredients.PIE_CRUST.getItem(), Ingredients.PIE_CRUST.getItem(), Ingredients.PIE_CRUST.getItem()
         },
         player -> simplePlayerEffect(
@@ -514,8 +514,8 @@ public final class Foods {
         CultivationStacks.GARLIC_BUTTER_MUSHROOMS,
         RecipeTypes.BAKING,
         new ItemStack[]{
-            SlimefunItems.BUTTER.item(), SlimefunItems.BUTTER.item(), SlimefunItems.BUTTER.item(),
-            Products.THYME.getChoppedItem(), Products.GARLIC.getChoppedItem(), SlimefunItems.SALT.item(),
+            SlimefunItems.BUTTER, SlimefunItems.BUTTER, SlimefunItems.BUTTER,
+            Products.THYME.getChoppedItem(), Products.GARLIC.getChoppedItem(), SlimefunItems.SALT,
             Products.BROWN_MUSHROOM.getSlicedItem(), Products.BROWN_MUSHROOM.getSlicedItem(), Products.BROWN_MUSHROOM.getSlicedItem()
         },
         player -> simplePlayerEffect(
@@ -594,7 +594,7 @@ public final class Foods {
         CultivationStacks.RAMEN_BEEF_HEARTY,
         RecipeTypes.FINISHING,
         new ItemStack[]{
-            CultivationStacks.SPINACH.item(), CultivationStacks.PEA.item(), Products.EGG.getFriedItem(),
+            CultivationStacks.SPINACH, CultivationStacks.PEA, Products.EGG.getFriedItem(),
             new ItemStack(Material.CARROT), RAMEN_BEEF.getItem(), Products.BELL_PEPPER.getFriedItem(),
             Products.GINGER.getChoppedItem(), Products.PARSLEY.getChoppedItem(), Products.GARLIC.getChoppedItem()
         },
@@ -611,8 +611,8 @@ public final class Foods {
         CultivationStacks.RAMEN_CHICKEN_HEARTY,
         RecipeTypes.FINISHING,
         new ItemStack[]{
-            Products.ONION.getChoppedItem(), SlimefunItems.BUTTER.item(), Products.RED_MUSHROOM.getChoppedItem(),
-            SlimefunItems.SALT.item(), RAMEN_CHICKEN.getItem(), Products.CHILLI_PEPPER.getSlicedItem(),
+            Products.ONION.getChoppedItem(), SlimefunItems.BUTTER, Products.RED_MUSHROOM.getChoppedItem(),
+            SlimefunItems.SALT, RAMEN_CHICKEN.getItem(), Products.CHILLI_PEPPER.getSlicedItem(),
             Products.GINGER.getChoppedItem(), Products.PARSLEY.getChoppedItem(), Products.GARLIC.getChoppedItem()
         },
         player ->
@@ -628,7 +628,7 @@ public final class Foods {
         CultivationStacks.RAMEN_SEAFOOD_HEARTY,
         RecipeTypes.FINISHING,
         new ItemStack[]{
-            Products.EGG.getBoiledItem(), Products.PUFFERFISH.getGrilledItem(), CultivationStacks.CURRY_LEAF.item(),
+            Products.EGG.getBoiledItem(), Products.PUFFERFISH.getGrilledItem(), CultivationStacks.CURRY_LEAF,
             Products.LIME.getSlicedItem(), RAMEN_SEAFOOD.getItem(), Products.SALMON.getGrilledItem(),
             Products.GINGER.getChoppedItem(), Products.CILANTRO.getChoppedItem(), Products.GARLIC.getChoppedItem()
         },
@@ -645,7 +645,7 @@ public final class Foods {
         CultivationStacks.BAGEL,
         RecipeTypes.BAKING,
         new ItemStack[]{
-            null, SlimefunItems.SALT.item(), null,
+            null, SlimefunItems.SALT, null,
             null, Ingredients.DOUGH.getItem(), null,
             null, null, null
         },
@@ -656,7 +656,7 @@ public final class Foods {
         CultivationStacks.BAGEL_BITE,
         RecipeTypes.FINISHING,
         new ItemStack[]{
-            null, SlimefunItems.CHEESE.item(), null,
+            null, SlimefunItems.CHEESE, null,
             null, Products.TOMATO.getBlendedItem(), null,
             null, BAGEL.getItem(), null
         },
@@ -686,11 +686,11 @@ public final class Foods {
         new ItemStack[]{
             Ingredients.KETCHUP.getItem(), new ItemStack(Material.EGG), Products.BREAD.getChoppedItem(),
             new ItemStack(Material.MILK_BUCKET), Products.BEEF.getGroundItem(), Products.THYME.getChoppedItem(),
-            SlimefunItems.SALT.item(), Products.ONION.getChoppedItem(), Ingredients.MUSTARD.getItem()
+            SlimefunItems.SALT, Products.ONION.getChoppedItem(), Ingredients.MUSTARD.getItem()
         },
         player -> simplePlayerEffect(player, 999,
                                      new Pair<>(PotionEffectType.HEALTH_BOOST, 3),
-                                     new Pair<>(PotionEffectType.RESISTANCE, 2),
+                                     new Pair<>(PotionEffectType.DAMAGE_RESISTANCE, 2),
                                      new Pair<>(PotionEffectType.HASTE, 1),
                                      new Pair<>(PotionEffectType.SLOWNESS, 1)
         )
@@ -700,7 +700,7 @@ public final class Foods {
         CultivationStacks.SAUSAGE,
         RecipeTypes.GRILLED,
         new ItemStack[]{
-            new ItemStack(Material.SUGAR), SlimefunItems.SALT.item(), Products.GARLIC.getChoppedItem(),
+            new ItemStack(Material.SUGAR), SlimefunItems.SALT, Products.GARLIC.getChoppedItem(),
             Products.PORK.getGroundItem(), null, null,
             null, null, null
         },
@@ -727,7 +727,7 @@ public final class Foods {
         CultivationStacks.TATER_TOTS,
         RecipeTypes.FINISHING,
         new ItemStack[]{
-            null, SlimefunItems.SALT.item(), null,
+            null, SlimefunItems.SALT, null,
             null, Products.POTATO.getFriedItem(), null,
             null, null, null
         },
@@ -793,4 +793,4 @@ public final class Foods {
         }
         player.setHealth(Math.min(health.getValue(), player.getHealth() + healing));
     }
-}
+            }
