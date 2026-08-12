@@ -46,14 +46,18 @@ public interface CultivationPlantHolder {
     default void addItemsToDisplay(@Nonnull Location location, @Nonnull ItemStack itemStack) {
         if (hasDisplayPlant(location)) {
             DisplayGroup group = getPlantDisplayGroup(location);
-            DisplayGroupGenerators.addItemsToPlant(group, itemStack);
+            if (group != null) {
+                DisplayGroupGenerators.growItemsInPlant(group, itemStack);
+            }
         }
     }
 
     default void removeItems(@Nonnull Location location) {
         if (hasDisplayPlant(location)) {
             DisplayGroup group = getPlantDisplayGroup(location);
-            DisplayGroupGenerators.removeItemsFromPlant(group);
+            if (group != null) {
+                DisplayGroupGenerators.hideItemsInPlant(group);
+            }
         }
     }
 
