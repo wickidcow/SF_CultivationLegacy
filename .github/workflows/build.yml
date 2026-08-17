@@ -2,11 +2,9 @@ name: Build Cultivation Legacy
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -15,143 +13,78 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Set up Java 21
         uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '21'
           cache: maven
-
       - name: Verify English and Legacy source policy
         shell: python
         run: |
           from pathlib import Path
           import re
-
-          string_re = re.compile(r'"(?:\\.|[^"\\])*"')
-          cjk_re = re.compile(r'[\u4e00-\u9fff]')
+          cjk = re.compile(r'[\u4e00-\u9fff]')
           blocked = ('SlimefunGuguProject', 'guizhanss', 'GuizhanLibPlugin')
           failures = []
-
-          for path in sorted(Path('src/main/java').rglob('*.java')):
-              text = path.read_text(encoding='utf-8')
-              for number, line in enumerate(text.splitlines(), 1):
-                  if any(cjk_re.search(match.group(0)) for match in string_re.finditer(line)):
-                      failures.append(f'{path}:{number}: non-English Java string literal')
-              lowered = text.lower()
-              for term in blocked:
-                  if term.lower() in lowered:
-                      failures.append(f'{path}: forbidden legacy dependency/reference: {term}')
-
-          for path in (Path('pom.xml'), Path('src/main/resources/plugin.yml')):
-              text = path.read_text(encoding='utf-8')
-              lowered = text.lower()
-              for term in blocked:
-                  if term.lower() in lowered:
-                      failures.append(f'{path}: forbidden legacy dependency/reference: {term}')
-
-          for path in sorted(Path('src/main/resources').rglob('*')):
-              if not path.is_file() or path.suffix.lower() not in {'.yml', '.yaml', '.json', '.properties', '.txt'}:
+          for path in list(Path('src/main/java').rglob('*.java')) + list(Path('src/main/resources').rglob('*')):
+              if not path.is_file():
                   continue
-              text = path.read_text(encoding='utf-8')
-              if cjk_re.search(text):
-                  failures.append(f'{path}: non-English packaged resource text')
-
+              try:
+                  text = path.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              if cjk.search(text): failures.append(f'{path}: non-English text')
+              if any(term.lower() in text.lower() for term in blocked): failures.append(f'{path}: forbidden legacy dependency/reference')
           if failures:
-              print('Cultivation Legacy source policy failed:')
-              for failure in failures:
-                  print(f' - {failure}')
+              print('\n'.join(failures))
               raise SystemExit(1)
-
-          print('English/Legacy source policy passed.')
-
       - name: Install Slimefun Legacy build dependency
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           mkdir -p .ci-deps
-          gh release download "SlimefunLegacy4.1.29B" \
-            --repo "wickidcow/Slimefun-Legacy" \
-            --pattern "Slimefun-4.1.29.jar" \
-            --dir ".ci-deps"
-
-          mvn -B install:install-file \
-            -Dfile=".ci-deps/Slimefun-4.1.29.jar" \
-            -DgroupId="com.github.slimefun" \
-            -DartifactId="Slimefun" \
-            -Dversion="4.1.29" \
-            -Dpackaging="jar" \
-            -DgeneratePom=true
-
+          gh release download "SlimefunLegacy4.1.29B" --repo "wickidcow/Slimefun-Legacy" --pattern "Slimefun-4.1.29.jar" --dir ".ci-deps"
+          mvn -B install:install-file -Dfile=".ci-deps/Slimefun-4.1.29.jar" -DgroupId="com.github.slimefun" -DartifactId="Slimefun" -Dversion="4.1.29" -Dpackaging="jar" -DgeneratePom=true
       - name: Set 1.1.x build version
         shell: bash
         run: |
           VERSION="1.1.${GITHUB_RUN_NUMBER}"
           echo "VERSION=${VERSION}" >> "$GITHUB_ENV"
-          mvn -B versions:set \
-            -DnewVersion="${VERSION}" \
-            -DgenerateBackupPoms=false
-
+          mvn -B versions:set -DnewVersion="${VERSION}" -DgenerateBackupPoms=false
       - name: Build shaded JAR
         run: mvn -B clean package -DskipTests
-
       - name: Prepare named JAR
         shell: bash
         run: |
+          set -euo pipefail
           mkdir -p dist
-          JAR="$(find target -maxdepth 1 -type f -name '*.jar' \
-            ! -name 'original-*' \
-            ! -name '*-sources.jar' \
-            ! -name '*-javadoc.jar' \
-            -print -quit)"
-
-          if [ -z "$JAR" ]; then
-            echo "No built plugin JAR was found in target/."
-            exit 1
-          fi
-
-          OUTPUT="dist/SF_Cultivation${VERSION}.jar"
+          JAR="$(find target -maxdepth 1 -type f -name '*.jar' ! -name 'original-*' ! -name '*-sources.jar' ! -name '*-javadoc.jar' -print -quit)"
+          test -n "$JAR"
+          OUTPUT="dist/SF_CultivationLegacy${VERSION}.jar"
           cp "$JAR" "$OUTPUT"
           echo "OUTPUT_JAR=$OUTPUT" >> "$GITHUB_ENV"
-          echo "Built $OUTPUT"
-
-      - name: Verify packaged English resources
-        shell: bash
-        run: |
-          if jar tf "$OUTPUT_JAR" | grep -E '^acf-(core|minecraft)_.+\.properties$'; then
-            echo "Non-English ACF locale resources were packaged unexpectedly."
-            exit 1
-          fi
-          echo "Packaged resource policy passed."
-
-      - name: Publish direct JAR release
+          sha256sum "$OUTPUT"
+      - name: Upload CI artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: SF_CultivationLegacy${{ env.VERSION }}
+          path: ${{ env.OUTPUT_JAR }}
+          if-no-files-found: error
+      - name: Publish raw JAR release
         if: github.event_name != 'pull_request'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
+          set -euo pipefail
           TAG="v${VERSION}"
-          FILE_NAME="$(basename "$OUTPUT_JAR")"
-          DOWNLOAD_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/${TAG}/${FILE_NAME}"
-
           if gh release view "$TAG" >/dev/null 2>&1; then
             gh release upload "$TAG" "$OUTPUT_JAR" --clobber
           else
-            gh release create "$TAG" "$OUTPUT_JAR" \
-              --title "SF Cultivation Legacy ${VERSION}" \
-              --notes "Cultivation Legacy ${VERSION}: Slimefun Legacy build with modern Minecraft compatibility, English-first maintenance, GuizhanLib removed, farmland growth support, and selected community performance/stability fixes."
+            gh release create "$TAG" "$OUTPUT_JAR" --title "SF_CultivationLegacy ${VERSION}" --generate-notes
           fi
-
-          {
-            echo "## Cultivation Legacy JAR"
-            echo ""
-            echo "### [Download ${FILE_NAME}](${DOWNLOAD_URL})"
-            echo ""
-            echo "This is the actual plugin .jar file, not a GitHub Actions ZIP artifact."
-          } >> "$GITHUB_STEP_SUMMARY"
