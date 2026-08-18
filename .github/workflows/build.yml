@@ -69,12 +69,6 @@ jobs:
           cp "$JAR" "$OUTPUT"
           echo "OUTPUT_JAR=$OUTPUT" >> "$GITHUB_ENV"
           sha256sum "$OUTPUT"
-      - name: Upload CI artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: SF_CultivationLegacy${{ env.VERSION }}
-          path: ${{ env.OUTPUT_JAR }}
-          if-no-files-found: error
       - name: Publish raw JAR release
         if: github.event_name != 'pull_request'
         env:
