@@ -45,7 +45,7 @@
     </scm>
 
     <build>
-        <finalName>SF_CultivationLegacy1.1.23</finalName>
+        <finalName>SF_Cultivation${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -85,9 +85,7 @@
                 <executions>
                     <execution>
                         <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
+                        <goals><goal>shade</goal></goals>
                     </execution>
                 </executions>
             </plugin>
@@ -95,14 +93,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.14.1</version>
-                <configuration>
-                    <release>${maven.compiler.release}</release>
-                </configuration>
+                <configuration><release>${maven.compiler.release}</release></configuration>
             </plugin>
         </plugins>
         <defaultGoal>clean package</defaultGoal>
         <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
-
         <resources>
             <resource>
                 <directory>${basedir}/src/main/resources</directory>
@@ -127,22 +122,10 @@
     </properties>
 
     <repositories>
-        <repository>
-            <id>spigot-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-        </repository>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-        <repository>
-            <id>papermc</id>
-            <url>https://repo.papermc.io/repository/maven-public/</url>
-        </repository>
-        <repository>
-            <id>aikar</id>
-            <url>https://repo.aikar.co/content/groups/aikar/</url>
-        </repository>
+        <repository><id>spigot-repo</id><url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url></repository>
+        <repository><id>jitpack.io</id><url>https://jitpack.io</url></repository>
+        <repository><id>papermc</id><url>https://repo.papermc.io/repository/maven-public/</url></repository>
+        <repository><id>aikar</id><url>https://repo.aikar.co/content/groups/aikar/</url></repository>
     </repositories>
 
     <dependencies>
@@ -159,44 +142,25 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.baked-libs</groupId>
-            <artifactId>dough-api</artifactId>
-            <version>1.2.0</version>
-            <scope>compile</scope>
+            <groupId>io.github.baked-libs</groupId><artifactId>dough-api</artifactId><version>1.2.0</version><scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>dev.sefiraat</groupId>
-            <artifactId>SefiLib</artifactId>
-            <version>0.3.0</version>
-            <scope>compile</scope>
+            <groupId>dev.sefiraat</groupId><artifactId>SefiLib</artifactId><version>0.3.0</version><scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.bstats</groupId>
-            <artifactId>bstats-bukkit</artifactId>
-            <version>3.0.0</version>
-            <scope>compile</scope>
+            <groupId>org.bstats</groupId><artifactId>bstats-bukkit</artifactId><version>3.0.0</version><scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>annotations</artifactId>
-            <version>3.0.1u2</version>
+            <groupId>com.google.code.findbugs</groupId><artifactId>annotations</artifactId><version>3.0.1u2</version>
         </dependency>
         <dependency>
-            <groupId>io.papermc</groupId>
-            <artifactId>paperlib</artifactId>
-            <version>1.0.7</version>
-            <scope>compile</scope>
+            <groupId>io.papermc</groupId><artifactId>paperlib</artifactId><version>1.0.7</version><scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>23.0.0</version>
-            <scope>compile</scope>
+            <groupId>org.jetbrains</groupId><artifactId>annotations</artifactId><version>23.0.0</version><scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>co.aikar</groupId>
-            <artifactId>acf-paper</artifactId>
-            <version>0.5.1-SNAPSHOT</version>
+            <groupId>co.aikar</groupId><artifactId>acf-paper</artifactId><version>0.5.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
