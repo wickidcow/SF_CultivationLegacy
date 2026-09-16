@@ -21,21 +21,9 @@
     </licenses>
 
     <developers>
-        <developer>
-            <name>Sefiraat</name>
-            <organization>Sefiraat</organization>
-            <organizationUrl>https://www.sefiraat.dev</organizationUrl>
-        </developer>
-        <developer>
-            <name>J3fftw</name>
-            <organization>J3fftw</organization>
-            <organizationUrl>https://j3fftw.dev</organizationUrl>
-        </developer>
-        <developer>
-            <name>JustAHuman</name>
-            <organization>JustAHuman</organization>
-            <organizationUrl>https://github.com/JustAHuman-xD</organizationUrl>
-        </developer>
+        <developer><name>Sefiraat</name><organization>Sefiraat</organization><organizationUrl>https://www.sefiraat.dev</organizationUrl></developer>
+        <developer><name>J3fftw</name><organization>J3fftw</organization><organizationUrl>https://j3fftw.dev</organizationUrl></developer>
+        <developer><name>JustAHuman</name><organization>JustAHuman</organization><organizationUrl>https://github.com/JustAHuman-xD</organizationUrl></developer>
     </developers>
 
     <scm>
@@ -45,7 +33,7 @@
     </scm>
 
     <build>
-        <finalName>SF_CultivationLegacy${project.version}</finalName>
+        <finalName>SF_Cultivation${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -54,59 +42,24 @@
                 <configuration>
                     <createDependencyReducedPom>false</createDependencyReducedPom>
                     <relocations>
-                        <relocation>
-                            <pattern>org.bstats</pattern>
-                            <shadedPattern>dev.sefiraat.cultivation.bstats</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>io.github.bakedlibs.dough</pattern>
-                            <shadedPattern>dev.sefiraat.cultivation.dough</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>io.papermc.lib</pattern>
-                            <shadedPattern>dev.sefiraat.cultivation.paperlib</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>io.github.sefiraat.sefilib</pattern>
-                            <shadedPattern>io.github.sefiraat.cultivation.sefilib</shadedPattern>
-                        </relocation>
+                        <relocation><pattern>org.bstats</pattern><shadedPattern>dev.sefiraat.cultivation.bstats</shadedPattern></relocation>
+                        <relocation><pattern>io.github.bakedlibs.dough</pattern><shadedPattern>dev.sefiraat.cultivation.dough</shadedPattern></relocation>
+                        <relocation><pattern>io.papermc.lib</pattern><shadedPattern>dev.sefiraat.cultivation.paperlib</shadedPattern></relocation>
+                        <relocation><pattern>io.github.sefiraat.sefilib</pattern><shadedPattern>io.github.sefiraat.cultivation.sefilib</shadedPattern></relocation>
                     </relocations>
-                    <filters>
-                        <filter>
-                            <artifact>*:*</artifact>
-                            <excludes>
-                                <exclude>META-INF/*</exclude>
-                                <exclude>acf-core_*.properties</exclude>
-                                <exclude>acf-minecraft_*.properties</exclude>
-                            </excludes>
-                        </filter>
-                    </filters>
+                    <filters><filter><artifact>*:*</artifact><excludes><exclude>META-INF/*</exclude><exclude>acf-core_*.properties</exclude><exclude>acf-minecraft_*.properties</exclude></excludes></filter></filters>
                 </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals><goal>shade</goal></goals>
-                    </execution>
-                </executions>
+                <executions><execution><phase>package</phase><goals><goal>shade</goal></goals></execution></executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.14.1</version>
+                <groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><version>3.14.1</version>
                 <configuration><release>${maven.compiler.release}</release></configuration>
             </plugin>
         </plugins>
         <defaultGoal>clean package</defaultGoal>
         <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
         <resources>
-            <resource>
-                <directory>${basedir}/src/main/resources</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>**/*.*</include>
-                    <include>tags/*.json</include>
-                </includes>
-            </resource>
+            <resource><directory>${basedir}/src/main/resources</directory><filtering>true</filtering><includes><include>**/*.*</include><include>tags/*.json</include></includes></resource>
         </resources>
     </build>
 
@@ -129,38 +82,14 @@
     </repositories>
 
     <dependencies>
-        <dependency>
-            <groupId>${server.api.group}</groupId>
-            <artifactId>${server.api.artifact}</artifactId>
-            <version>${server.api.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.slimefun</groupId>
-            <artifactId>Slimefun</artifactId>
-            <version>4.1.29</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.github.baked-libs</groupId><artifactId>dough-api</artifactId><version>1.2.0</version><scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>dev.sefiraat</groupId><artifactId>SefiLib</artifactId><version>0.3.0</version><scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.bstats</groupId><artifactId>bstats-bukkit</artifactId><version>3.0.0</version><scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.findbugs</groupId><artifactId>annotations</artifactId><version>3.0.1u2</version>
-        </dependency>
-        <dependency>
-            <groupId>io.papermc</groupId><artifactId>paperlib</artifactId><version>1.0.7</version><scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains</groupId><artifactId>annotations</artifactId><version>23.0.0</version><scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>co.aikar</groupId><artifactId>acf-paper</artifactId><version>0.5.1-SNAPSHOT</version>
-        </dependency>
+        <dependency><groupId>${server.api.group}</groupId><artifactId>${server.api.artifact}</artifactId><version>${server.api.version}</version><scope>provided</scope></dependency>
+        <dependency><groupId>com.github.slimefun</groupId><artifactId>Slimefun</artifactId><version>4.1.29</version><scope>provided</scope></dependency>
+        <dependency><groupId>io.github.baked-libs</groupId><artifactId>dough-api</artifactId><version>1.2.0</version><scope>compile</scope></dependency>
+        <dependency><groupId>dev.sefiraat</groupId><artifactId>SefiLib</artifactId><version>0.3.0</version><scope>compile</scope></dependency>
+        <dependency><groupId>org.bstats</groupId><artifactId>bstats-bukkit</artifactId><version>3.0.0</version><scope>compile</scope></dependency>
+        <dependency><groupId>com.google.code.findbugs</groupId><artifactId>annotations</artifactId><version>3.0.1u2</version></dependency>
+        <dependency><groupId>io.papermc</groupId><artifactId>paperlib</artifactId><version>1.0.7</version><scope>compile</scope></dependency>
+        <dependency><groupId>org.jetbrains</groupId><artifactId>annotations</artifactId><version>23.0.0</version><scope>compile</scope></dependency>
+        <dependency><groupId>co.aikar</groupId><artifactId>acf-paper</artifactId><version>0.5.1-SNAPSHOT</version></dependency>
     </dependencies>
 </project>
