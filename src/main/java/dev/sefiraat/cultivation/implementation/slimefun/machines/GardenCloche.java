@@ -1,14 +1,12 @@
 package dev.sefiraat.cultivation.implementation.slimefun.machines;
 
+import city.norain.slimefun4.utils.TaskUtil;
 import com.xzavier0722.mc.plugin.slimefun4.storage.controller.SlimefunBlockData;
 import com.xzavier0722.mc.plugin.slimefun4.storage.util.StorageCacheUtils;
-import dev.sefiraat.cultivation.Cultivation;
 import dev.sefiraat.cultivation.api.datatypes.instances.FloraLevelProfile;
 import dev.sefiraat.cultivation.api.slimefun.items.plants.HarvestablePlant;
 import dev.sefiraat.cultivation.implementation.slimefun.items.Machines;
-import dev.sefiraat.cultivation.implementation.utils.DisplayGroupGenerators;
 import dev.sefiraat.sefilib.entity.display.DisplayGroup;
-import dev.sefiraat.sefilib.entity.display.DisplayInteractable;
 import dev.sefiraat.sefilib.string.Theme;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -25,7 +23,6 @@ import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -36,16 +33,16 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class GardenCloche extends SlimefunItem implements DisplayInteractable, EnergyNetComponent {
+public class GardenCloche extends SlimefunItem implements EnergyNetComponent {
 
-    private static final String KEY_PLANT = "plant";
-    private static final String KEY_UUID = "display-uuid";
+    private static final String KEY_LEGACY_PLANT = "plant";
+    private static final String KEY_LEGACY_UUID = "display-uuid";
+    private static final String KEY_MIGRATION_PENDING = "cloche-entity-migration";
     private static final int PLANT_SLOT = 20;
     private static final int[] OUTPUT_SLOTS = new int[]{
         14, 15, 16, 23, 24, 25, 32, 33, 34
@@ -68,8 +65,9 @@ public class GardenCloche extends SlimefunItem implements DisplayInteractable, E
             new BlockPlaceHandler(false) {
                 @Override
                 public void onPlayerPlace(@NotNull BlockPlaceEvent e) {
-                    e.getBlock().setType(Material.BARRIER);
-                    setupDisplay(e.getBlock().getLocation());
+                    Location location = e.getBlock().getLocation();
+                    cleanupLegacyDisplay(location);
+                    e.getBlock().setType(Material.GREEN_STAINED_GLASS);
                 }
             },
             new BlockBreakHandler(false, false) {
@@ -77,8 +75,7 @@ public class GardenCloche extends SlimefunItem implements DisplayInteractable, E
                 @ParametersAreNonnullByDefault
                 public void onPlayerBreak(BlockBreakEvent e, ItemStack item, List<ItemStack> drops) {
                     Location location = e.getBlock().getLocation();
-                    removeDisplay(location);
-                    e.getBlock().setType(Material.AIR);
+                    cleanupLegacyDisplay(location);
                     BlockMenu blockMenu = StorageCacheUtils.getMenu(location);
                     if (blockMenu != null) {
                         blockMenu.dropItems(location, PLANT_SLOT);
@@ -95,36 +92,40 @@ public class GardenCloche extends SlimefunItem implements DisplayInteractable, E
                 @Override
                 public void tick(Block block, SlimefunItem item, SlimefunBlockData data) {
                     Location location = block.getLocation();
+
+                    // Older Cultivation builds used one Interaction plus four ItemDisplay entities
+                    // for every cloche. Migrate those blocks once, then run entity-free afterwards.
+                    if (migrateLegacyCloche(block, location)) {
+                        return;
+                    }
+
                     BlockMenu blockMenu = StorageCacheUtils.getMenu(location);
                     if (blockMenu == null) {
                         return;
                     }
 
                     ItemStack possiblePlant = blockMenu.getItemInSlot(PLANT_SLOT);
-                    SlimefunItem slimefunItem = SlimefunItem.getByItem(possiblePlant);
+                    if (possiblePlant == null || possiblePlant.getType().isAir()) {
+                        return;
+                    }
 
-                    if (slimefunItem instanceof HarvestablePlant plant) {
-                        if (!hasDisplayPlant(location)) {
-                            Bukkit.getScheduler().runTask(
-                                Cultivation.getInstance(), () -> addPlantToDisplay(location)
-                            );
+                    SlimefunItem slimefunItem = SlimefunItem.getByItem(possiblePlant);
+                    if (!(slimefunItem instanceof HarvestablePlant plant)) {
+                        return;
+                    }
+
+                    if (getCharge(location) < POWER_REQUIREMENT) {
+                        return;
+                    }
+
+                    FloraLevelProfile profile = FloraLevelProfile.fromItemStack(possiblePlant);
+                    double growthRate = plant.getGrowthRate(profile);
+                    if (ThreadLocalRandom.current().nextDouble() < growthRate) {
+                        ItemStack itemStack = plant.getRandomItemWithDropModifier(profile);
+                        if (itemStack != null) {
+                            blockMenu.pushItem(itemStack, OUTPUT_SLOTS);
+                            removeCharge(location, POWER_REQUIREMENT);
                         }
-                        if (getCharge(location) < POWER_REQUIREMENT) {
-                            return;
-                        }
-                        FloraLevelProfile profile = FloraLevelProfile.fromItemStack(possiblePlant);
-                        double growthRate = plant.getGrowthRate(profile);
-                        if (ThreadLocalRandom.current().nextDouble() < growthRate) {
-                            ItemStack itemStack = plant.getRandomItemWithDropModifier(profile);
-                            if (itemStack != null) {
-                                blockMenu.pushItem(itemStack, OUTPUT_SLOTS);
-                                removeCharge(location, POWER_REQUIREMENT);
-                            }
-                        }
-                    } else if (hasDisplayPlant(location)) {
-                        Bukkit.getScheduler().runTask(
-                            Cultivation.getInstance(), () -> hidePlantInDisplay(location)
-                        );
                     }
                 }
             }
@@ -162,57 +163,51 @@ public class GardenCloche extends SlimefunItem implements DisplayInteractable, E
         };
     }
 
-    private boolean hasDisplayPlant(@Nonnull Location location) {
-        String hasPlant = StorageCacheUtils.getData(location, KEY_PLANT);
-        return Boolean.parseBoolean(hasPlant);
-    }
-
-    private void setupDisplay(@Nonnull Location location) {
-        DisplayGroup displayGroup = DisplayGroupGenerators.generateCloche(location.clone().add(0.5, 0, 0.5));
-        StorageCacheUtils.setData(location, KEY_UUID, displayGroup.getParentUUID().toString());
-    }
-
-    private void removeDisplay(@Nonnull Location location) {
-        DisplayGroup group = getDisplayGroup(location);
-        if (group != null) {
-            group.remove();
+    private boolean migrateLegacyCloche(@Nonnull Block block, @Nonnull Location location) {
+        String legacyUuid = StorageCacheUtils.getData(location, KEY_LEGACY_UUID);
+        if (legacyUuid == null && block.getType() != Material.BARRIER) {
+            return false;
         }
-        StorageCacheUtils.removeData(location, KEY_PLANT);
-        StorageCacheUtils.removeData(location, KEY_UUID);
+
+        if (Boolean.parseBoolean(StorageCacheUtils.getData(location, KEY_MIGRATION_PENDING))) {
+            return true;
+        }
+
+        StorageCacheUtils.setData(location, KEY_MIGRATION_PENDING, "true");
+        TaskUtil.runSyncMethod(location, () -> {
+            removeLegacyDisplayEntity(legacyUuid);
+
+            SlimefunItem currentItem = StorageCacheUtils.getSlimefunItem(location);
+            if (currentItem != null && getId().equals(currentItem.getId())) {
+                location.getBlock().setType(Material.GREEN_STAINED_GLASS);
+                StorageCacheUtils.removeData(location, KEY_LEGACY_PLANT);
+                StorageCacheUtils.removeData(location, KEY_LEGACY_UUID);
+                StorageCacheUtils.removeData(location, KEY_MIGRATION_PENDING);
+            }
+        });
+        return true;
     }
 
-    private void addPlantToDisplay(@Nonnull Location location) {
-        StorageCacheUtils.setData(location, KEY_PLANT, "true");
-        DisplayGroup group = getDisplayGroup(location);
-        if (group != null) {
-            DisplayGroupGenerators.addPlantToCloche(group);
-        }
+    private void cleanupLegacyDisplay(@Nonnull Location location) {
+        removeLegacyDisplayEntity(StorageCacheUtils.getData(location, KEY_LEGACY_UUID));
+        StorageCacheUtils.removeData(location, KEY_LEGACY_PLANT);
+        StorageCacheUtils.removeData(location, KEY_LEGACY_UUID);
+        StorageCacheUtils.removeData(location, KEY_MIGRATION_PENDING);
     }
 
-    private void hidePlantInDisplay(@Nonnull Location location) {
-        DisplayGroup displayGroup = getDisplayGroup(location);
-        if (displayGroup != null) {
-            DisplayGroupGenerators.hidePlantInCloche(displayGroup);
+    private void removeLegacyDisplayEntity(String uuidString) {
+        if (uuidString == null || uuidString.isBlank()) {
+            return;
         }
-        StorageCacheUtils.removeData(location, KEY_PLANT);
-    }
 
-    @Nullable
-    private UUID getDisplayGroupUUID(@Nonnull Location location) {
-        String uuid = StorageCacheUtils.getData(location, KEY_UUID);
-        if (uuid == null) {
-            return null;
+        try {
+            DisplayGroup group = DisplayGroup.fromUUID(UUID.fromString(uuidString));
+            if (group != null) {
+                group.remove();
+            }
+        } catch (IllegalArgumentException ignored) {
+            // A malformed legacy UUID should never stop the cloche from being usable or removable.
         }
-        return UUID.fromString(uuid);
-    }
-
-    @Nullable
-    private DisplayGroup getDisplayGroup(@Nonnull Location location) {
-        UUID uuid = getDisplayGroupUUID(location);
-        if (uuid == null) {
-            return null;
-        }
-        return DisplayGroup.fromUUID(uuid);
     }
 
     @NotNull
