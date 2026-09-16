@@ -6,7 +6,7 @@
 
     <groupId>dev.sefiraat</groupId>
     <artifactId>Cultivation</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.23</version>
 
     <name>Cultivation</name>
     <description>A Slimefun Addon that adds a plethora of Magical and non-magical flora.</description>
@@ -45,13 +45,14 @@
     </scm>
 
     <build>
-        <finalName>${project.name} v${project.version}</finalName>
+        <finalName>SF_CultivationLegacy1.1.23</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.6.1</version>
                 <configuration>
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
                     <relocations>
                         <relocation>
                             <pattern>org.bstats</pattern>
@@ -95,7 +96,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.14.1</version>
                 <configuration>
-                    <release>21</release>
+                    <release>${maven.compiler.release}</release>
                 </configuration>
             </plugin>
         </plugins>
@@ -117,6 +118,9 @@
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <server.api.group>org.spigotmc</server.api.group>
+        <server.api.artifact>spigot-api</server.api.artifact>
+        <server.api.version>1.21.11-R0.1-SNAPSHOT</server.api.version>
         <sonar.projectKey>Cultivation</sonar.projectKey>
         <sonar.organization>sefiraat</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
@@ -142,11 +146,10 @@
     </repositories>
 
     <dependencies>
-        <!-- Core -->
         <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.21.11-R0.1-SNAPSHOT</version>
+            <groupId>${server.api.group}</groupId>
+            <artifactId>${server.api.artifact}</artifactId>
+            <version>${server.api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -167,8 +170,6 @@
             <version>0.3.0</version>
             <scope>compile</scope>
         </dependency>
-
-        <!-- Tools -->
         <dependency>
             <groupId>org.bstats</groupId>
             <artifactId>bstats-bukkit</artifactId>
@@ -198,5 +199,4 @@
             <version>0.5.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
 </project>
