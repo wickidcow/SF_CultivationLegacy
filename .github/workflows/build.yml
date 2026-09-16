@@ -1,4 +1,4 @@
-name: Build Cultivation Legacy
+name: Build Cultivation
 
 on:
   push:
@@ -13,7 +13,7 @@ permissions:
 
 env:
   VERSION: "1.1.23"
-  OUTPUT_NAME: "SF_CultivationLegacy1.1.23.jar"
+  OUTPUT_NAME: "SF_Cultivation1.1.23.jar"
 
 jobs:
   build:
@@ -21,7 +21,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-
       - name: Set up Java 25 compiler
         uses: actions/setup-java@v5
         with:
@@ -29,7 +28,15 @@ jobs:
           java-version: '25'
           cache: maven
 
-      - name: Verify English and Legacy source policy
+      - name: Verify canonical release identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$VERSION" =~ ^[0-9]+(\.[0-9]+)*$ ]]
+          test "$OUTPUT_NAME" = "SF_Cultivation${VERSION}.jar"
+          test "$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" = "$VERSION"
+
+      - name: Verify English source policy
         shell: python
         run: |
           from pathlib import Path
@@ -38,14 +45,11 @@ jobs:
           blocked = ('SlimefunGuguProject', 'guizhanss', 'GuizhanLibPlugin')
           failures = []
           for path in list(Path('src/main/java').rglob('*.java')) + list(Path('src/main/resources').rglob('*')):
-              if not path.is_file():
-                  continue
-              try:
-                  text = path.read_text(encoding='utf-8')
-              except UnicodeDecodeError:
-                  continue
+              if not path.is_file(): continue
+              try: text = path.read_text(encoding='utf-8')
+              except UnicodeDecodeError: continue
               if cjk.search(text): failures.append(f'{path}: non-English text')
-              if any(term.lower() in text.lower() for term in blocked): failures.append(f'{path}: forbidden legacy dependency/reference')
+              if any(term.lower() in text.lower() for term in blocked): failures.append(f'{path}: forbidden dependency/reference')
           if failures:
               print('\n'.join(failures))
               raise SystemExit(1)
@@ -61,7 +65,6 @@ jobs:
 
       - name: Build universal release JAR on 1.21.11 baseline
         run: mvn -B clean package -DskipTests
-
       - name: Stage release JAR
         shell: bash
         run: |
@@ -71,39 +74,27 @@ jobs:
           test -s "$JAR"
           cp "$JAR" "dist/${OUTPUT_NAME}"
           unzip -tqq "dist/${OUTPUT_NAME}"
+          PLUGIN_VERSION=$(unzip -p "dist/${OUTPUT_NAME}" plugin.yml | awk -F': *' '/^version:/ {gsub(/["'"'"']/,"",$2); print $2; exit}')
+          test "$PLUGIN_VERSION" = "$VERSION"
+          if printf '%s\n' "$PLUGIN_VERSION" | grep -Eiq '(legacy|english|snapshot)'; then exit 1; fi
           sha256sum "dist/${OUTPUT_NAME}"
-
       - name: Verify Java 21 bytecode
         shell: bash
         run: |
-          set -euo pipefail
           MAIN_CLASS=$(unzip -p "dist/${OUTPUT_NAME}" plugin.yml | awk '/^main:/ {print $2; exit}')
-          test -n "$MAIN_CLASS"
           javap -verbose -classpath "dist/${OUTPUT_NAME}" "$MAIN_CLASS" | grep -F 'major version: 65'
-
       - name: Verify Paper 26.2 compilation
-        run: >-
-          mvn -B clean package -DskipTests
-          -Dserver.api.group=io.papermc.paper
-          -Dserver.api.artifact=paper-api
-          "-Dserver.api.version=[26.2.build,26.3)"
-
+        run: mvn -B clean package -DskipTests -Dserver.api.group=io.papermc.paper -Dserver.api.artifact=paper-api "-Dserver.api.version=[26.2.build,26.3)"
       - name: Verify Paper 26.3 alpha compilation
-        run: >-
-          mvn -B clean package -DskipTests
-          -Dserver.api.group=io.papermc.paper
-          -Dserver.api.artifact=paper-api
-          -Dserver.api.version=26.3-rc-3.build.1-alpha
-
-      - name: Upload raw JAR artifact
+        run: mvn -B clean package -DskipTests -Dserver.api.group=io.papermc.paper -Dserver.api.artifact=paper-api -Dserver.api.version=26.3-rc-3.build.1-alpha
+      - name: Upload canonical raw JAR artifact
         uses: actions/upload-artifact@v7
         with:
           name: ${{ env.OUTPUT_NAME }}
           path: dist/${{ env.OUTPUT_NAME }}
           archive: false
           if-no-files-found: error
-
-      - name: Publish raw JAR release
+      - name: Publish canonical raw JAR release
         if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/') || github.ref_name == github.event.repository.default_branch
         env:
           GH_TOKEN: ${{ github.token }}
@@ -112,9 +103,11 @@ jobs:
           set -euo pipefail
           if [[ "$GITHUB_REF" == refs/tags/v* ]]; then TAG="$GITHUB_REF_NAME"; else TAG="v${VERSION}"; fi
           JAR="dist/${OUTPUT_NAME}"
-          NOTES="Cultivation Legacy ${VERSION} adds Paper 26.3 alpha compile validation while preserving the Java 21 universal JAR and 1.21.11 baseline. Paper 26.2 remains the production target. The project version, release version, Actions artifact, and raw release asset now all use the same explicit version."
-          if gh release view "$TAG" >/dev/null 2>&1; then
-            gh release upload "$TAG" "$JAR" --clobber
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            while IFS= read -r OLD; do
+              if [[ "$OLD" == *.jar && "$OLD" != "$OUTPUT_NAME" ]]; then gh release delete-asset "$TAG" "$OLD" --repo "$GITHUB_REPOSITORY" -y; fi
+            done < <(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name')
+            gh release upload "$TAG" "$JAR" --repo "$GITHUB_REPOSITORY" --clobber
           else
-            gh release create "$TAG" "$JAR" --title "SF_CultivationLegacy ${VERSION}" --notes "$NOTES"
+            gh release create "$TAG" "$JAR" --repo "$GITHUB_REPOSITORY" --title "SF_Cultivation ${VERSION}" --notes "Cultivation ${VERSION}: canonical ${OUTPUT_NAME} release."
           fi
