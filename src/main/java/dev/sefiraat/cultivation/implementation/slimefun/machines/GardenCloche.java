@@ -23,6 +23,7 @@ import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -190,7 +191,7 @@ public class GardenCloche extends SlimefunItem implements EnergyNetComponent {
 
         TaskUtil.runSyncMethod(location, () -> {
             removeLegacyDisplayEntity(legacyUuid);
-            removeSpriteEntity(location, oldSpriteUuid);
+            removeSpriteEntity(oldSpriteUuid);
 
             SlimefunItem currentItem = StorageCacheUtils.getSlimefunItem(location);
             if (currentItem != null && getId().equals(currentItem.getId())) {
@@ -236,18 +237,18 @@ public class GardenCloche extends SlimefunItem implements EnergyNetComponent {
     }
 
     private void cleanupSprite(@Nonnull Location location) {
-        removeSpriteEntity(location, StorageCacheUtils.getData(location, KEY_SPRITE_UUID));
+        removeSpriteEntity(StorageCacheUtils.getData(location, KEY_SPRITE_UUID));
         StorageCacheUtils.removeData(location, KEY_SPRITE_UUID);
         StorageCacheUtils.removeData(location, KEY_VISUAL_VERSION);
     }
 
-    private void removeSpriteEntity(@Nonnull Location location, String uuidString) {
+    private void removeSpriteEntity(String uuidString) {
         if (uuidString == null || uuidString.isBlank()) {
             return;
         }
 
         try {
-            Entity entity = location.getWorld().getEntity(UUID.fromString(uuidString));
+            Entity entity = Bukkit.getEntity(UUID.fromString(uuidString));
             if (entity instanceof ItemDisplay) {
                 entity.remove();
             }
