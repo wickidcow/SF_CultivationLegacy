@@ -26,6 +26,10 @@ import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Display;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.ItemDisplay;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -42,7 +46,10 @@ public class GardenCloche extends SlimefunItem implements EnergyNetComponent {
 
     private static final String KEY_LEGACY_PLANT = "plant";
     private static final String KEY_LEGACY_UUID = "display-uuid";
+    private static final String KEY_SPRITE_UUID = "cloche-sprite-uuid";
+    private static final String KEY_VISUAL_VERSION = "cloche-visual-version";
     private static final String KEY_MIGRATION_PENDING = "cloche-entity-migration";
+    private static final String VISUAL_VERSION = "1";
     private static final int PLANT_SLOT = 20;
     private static final int[] OUTPUT_SLOTS = new int[]{
         14, 15, 16, 23, 24, 25, 32, 33, 34
@@ -68,7 +75,10 @@ public class GardenCloche extends SlimefunItem implements EnergyNetComponent {
                 public void onPlayerPlace(@NotNull BlockPlaceEvent e) {
                     Location location = e.getBlock().getLocation();
                     cleanupLegacyDisplay(location);
+                    cleanupSprite(location);
                     e.getBlock().setType(Material.GREEN_STAINED_GLASS);
+                    createSprite(location);
+                    StorageCacheUtils.setData(location, KEY_VISUAL_VERSION, VISUAL_VERSION);
                 }
             },
             new BlockBreakHandler(false, false) {
@@ -77,6 +87,7 @@ public class GardenCloche extends SlimefunItem implements EnergyNetComponent {
                 public void onPlayerBreak(BlockBreakEvent e, ItemStack item, List<ItemStack> drops) {
                     Location location = e.getBlock().getLocation();
                     cleanupLegacyDisplay(location);
+                    cleanupSprite(location);
                     BlockMenu blockMenu = StorageCacheUtils.getMenu(location);
                     if (blockMenu != null) {
                         blockMenu.dropItems(location, PLANT_SLOT);
@@ -94,9 +105,9 @@ public class GardenCloche extends SlimefunItem implements EnergyNetComponent {
                 public void tick(Block block, SlimefunItem item, SlimefunBlockData data) {
                     Location location = block.getLocation();
 
-                    // Older Cultivation builds used one Interaction plus four ItemDisplay entities
-                    // for every cloche. Migrate those blocks once, then run entity-free afterwards.
-                    if (migrateLegacyCloche(location)) {
+                    // Upgrade old 5-entity cloches and the temporary entity-free build once.
+                    // Normal ticking only compares the cached visual-version string afterwards.
+                    if (ensureVisual(location, data)) {
                         return;
                     }
 
@@ -164,23 +175,28 @@ public class GardenCloche extends SlimefunItem implements EnergyNetComponent {
         };
     }
 
-    private boolean migrateLegacyCloche(@Nonnull Location location) {
-        String legacyUuid = StorageCacheUtils.getData(location, KEY_LEGACY_UUID);
-        if (legacyUuid == null) {
+    private boolean ensureVisual(@Nonnull Location location, @Nonnull SlimefunBlockData data) {
+        if (VISUAL_VERSION.equals(data.getData(KEY_VISUAL_VERSION))) {
             return false;
         }
 
-        if (Boolean.parseBoolean(StorageCacheUtils.getData(location, KEY_MIGRATION_PENDING))) {
+        if (Boolean.parseBoolean(data.getData(KEY_MIGRATION_PENDING))) {
             return true;
         }
 
-        StorageCacheUtils.setData(location, KEY_MIGRATION_PENDING, "true");
+        String legacyUuid = data.getData(KEY_LEGACY_UUID);
+        String oldSpriteUuid = data.getData(KEY_SPRITE_UUID);
+        data.setData(KEY_MIGRATION_PENDING, "true");
+
         TaskUtil.runSyncMethod(location, () -> {
             removeLegacyDisplayEntity(legacyUuid);
+            removeSpriteEntity(location, oldSpriteUuid);
 
             SlimefunItem currentItem = StorageCacheUtils.getSlimefunItem(location);
             if (currentItem != null && getId().equals(currentItem.getId())) {
                 location.getBlock().setType(Material.GREEN_STAINED_GLASS);
+                createSprite(location);
+                StorageCacheUtils.setData(location, KEY_VISUAL_VERSION, VISUAL_VERSION);
             }
 
             StorageCacheUtils.removeData(location, KEY_LEGACY_PLANT);
@@ -190,11 +206,54 @@ public class GardenCloche extends SlimefunItem implements EnergyNetComponent {
         return true;
     }
 
+    private void createSprite(@Nonnull Location location) {
+        Location spriteLocation = location.clone().add(0.5, 0.56, 0.5);
+        ItemDisplay sprite = (ItemDisplay) location.getWorld().spawnEntity(spriteLocation, EntityType.ITEM_DISPLAY);
+        sprite.setItemStack(new ItemStack(Material.SMALL_DRIPLEAF));
+        sprite.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.GUI);
+        sprite.setBillboard(Display.Billboard.CENTER);
+        sprite.setGravity(false);
+        sprite.setPersistent(true);
+        sprite.setInvulnerable(true);
+        sprite.setSilent(true);
+        sprite.setShadowRadius(0.0F);
+        sprite.setShadowStrength(0.0F);
+        sprite.setViewRange(0.65F);
+        sprite.addScoreboardTag("cultivation_cloche_sprite");
+
+        var transformation = sprite.getTransformation();
+        transformation.getScale().set(0.32F, 0.32F, 0.32F);
+        sprite.setTransformation(transformation);
+
+        StorageCacheUtils.setData(location, KEY_SPRITE_UUID, sprite.getUniqueId().toString());
+    }
+
     private void cleanupLegacyDisplay(@Nonnull Location location) {
         removeLegacyDisplayEntity(StorageCacheUtils.getData(location, KEY_LEGACY_UUID));
         StorageCacheUtils.removeData(location, KEY_LEGACY_PLANT);
         StorageCacheUtils.removeData(location, KEY_LEGACY_UUID);
         StorageCacheUtils.removeData(location, KEY_MIGRATION_PENDING);
+    }
+
+    private void cleanupSprite(@Nonnull Location location) {
+        removeSpriteEntity(location, StorageCacheUtils.getData(location, KEY_SPRITE_UUID));
+        StorageCacheUtils.removeData(location, KEY_SPRITE_UUID);
+        StorageCacheUtils.removeData(location, KEY_VISUAL_VERSION);
+    }
+
+    private void removeSpriteEntity(@Nonnull Location location, String uuidString) {
+        if (uuidString == null || uuidString.isBlank()) {
+            return;
+        }
+
+        try {
+            Entity entity = location.getWorld().getEntity(UUID.fromString(uuidString));
+            if (entity instanceof ItemDisplay) {
+                entity.remove();
+            }
+        } catch (IllegalArgumentException ignored) {
+            // Malformed saved data should never stop the cloche from being usable or removable.
+        }
     }
 
     private void removeLegacyDisplayEntity(String uuidString) {
