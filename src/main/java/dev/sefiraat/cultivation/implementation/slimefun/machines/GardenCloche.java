@@ -57,6 +57,7 @@ public class GardenCloche extends SlimefunItem implements EnergyNetComponent {
 
     public GardenCloche(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
+        item.setType(Material.GREEN_STAINED_GLASS);
     }
 
     @Override
@@ -180,10 +181,11 @@ public class GardenCloche extends SlimefunItem implements EnergyNetComponent {
             SlimefunItem currentItem = StorageCacheUtils.getSlimefunItem(location);
             if (currentItem != null && getId().equals(currentItem.getId())) {
                 location.getBlock().setType(Material.GREEN_STAINED_GLASS);
-                StorageCacheUtils.removeData(location, KEY_LEGACY_PLANT);
-                StorageCacheUtils.removeData(location, KEY_LEGACY_UUID);
-                StorageCacheUtils.removeData(location, KEY_MIGRATION_PENDING);
             }
+
+            StorageCacheUtils.removeData(location, KEY_LEGACY_PLANT);
+            StorageCacheUtils.removeData(location, KEY_LEGACY_UUID);
+            StorageCacheUtils.removeData(location, KEY_MIGRATION_PENDING);
         });
         return true;
     }
