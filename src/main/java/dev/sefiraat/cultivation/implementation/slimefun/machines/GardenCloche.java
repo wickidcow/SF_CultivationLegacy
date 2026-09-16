@@ -95,7 +95,7 @@ public class GardenCloche extends SlimefunItem implements EnergyNetComponent {
 
                     // Older Cultivation builds used one Interaction plus four ItemDisplay entities
                     // for every cloche. Migrate those blocks once, then run entity-free afterwards.
-                    if (migrateLegacyCloche(block, location)) {
+                    if (migrateLegacyCloche(location)) {
                         return;
                     }
 
@@ -163,9 +163,9 @@ public class GardenCloche extends SlimefunItem implements EnergyNetComponent {
         };
     }
 
-    private boolean migrateLegacyCloche(@Nonnull Block block, @Nonnull Location location) {
+    private boolean migrateLegacyCloche(@Nonnull Location location) {
         String legacyUuid = StorageCacheUtils.getData(location, KEY_LEGACY_UUID);
-        if (legacyUuid == null && block.getType() != Material.BARRIER) {
+        if (legacyUuid == null) {
             return false;
         }
 
