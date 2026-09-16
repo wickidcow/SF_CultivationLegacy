@@ -86,14 +86,14 @@ jobs:
           mvn -B clean package -DskipTests
           -Dserver.api.group=io.papermc.paper
           -Dserver.api.artifact=paper-api
-          -Dserver.api.version=26.2-R0.1-SNAPSHOT
+          "-Dserver.api.version=[26.2.build,26.3)"
 
-      - name: Verify Paper 26.3 compilation
+      - name: Verify Paper 26.3 alpha compilation
         run: >-
           mvn -B clean package -DskipTests
           -Dserver.api.group=io.papermc.paper
           -Dserver.api.artifact=paper-api
-          -Dserver.api.version=26.3-R0.1-SNAPSHOT
+          -Dserver.api.version=26.3-rc-3.build.1-alpha
 
       - name: Upload raw JAR artifact
         uses: actions/upload-artifact@v7
@@ -112,7 +112,7 @@ jobs:
           set -euo pipefail
           if [[ "$GITHUB_REF" == refs/tags/v* ]]; then TAG="$GITHUB_REF_NAME"; else TAG="v${VERSION}"; fi
           JAR="dist/${OUTPUT_NAME}"
-          NOTES="Cultivation Legacy ${VERSION} adds Paper 26.3 compile validation while preserving the Java 21 universal JAR and 1.21.11 baseline. Paper 26.2 remains the production target. The project version, release version, Actions artifact, and raw release asset now all use the same explicit version."
+          NOTES="Cultivation Legacy ${VERSION} adds Paper 26.3 alpha compile validation while preserving the Java 21 universal JAR and 1.21.11 baseline. Paper 26.2 remains the production target. The project version, release version, Actions artifact, and raw release asset now all use the same explicit version."
           if gh release view "$TAG" >/dev/null 2>&1; then
             gh release upload "$TAG" "$JAR" --clobber
           else
