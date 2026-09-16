@@ -113,7 +113,7 @@ public final class DisplayGroupGenerators {
             "cloche_glass",
             new ItemDisplayBuilder()
                 .setGroupParentOffset(new Vector(0, 1.25, 0))
-                .setItemStack(new ItemStack(Material.GLASS))
+                .setItemStack(new ItemStack(Material.GREEN_STAINED_GLASS))
                 .setTransformation(Transformations.CLOCHE_GLASS.getTransformation())
                 .build(displayGroup)
         );
