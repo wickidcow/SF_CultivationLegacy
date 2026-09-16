@@ -3,6 +3,7 @@ name: Build Cultivation Legacy
 on:
   push:
     branches: ['**']
+    tags: ['v*']
   pull_request:
     branches: ['**']
   workflow_dispatch:
@@ -10,18 +11,24 @@ on:
 permissions:
   contents: write
 
+env:
+  VERSION: "1.1.23"
+  OUTPUT_NAME: "SF_CultivationLegacy1.1.23.jar"
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      - name: Set up Java 21
+        uses: actions/checkout@v6
+
+      - name: Set up Java 25 compiler
         uses: actions/setup-java@v5
         with:
           distribution: temurin
-          java-version: '21'
+          java-version: '25'
           cache: maven
+
       - name: Verify English and Legacy source policy
         shell: python
         run: |
@@ -42,6 +49,7 @@ jobs:
           if failures:
               print('\n'.join(failures))
               raise SystemExit(1)
+
       - name: Install Slimefun Legacy build dependency
         env:
           GH_TOKEN: ${{ github.token }}
@@ -50,41 +58,63 @@ jobs:
           mkdir -p .ci-deps
           gh release download "SlimefunLegacy4.1.29B" --repo "wickidcow/Slimefun-Legacy" --pattern "Slimefun-4.1.29.jar" --dir ".ci-deps"
           mvn -B install:install-file -Dfile=".ci-deps/Slimefun-4.1.29.jar" -DgroupId="com.github.slimefun" -DartifactId="Slimefun" -Dversion="4.1.29" -Dpackaging="jar" -DgeneratePom=true
-      - name: Set 1.1.x build version
-        shell: bash
-        run: |
-          VERSION="1.1.${GITHUB_RUN_NUMBER}"
-          echo "VERSION=${VERSION}" >> "$GITHUB_ENV"
-          mvn -B versions:set -DnewVersion="${VERSION}" -DgenerateBackupPoms=false
-      - name: Build shaded JAR
+
+      - name: Build universal release JAR on 1.21.11 baseline
         run: mvn -B clean package -DskipTests
-      - name: Prepare named JAR
+
+      - name: Stage release JAR
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p dist
-          JAR="$(find target -maxdepth 1 -type f -name '*.jar' ! -name 'original-*' ! -name '*-sources.jar' ! -name '*-javadoc.jar' -print -quit)"
-          test -n "$JAR"
-          OUTPUT="dist/SF_CultivationLegacy${VERSION}.jar"
-          cp "$JAR" "$OUTPUT"
-          echo "OUTPUT_JAR=$OUTPUT" >> "$GITHUB_ENV"
-          sha256sum "$OUTPUT"
+          JAR="target/${OUTPUT_NAME}"
+          test -s "$JAR"
+          cp "$JAR" "dist/${OUTPUT_NAME}"
+          unzip -tqq "dist/${OUTPUT_NAME}"
+          sha256sum "dist/${OUTPUT_NAME}"
+
+      - name: Verify Java 21 bytecode
+        shell: bash
+        run: |
+          set -euo pipefail
+          MAIN_CLASS=$(unzip -p "dist/${OUTPUT_NAME}" plugin.yml | awk '/^main:/ {print $2; exit}')
+          test -n "$MAIN_CLASS"
+          javap -verbose -classpath "dist/${OUTPUT_NAME}" "$MAIN_CLASS" | grep -F 'major version: 65'
+
+      - name: Verify Paper 26.2 compilation
+        run: >-
+          mvn -B clean package -DskipTests
+          -Dserver.api.group=io.papermc.paper
+          -Dserver.api.artifact=paper-api
+          -Dserver.api.version=26.2-R0.1-SNAPSHOT
+
+      - name: Verify Paper 26.3 compilation
+        run: >-
+          mvn -B clean package -DskipTests
+          -Dserver.api.group=io.papermc.paper
+          -Dserver.api.artifact=paper-api
+          -Dserver.api.version=26.3-R0.1-SNAPSHOT
+
       - name: Upload raw JAR artifact
         uses: actions/upload-artifact@v7
         with:
-          path: ${{ env.OUTPUT_JAR }}
+          name: ${{ env.OUTPUT_NAME }}
+          path: dist/${{ env.OUTPUT_NAME }}
           archive: false
           if-no-files-found: error
+
       - name: Publish raw JAR release
-        if: github.event_name == 'workflow_dispatch' || github.ref_name == github.event.repository.default_branch
+        if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/') || github.ref_name == github.event.repository.default_branch
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
-          TAG="v${VERSION}"
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then TAG="$GITHUB_REF_NAME"; else TAG="v${VERSION}"; fi
+          JAR="dist/${OUTPUT_NAME}"
+          NOTES="Cultivation Legacy ${VERSION} adds Paper 26.3 compile validation while preserving the Java 21 universal JAR and 1.21.11 baseline. Paper 26.2 remains the production target. The project version, release version, Actions artifact, and raw release asset now all use the same explicit version."
           if gh release view "$TAG" >/dev/null 2>&1; then
-            gh release upload "$TAG" "$OUTPUT_JAR" --clobber
+            gh release upload "$TAG" "$JAR" --clobber
           else
-            gh release create "$TAG" "$OUTPUT_JAR" --title "SF_CultivationLegacy ${VERSION}" --generate-notes
+            gh release create "$TAG" "$JAR" --title "SF_CultivationLegacy ${VERSION}" --notes "$NOTES"
           fi
