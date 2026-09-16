@@ -45,7 +45,7 @@
     </scm>
 
     <build>
-        <finalName>SF_Cultivation${project.version}</finalName>
+        <finalName>SF_CultivationLegacy${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
