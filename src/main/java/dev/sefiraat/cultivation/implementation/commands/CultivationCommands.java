@@ -218,7 +218,7 @@ public class CultivationCommands extends BaseCommand {
 
     private String getBlockId(Block block) {
         Material blockMaterial = block.getType();
-        SlimefunItem slimefunItem = StorageCacheUtils.getSfItem(block.getLocation());
+        SlimefunItem slimefunItem = StorageCacheUtils.getSlimefunItem(block.getLocation());
         return slimefunItem == null
                ? "minecraft:" + blockMaterial.name()
                : "slimefun:" + slimefunItem.getId();

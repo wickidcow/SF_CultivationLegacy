@@ -44,7 +44,7 @@ public class HarvestingTool extends RefillableUseItem implements NotPlaceable {
             }
 
             Block block = playerRightClickEvent.getClickedBlock().get();
-            SlimefunItem item = StorageCacheUtils.getSfItem(block.getLocation());
+            SlimefunItem item = StorageCacheUtils.getSlimefunItem(block.getLocation());
 
             if (item instanceof HarvestablePlant harvestable && harvestable.isMature(block)) {
                 harvestable.harvest(block);

@@ -44,7 +44,7 @@ public class PlantAnalyser extends SimpleSlimefunItem<ItemUseHandler> implements
         }
 
         Block block = playerRightClickEvent.getClickedBlock().get();
-        SlimefunItem item = StorageCacheUtils.getSfItem(block.getLocation());
+        SlimefunItem item = StorageCacheUtils.getSlimefunItem(block.getLocation());
 
         if (item == null) {
             return;
