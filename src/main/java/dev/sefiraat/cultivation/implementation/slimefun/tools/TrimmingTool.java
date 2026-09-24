@@ -33,7 +33,7 @@ public class TrimmingTool extends RefillableUseItem {
             }
 
             Block block = playerRightClickEvent.getClickedBlock().get();
-            SlimefunItem item = StorageCacheUtils.getSfItem(block.getLocation());
+            SlimefunItem item = StorageCacheUtils.getSlimefunItem(block.getLocation());
 
             if (item instanceof CultivationBush trimmable && trimmable.isMature(block)) {
                 ItemStack trimmingResult = trimmable.getTrimmingResult();
