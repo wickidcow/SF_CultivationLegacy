@@ -52,7 +52,7 @@ public class CropSticks extends SlimefunItem implements NotPlaceable {
             }
 
             Block block = playerRightClickEvent.getClickedBlock().get();
-            SlimefunItem item = StorageCacheUtils.getSfItem(block.getLocation());
+            SlimefunItem item = StorageCacheUtils.getSlimefunItem(block.getLocation());
 
             if (item instanceof CultivationCroppable croppable && croppable.incrementCrop(block.getLocation())) {
                 player.swingMainHand();
