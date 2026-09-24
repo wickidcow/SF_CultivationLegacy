@@ -21,7 +21,7 @@ public class TreeListener implements Listener {
     @EventHandler
     public void onTreeGrows(@Nonnull StructureGrowEvent event) {
         Location location = event.getLocation();
-        SlimefunItem slimefunItem = StorageCacheUtils.getSfItem(location);
+        SlimefunItem slimefunItem = StorageCacheUtils.getSlimefunItem(location);
         if (slimefunItem instanceof CultivationTree tree) {
             event.setCancelled(true);
             if (tree.testBuild(location)) {
