@@ -49,7 +49,7 @@ public class CustomPlacementListener implements Listener {
     @EventHandler
     public void onWaterHitsPlant(@Nonnull BlockFromToEvent event) {
         Location location = event.getBlock().getLocation();
-        unsafelyKillItem(location, StorageCacheUtils.getSfItem(location));
+        unsafelyKillItem(location, StorageCacheUtils.getSlimefunItem(location));
     }
 
     @EventHandler
@@ -57,7 +57,7 @@ public class CustomPlacementListener implements Listener {
         for (Block block : event.getBlocks()) {
             Block issueBlock = block.getRelative(BlockFace.UP);
             Location location = issueBlock.getLocation();
-            unsafelyKillItem(location, StorageCacheUtils.getSfItem(location));
+            unsafelyKillItem(location, StorageCacheUtils.getSlimefunItem(location));
         }
     }
     @EventHandler
@@ -65,14 +65,14 @@ public class CustomPlacementListener implements Listener {
         for (Block block : event.getBlocks()) {
             Block issueBlock = block.getRelative(BlockFace.UP);
             Location location = issueBlock.getLocation();
-            unsafelyKillItem(location, StorageCacheUtils.getSfItem(location));
+            unsafelyKillItem(location, StorageCacheUtils.getSlimefunItem(location));
         }
     }
 
     @EventHandler
     public void onBlockSpread(@Nonnull BlockSpreadEvent event) {
         Location location = event.getBlock().getLocation();
-        unsafelyKillItem(location, StorageCacheUtils.getSfItem(location));
+        unsafelyKillItem(location, StorageCacheUtils.getSlimefunItem(location));
     }
     
     @EventHandler
@@ -80,14 +80,14 @@ public class CustomPlacementListener implements Listener {
         for (BlockState blockState : event.getBlocks()) {
             Block issueBlock = blockState.getBlock();
             Location location = issueBlock.getLocation();
-            unsafelyKillItem(location, StorageCacheUtils.getSfItem(location));
+            unsafelyKillItem(location, StorageCacheUtils.getSlimefunItem(location));
         }
     }
 
     @EventHandler
     public void onSnowmanBlockForm(@Nonnull EntityBlockFormEvent event) {
         Location location = event.getBlock().getLocation();
-        unsafelyKillItem(location, StorageCacheUtils.getSfItem(location));
+        unsafelyKillItem(location, StorageCacheUtils.getSlimefunItem(location));
     }
 
     @EventHandler
@@ -98,7 +98,7 @@ public class CustomPlacementListener implements Listener {
         ) {
             BlockFace face = directional.getFacing();
             Location location = block.getRelative(face).getLocation();
-            unsafelyKillItem(location, StorageCacheUtils.getSfItem(location));
+            unsafelyKillItem(location, StorageCacheUtils.getSlimefunItem(location));
         }
     }
 
