@@ -132,7 +132,7 @@ public abstract class CultivationPlant extends CultivationFloraItem<CultivationP
                 continue;
             }
             Block potentialMate = middleBlock.getRelative(face);
-            SlimefunItem mateItem = StorageCacheUtils.getSfItem(potentialMate.getLocation());
+            SlimefunItem mateItem = StorageCacheUtils.getSlimefunItem(potentialMate.getLocation());
 
             if (mateItem instanceof CultivationPlant mate) {
                 testBreed(plant, mate, middleBlock, motherBlock, potentialMate);
