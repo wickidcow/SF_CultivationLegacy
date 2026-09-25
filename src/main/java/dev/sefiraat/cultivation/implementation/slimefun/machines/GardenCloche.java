@@ -127,7 +127,7 @@ public class GardenCloche extends SlimefunItem implements EnergyNetComponent {
                         return;
                     }
 
-                    if (getCharge(location) < POWER_REQUIREMENT) {
+                    if (getChargeLong(location) < POWER_REQUIREMENT) {
                         return;
                     }
 
@@ -137,7 +137,7 @@ public class GardenCloche extends SlimefunItem implements EnergyNetComponent {
                         ItemStack itemStack = plant.getRandomItemWithDropModifier(profile);
                         if (itemStack != null) {
                             blockMenu.pushItem(itemStack, OUTPUT_SLOTS);
-                            removeCharge(location, POWER_REQUIREMENT);
+                            removeCharge(location, (long) POWER_REQUIREMENT);
                         }
                     }
                 }
