@@ -123,7 +123,7 @@ public class CraftingKitchenMachine extends KitchenRecipeMachineComplex {
                             continue;
                         }
                         if (isBucket(inputItem)) {
-                            inputItem.setType(Material.BUCKET);
+                            menu.replaceExistingItem(inputSlot, inputItem.withType(Material.BUCKET));
                         } else {
                             inputItem.setAmount(inputItem.getAmount() - 1);
                         }
