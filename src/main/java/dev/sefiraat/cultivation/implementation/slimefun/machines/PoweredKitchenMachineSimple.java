@@ -124,7 +124,7 @@ public class PoweredKitchenMachineSimple extends KitchenRecipeMachineSimple impl
             @Override
             public void newInstance(@NotNull BlockMenu menu, @NotNull Block b) {
                 menu.addMenuClickHandler(COOK_SLOT, (p, slot, item, action) -> {
-                    if (getCharge(menu.getLocation()) < powerRequirement) {
+                    if (getChargeLong(menu.getLocation()) < powerRequirement) {
                         p.sendMessage(Theme.ERROR.apply("Not enough power."));
                         return false;
                     }
@@ -147,7 +147,7 @@ public class PoweredKitchenMachineSimple extends KitchenRecipeMachineSimple impl
 
                     menu.pushItem(result, OUTPUT_SLOT);
                     itemStack.setAmount(itemStack.getAmount() - 1);
-                    removeCharge(menu.getLocation(), powerRequirement);
+                    removeCharge(menu.getLocation(), (long) powerRequirement);
                     p.sendMessage(Theme.SUCCESS.apply("Tasty!"));
                     return false;
                 });
