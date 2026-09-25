@@ -119,7 +119,7 @@ public class PoweredKitchenMachineComplex extends KitchenRecipeMachineComplex im
             @Override
             public void newInstance(@NotNull BlockMenu menu, @NotNull Block b) {
                 menu.addMenuClickHandler(COOK_SLOT, (p, slot, item, action) -> {
-                    if (getCharge(menu.getLocation()) < powerRequirement) {
+                    if (getChargeLong(menu.getLocation()) < powerRequirement) {
                         p.sendMessage(Theme.ERROR.apply("Not enough power."));
                         return false;
                     }
@@ -145,7 +145,7 @@ public class PoweredKitchenMachineComplex extends KitchenRecipeMachineComplex im
                             continue;
                         }
                         if (isBucket(inputItem) && !(SlimefunItem.getByItem(inputItem) instanceof ByProduct)) {
-                            inputItem.setType(Material.BUCKET);
+                            menu.replaceExistingItem(inputSlot, inputItem.withType(Material.BUCKET));
                         } else {
                             inputItem.setAmount(inputItem.getAmount() - 1);
                         }
