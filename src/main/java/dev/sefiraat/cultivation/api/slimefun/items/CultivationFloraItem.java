@@ -28,6 +28,8 @@ import io.github.thebusybiscuit.slimefun4.core.handlers.BlockPlaceHandler;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
@@ -42,6 +44,7 @@ import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -49,6 +52,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.OverridingMethodsMustInvokeSuper;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -56,6 +60,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class CultivationFloraItem<T extends CultivationFloraItem<T>> extends SlimefunItem
     implements CultivationFlora {
+
+    private static final LegacyComponentSerializer LEGACY_COMPONENTS = LegacyComponentSerializer.legacySection();
 
     @Nonnull
     protected final Map<Location, UUID> ownerCache = new HashMap<>();
@@ -304,10 +310,11 @@ public abstract class CultivationFloraItem<T extends CultivationFloraItem<T>> ex
     @Nonnull
     public T setGrowth(@Nonnull Growth growth) {
         this.growth = growth;
-        String[] lore = new String[0];
-        if (this.getItem().getItemMeta().hasLore()) {
-            lore = this.getItem().getItemMeta().getLore().toArray(lore);
-        }
+        ItemMeta itemMeta = this.getItem().getItemMeta();
+        List<Component> loreComponents = itemMeta.hasLore() ? itemMeta.lore() : null;
+        String[] lore = loreComponents == null
+            ? new String[0]
+            : loreComponents.stream().map(LEGACY_COMPONENTS::serialize).toArray(String[]::new);
         PlantTheme theme = this.growth.getTheme();
         // todo watch with bushes
         if (theme == null) {
