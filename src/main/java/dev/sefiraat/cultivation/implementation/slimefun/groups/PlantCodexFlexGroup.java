@@ -165,7 +165,11 @@ public class PlantCodexFlexGroup extends FlexItemGroup {
                     if (child instanceof HarvestablePlant harvestablePlant) {
                         ItemStack possibleStack = harvestablePlant.getHarvestingResults().getRandom();
                         if (possibleStack != null) {
-                            itemStack.setType(possibleStack.getType());
+                            ItemStack displayStack = new ItemStack(possibleStack.getType(), itemStack.getAmount());
+                            if (itemStack.hasItemMeta()) {
+                                displayStack.setItemMeta(itemStack.getItemMeta());
+                            }
+                            itemStack = displayStack;
                         }
                     }
                     menu.replaceExistingItem(slot, itemStack);

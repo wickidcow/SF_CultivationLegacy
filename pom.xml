@@ -66,8 +66,8 @@
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <server.api.group>org.spigotmc</server.api.group>
-        <server.api.artifact>spigot-api</server.api.artifact>
+        <server.api.group>io.papermc.paper</server.api.group>
+        <server.api.artifact>paper-api</server.api.artifact>
         <server.api.version>1.21.11-R0.1-SNAPSHOT</server.api.version>
         <sonar.projectKey>Cultivation</sonar.projectKey>
         <sonar.organization>sefiraat</sonar.organization>
