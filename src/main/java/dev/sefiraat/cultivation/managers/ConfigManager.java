@@ -2,6 +2,7 @@ package dev.sefiraat.cultivation.managers;
 
 import dev.sefiraat.cultivation.Cultivation;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -12,6 +13,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.util.logging.Level;
 
 /**
  * This class is used to create and manage/save custom configuration files
@@ -41,18 +46,16 @@ public class ConfigManager {
         }
 
         File existingFile = new File(plugin.getDataFolder(), "config.yml");
-        Reader reader = new InputStreamReader(inputStream);
-        FileConfiguration resourceConfig = YamlConfiguration.loadConfiguration(reader);
-        FileConfiguration existingConfig = YamlConfiguration.loadConfiguration(existingFile);
-
-        for (String key : resourceConfig.getKeys(false)) {
-            checkKey(existingConfig, resourceConfig, key);
-        }
-
-        try {
-            existingConfig.save(existingFile);
-        } catch (IOException e) {
-            e.printStackTrace();
+        try (Reader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8)) {
+            YamlConfiguration resourceConfig = new YamlConfiguration();
+            resourceConfig.load(reader);
+            FileConfiguration existingConfig = PlayerDataFile.load(existingFile.toPath());
+            for (String key : resourceConfig.getKeys(false)) {
+                checkKey(existingConfig, resourceConfig, key);
+            }
+            PlayerDataFile.save(existingConfig, existingFile.toPath());
+        } catch (IOException | InvalidConfigurationException e) {
+            throw new IllegalStateException("Unable to load or update config.yml; original configuration is retained.", e);
         }
     }
 
@@ -70,20 +73,18 @@ public class ConfigManager {
     }
 
     @Nonnull
-    @SuppressWarnings("ResultOfMethodCallIgnored")
     private FileConfiguration getConfig(@Nonnull String fileName) {
-        Cultivation plugin = Cultivation.getInstance();
-        File file = new File(plugin.getDataFolder(), fileName);
-
+        File file = new File(Cultivation.getInstance().getDataFolder(), fileName);
         try {
-            if (!file.exists()) {
-                file.getParentFile().mkdirs();
-                file.createNewFile();
+            if (Files.notExists(file.toPath(), LinkOption.NOFOLLOW_LINKS)) {
+                Files.createDirectories(file.toPath().getParent());
+                Files.createFile(file.toPath());
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+            return PlayerDataFile.load(file.toPath());
+        } catch (IOException | InvalidConfigurationException e) {
+            throw new IllegalStateException("Unable to load " + fileName
+                + "; Cultivation is stopping to protect existing player progress.", e);
         }
-        return YamlConfiguration.loadConfiguration(file);
     }
 
     public void saveAll() {
@@ -95,9 +96,10 @@ public class ConfigManager {
     private void save(@Nonnull FileConfiguration config, @Nonnull String fileName) {
         File file = new File(Cultivation.getInstance().getDataFolder(), fileName);
         try {
-            config.save(file);
-        } catch (IOException exception) {
-            exception.printStackTrace();
+            PlayerDataFile.save(config, file.toPath());
+        } catch (IOException | RuntimeException exception) {
+            Cultivation.getInstance().getLogger().log(Level.SEVERE,
+                "Unable to save " + fileName + "; the previous data file was not intentionally truncated.", exception);
         }
     }
 
