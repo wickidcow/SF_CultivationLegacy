@@ -65,8 +65,17 @@ jobs:
           gh release download "SlimefunLegacy4.1.29B" --repo "wickidcow/Slimefun-Legacy" --pattern "Slimefun-4.1.29.jar" --dir ".ci-deps"
           mvn -B install:install-file -Dfile=".ci-deps/Slimefun-4.1.29.jar" -DgroupId="com.github.slimefun" -DartifactId="Slimefun" -Dversion="4.1.29" -Dpackaging="jar" -DgeneratePom=true
 
-      - name: Build universal release JAR on 1.21.11 baseline
-        run: mvn -B clean package -DskipTests
+      - name: Verify player data preservation boundary
+        run: python3 scripts/verify_player_data_safety.py
+      - name: Build and test universal release JAR on 1.21.11 baseline
+        run: mvn -B clean package
+      - name: Retain player data test results
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: player-data-test-evidence
+          path: target/surefire-reports/TEST-*.xml
+          if-no-files-found: warn
       - name: Stage release JAR
         shell: bash
         run: |
