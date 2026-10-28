@@ -144,10 +144,6 @@ public abstract class CultivationFloraItem<T extends CultivationFloraItem<T>> ex
         };
     }
 
-    public void addOwner(@Nonnull Location location) {
-        throw new UnsupportedOperationException("An owner UUID is required");
-    }
-
     public void addOwner(@Nonnull Location location, @Nonnull UUID uuid) {
         ownerCache.put(location, uuid);
     }
