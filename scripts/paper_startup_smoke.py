@@ -64,7 +64,8 @@ def verify_saved_data(directory: Path) -> None:
                 raise AssertionError(f"Player data {path} lost the value {token!r}")
 
 
-def run_boot(directory: Path, number: int, timeout_seconds: int = 200) -> None:
+def run_boot(directory: Path, number: int, timeout_seconds: int = 200,
+             expected_invalid_codex: bool = False) -> None:
     output = directory / f"cultivation-boot-{number}.stdout.log"
     with output.open("w", encoding="utf-8") as log:
         process = subprocess.Popen(
@@ -110,9 +111,19 @@ def run_boot(directory: Path, number: int, timeout_seconds: int = 200) -> None:
     content = output.read_text(encoding="utf-8", errors="replace")
     if not READY.search(content):
         raise AssertionError(f"Paper boot {number} did not reach a ready state")
-    for enable in ENABLES:
-        if not enable.search(content):
-            raise AssertionError(f"Paper boot {number} did not enable expected plugin: {enable.pattern}")
+    if not ENABLES[0].search(content):
+        raise AssertionError(f"Paper boot {number} did not enable Slimefun")
+    if expected_invalid_codex:
+        if "Unable to load codex.yml" not in content:
+            raise AssertionError("Malformed codex did not trigger the expected strict data-load failure")
+        if not re.search(r"Error occurred while enabling Cultivation", content, re.IGNORECASE):
+            raise AssertionError("Cultivation did not fail closed on its malformed saved codex")
+        if re.search(r"Error occurred while enabling Slimefun", content, re.IGNORECASE):
+            raise AssertionError("Slimefun unexpectedly failed during Cultivation recovery test")
+        print(f"Paper boot {number}: malformed codex rejected; server stopped cleanly")
+        return
+    if not ENABLES[1].search(content):
+        raise AssertionError(f"Paper boot {number} did not enable Cultivation")
     for fatal in FATAL:
         if fatal.search(content):
             raise AssertionError(f"Paper boot {number} reported a fatal plugin error: {fatal.pattern}")
@@ -145,7 +156,22 @@ def main(argv: list[str]) -> int:
     for boot in (1, 2):
         run_boot(root, boot)
         verify_saved_data(root)
-    print("Cultivation: both startup cycles and legacy YAML values preserved")
+
+    exp_path = root / DATA_ROOT / "exp.yml"
+    codex_path = root / DATA_ROOT / "codex.yml"
+    exp_before = exp_path.read_bytes()
+    invalid_codex = b"legacy-player:\n  PLANT: [unfinished\n"
+    codex_path.write_bytes(invalid_codex)
+
+    # Third boot intentionally fails plugin enablement, not the Paper server itself.
+    # This is a negative test: failure must never re-save an empty codex over bad input.
+    run_boot(root, 3, expected_invalid_codex=True)
+    if codex_path.read_bytes() != invalid_codex:
+        raise AssertionError("Malformed codex file was modified during failed plugin startup/shutdown")
+    if exp_path.read_bytes() != exp_before:
+        raise AssertionError("Unrelated experience file changed during failed codex startup")
+
+    print("Cultivation: two clean restarts preserved legacy YAML; invalid codex failed closed without data loss")
     return 0
 
 
