@@ -57,7 +57,9 @@ public class Theme {
         } else {
             StringBuilder encoded = new StringBuilder("\u00a7x");
             for (char digit : color.asHexString().substring(1).toCharArray()) {
-                encoded.append('\u00a7').append(digit);
+                // Preserve SefiLib's exact historical lower-case encoding, not
+                // merely a visually equivalent RGB value in saved item text.
+                encoded.append('\u00a7').append(Character.toLowerCase(digit));
             }
             this.legacyCode = encoded.toString();
         }
