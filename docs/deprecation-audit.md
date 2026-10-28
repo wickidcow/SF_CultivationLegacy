@@ -37,3 +37,9 @@ Next action: evaluate an API-compatible modernized SefiLib Theme or a carefully 
 `scripts/verify_deprecation_baseline.py` checks the full compiler output separately for Paper 1.21.11, 26.1, 26.2, and 26.3. It accepts **at most 38** unique diagnostics, and only when they are the two explicitly documented Bungee ChatColor warnings within `CultivationThemes.java`. A new deprecated method, deprecated-for-removal API, unexpected warning in another source file, or growth above the current ceiling fails CI. Warnings are not hidden, suppressed, or downgraded. Retained logs remain available as a CI artifact. A future *reduction* below 38 is accepted.
 
 `CultivationThemesTest` snapshots all **19 named theme color values**, plus public labels (including the existing `DISCOVEREY` spelling) so a future SefiLib replacement must maintain the existing hex colors, player-visible names, and API compatibility. Tests do not grant a live-server release gate.
+
+## Disposable Paper startup/restart CI
+
+PR builds also run an **independent** two-boot smoke using the newest official **stable Paper 26.3** server JAR returned by PaperMC Fill v3. This download requires a project-specific User-Agent, verifies the official SHA-256 and refuses pre-release builds. CI copies only the built Cultivation JAR and pinned Slimefun Legacy 4.1.78 JAR into an ephemeral temporary server, starts Paper on Java 25, waits for both plugins to enable and Paper to report readiness, shuts down cleanly, and starts it again. Old-format disposable `exp.yml` and `codex.yml` fixtures must retain their known player UUID, EXP, discovery bits and unknown legacy values across both boots.
+
+The smoke never contacts or alters a live server. It **does not** assert full 1.21.11/Purpur/Leaf/Folia runtime support, simulate real player clicks/breeding/crafting, or prove threading safety. Those remain manual or more advanced integration gates.

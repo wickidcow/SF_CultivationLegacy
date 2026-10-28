@@ -132,6 +132,43 @@ jobs:
           path: dist/${{ env.OUTPUT_NAME }}
           archive: false
           if-no-files-found: error
+      - name: Download and checksum-verify stable Paper 26.3
+        if: github.event_name == 'pull_request'
+        shell: bash
+        env:
+          PAPER_AGENT: "CultivationLegacy-CI/1.0 (+https://github.com/wickidcow/SF_CultivationLegacy)"
+        run: |
+          set -euo pipefail
+          mkdir -p .ci-runtime
+          META=$(curl --fail --silent --show-error --location --retry 3 --header "User-Agent: ${PAPER_AGENT}" "https://fill.papermc.io/v3/projects/paper/versions/26.3/builds")
+          URL=$(jq -er '[.[] | select(.channel == "STABLE")][0].downloads["server:default"].url // empty' <<<"${META}")
+          SHA=$(jq -er '[.[] | select(.channel == "STABLE")][0].downloads["server:default"].checksums.sha256 // empty' <<<"${META}")
+          [[ "${URL}" == https://fill-data.papermc.io/* ]]
+          [[ "${SHA}" =~ ^[0-9a-f]{64}$ ]]
+          curl --fail --silent --show-error --location --retry 3 --header "User-Agent: ${PAPER_AGENT}" --output ".ci-runtime/paper.jar" "${URL}"
+          echo "${SHA}  .ci-runtime/paper.jar" | sha256sum -c -
+          unzip -tqq .ci-runtime/paper.jar
+      - name: Two-boot Cultivation Paper 26.3 runtime smoke
+        if: github.event_name == 'pull_request'
+        timeout-minutes: 12
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/paper_startup_smoke.py \
+            .ci-runtime/paper.jar \
+            .ci-deps/Slimefun-Legacy4.1.78.jar \
+            dist/SF_Cultivation1.1.23.jar \
+            .ci-runtime/server
+      - name: Retain disposable Paper 26.3 boot evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: cultivation-paper26.3-two-boot-smoke
+          path: |
+            .ci-runtime/server/cultivation-boot-*.stdout.log
+            .ci-runtime/server/plugins/Cultivation/exp.yml
+            .ci-runtime/server/plugins/Cultivation/codex.yml
+          if-no-files-found: warn
       - name: Publish canonical raw JAR release
         if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/') || github.ref_name == github.event.repository.default_branch
         env:
