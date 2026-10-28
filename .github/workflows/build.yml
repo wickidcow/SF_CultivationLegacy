@@ -94,10 +94,12 @@ jobs:
         run: |
           MAIN_CLASS=$(unzip -p "dist/${OUTPUT_NAME}" plugin.yml | awk '/^main:/ {print $2; exit}')
           javap -verbose -classpath "dist/${OUTPUT_NAME}" "$MAIN_CLASS" | grep -F 'major version: 65'
+      - name: Verify Paper 26.1 compilation
+        run: mvn -B clean package -DskipTests -Dserver.api.group=io.papermc.paper -Dserver.api.artifact=paper-api "-Dserver.api.version=[26.1.build,26.2)"
       - name: Verify Paper 26.2 compilation
         run: mvn -B clean package -DskipTests -Dserver.api.group=io.papermc.paper -Dserver.api.artifact=paper-api "-Dserver.api.version=[26.2.build,26.3)"
-      - name: Verify Paper 26.3 alpha compilation
-        run: mvn -B clean package -DskipTests -Dserver.api.group=io.papermc.paper -Dserver.api.artifact=paper-api -Dserver.api.version=26.3-rc-3.build.1-alpha
+      - name: Verify Paper 26.3 stable compilation
+        run: mvn -B clean package -DskipTests -Dserver.api.group=io.papermc.paper -Dserver.api.artifact=paper-api "-Dserver.api.version=[26.3.build,26.4)"
       - name: Upload canonical raw JAR artifact
         uses: actions/upload-artifact@v7
         with:
