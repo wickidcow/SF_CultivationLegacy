@@ -62,8 +62,8 @@ jobs:
         shell: bash
         run: |
           mkdir -p .ci-deps
-          gh release download "SlimefunLegacy4.1.29B" --repo "wickidcow/Slimefun-Legacy" --pattern "Slimefun-4.1.29.jar" --dir ".ci-deps"
-          mvn -B install:install-file -Dfile=".ci-deps/Slimefun-4.1.29.jar" -DgroupId="com.github.slimefun" -DartifactId="Slimefun" -Dversion="4.1.29" -Dpackaging="jar" -DgeneratePom=true
+          gh release download "v4.1.78" --repo "wickidcow/Slimefun-Legacy" --pattern "Slimefun-Legacy4.1.78.jar" --dir ".ci-deps"
+          mvn -B install:install-file -Dfile=".ci-deps/Slimefun-Legacy4.1.78.jar" -DgroupId="com.github.slimefun" -DartifactId="Slimefun" -Dversion="4.1.78" -Dpackaging="jar" -DgeneratePom=true
 
       - name: Verify player data preservation boundary
         run: python3 scripts/verify_player_data_safety.py

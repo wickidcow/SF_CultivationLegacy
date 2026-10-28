@@ -20,6 +20,7 @@ import dev.sefiraat.cultivation.api.slimefun.plant.PlantTheme;
 import dev.sefiraat.cultivation.api.utils.LevelType;
 import dev.sefiraat.cultivation.api.utils.StatisticUtils;
 import dev.sefiraat.cultivation.implementation.utils.Keys;
+import dev.sefiraat.cultivation.implementation.utils.LegacyItemText;
 import dev.sefiraat.sefilib.entity.display.DisplayInteractable;
 import dev.sefiraat.sefilib.misc.ParticleUtils;
 import dev.sefiraat.sefilib.string.Theme;
@@ -33,6 +34,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
 import io.papermc.lib.PaperLib;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -49,6 +51,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.OverridingMethodsMustInvokeSuper;
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -307,13 +310,14 @@ public abstract class CultivationPlant extends CultivationFloraItem<CultivationP
         );
 
         if (profile.isAnalyzed()) {
-            List<String> lore = itemMeta.getLore();
-            if (lore != null) {
-                lore.add("");
-                lore.add(Theme.CLICK_INFO.asTitle("Drop Level", profile.getLevel()));
-                lore.add(Theme.CLICK_INFO.asTitle("Speed", profile.getSpeed()));
-                lore.add(Theme.CLICK_INFO.asTitle("Breed Strength", profile.getStrength()));
-                itemMeta.setLore(lore);
+            List<Component> originalLore = itemMeta.lore();
+            if (originalLore != null) {
+                List<Component> lore = new ArrayList<>(originalLore);
+                lore.add(Component.empty());
+                lore.add(LegacyItemText.parse(Theme.CLICK_INFO.asTitle("Drop Level", profile.getLevel())));
+                lore.add(LegacyItemText.parse(Theme.CLICK_INFO.asTitle("Speed", profile.getSpeed())));
+                lore.add(LegacyItemText.parse(Theme.CLICK_INFO.asTitle("Breed Strength", profile.getStrength())));
+                itemMeta.lore(lore);
             }
         }
 

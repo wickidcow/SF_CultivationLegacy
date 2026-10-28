@@ -7,11 +7,13 @@ import dev.sefiraat.cultivation.api.slimefun.plant.BreedingPair;
 import dev.sefiraat.cultivation.api.utils.StatisticUtils;
 import dev.sefiraat.cultivation.implementation.slimefun.CultivationStacks;
 import dev.sefiraat.cultivation.implementation.utils.Keys;
+import dev.sefiraat.cultivation.implementation.utils.LegacyItemText;
 import dev.sefiraat.sefilib.string.Theme;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
+import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -19,7 +21,6 @@ import org.bukkit.persistence.PersistentDataType;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -72,16 +73,10 @@ public class RecipeUnlock extends SlimefunItem {
 
     private void setLore(@Nonnull ItemMeta itemMeta, @Nonnull String childName) {
         // Setup the lore
-        List<String> lore = itemMeta.getLore();
-        List<String> newLore = new ArrayList<>();
-
+        List<Component> lore = itemMeta.lore();
         Preconditions.checkArgument(lore != null, "Shouldn't be possible, but lore is null.");
 
-        for (String string : lore) {
-            newLore.add(string.replace("{0}", childName));
-        }
-
-        itemMeta.setLore(newLore);
+        itemMeta.lore(LegacyItemText.replaceLiteral(lore, "{0}", childName));
     }
 
     private void setPersistence(@Nonnull ItemMeta itemMeta, @Nonnull String id) {
