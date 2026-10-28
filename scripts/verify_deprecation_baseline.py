@@ -20,9 +20,9 @@ MAX_APPROVED_WARNINGS = 38
 
 # Maven compiler emits this when -Xlint:deprecation/-Xlint:removal are enabled.
 JAVA_WARNING = re.compile(
-    r"\\[WARNING\\]\\s+.*?/src/main/java/"
-    r"(?P<file>[A-Za-z0-9_./-]+\\.java):"
-    r"\\[(?P<line>\\d+),(?P<column>\\d+)\\]\\s+"
+    r"\[WARNING\]\s+.*?/src/main/java/"
+    r"(?P<file>[A-Za-z0-9_./-]+\.java):"
+    r"\[(?P<line>\d+),(?P<column>\d+)\]\s+"
     r"(?P<detail>.+)"
 )
 
