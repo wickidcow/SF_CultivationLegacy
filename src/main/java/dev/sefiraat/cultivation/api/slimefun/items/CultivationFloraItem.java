@@ -15,6 +15,7 @@ import dev.sefiraat.cultivation.api.utils.LevelType;
 import dev.sefiraat.cultivation.api.utils.StatisticUtils;
 import dev.sefiraat.cultivation.implementation.listeners.CustomPlacementListener;
 import dev.sefiraat.cultivation.implementation.utils.Keys;
+import dev.sefiraat.cultivation.implementation.utils.LegacyItemText;
 import dev.sefiraat.sefilib.misc.ParticleUtils;
 import dev.sefiraat.sefilib.string.Theme;
 import dev.sefiraat.sefilib.world.LocationUtils;
@@ -61,7 +62,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public abstract class CultivationFloraItem<T extends CultivationFloraItem<T>> extends SlimefunItem
     implements CultivationFlora {
 
-    private static final LegacyComponentSerializer LEGACY_COMPONENTS = LegacyComponentSerializer.legacySection();
+    private static final LegacyComponentSerializer LEGACY_COMPONENTS = LegacyItemText.serializer();
 
     @Nonnull
     protected final Map<Location, UUID> ownerCache = new HashMap<>();
@@ -141,6 +142,10 @@ public abstract class CultivationFloraItem<T extends CultivationFloraItem<T>> ex
                 }
             }
         };
+    }
+
+    public void addOwner(@Nonnull Location location) {
+        throw new UnsupportedOperationException("An owner UUID is required");
     }
 
     public void addOwner(@Nonnull Location location, @Nonnull UUID uuid) {
