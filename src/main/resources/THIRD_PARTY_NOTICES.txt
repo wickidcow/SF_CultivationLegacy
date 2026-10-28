@@ -1,0 +1,13 @@
+Cultivation includes SefiLib 0.3.0, originally by Sefiraat.
+SefiLib source: https://github.com/Sefiraat/SefiLib
+License: GNU General Public License version 3 (see licenses/LICENSE).
+
+The local dev.sefiraat.sefilib.string.Theme implementation is adapted from:
+https://github.com/Sefiraat/SefiLib/blob/master/src/main/java/dev/sefiraat/sefilib/string/Theme.java
+Upstream file blob: ac114ae0244f1f59edd0434b259a68985617eb61
+Modified 2026-10-28 for Cultivation: Adventure TextColor storage and constructors,
+RGB-safe text handling, and retained legacy public binary compatibility bridges.
+The original Theme.class is explicitly excluded from the shaded SefiLib dependency.
+All other SefiLib classes are unchanged by this patch.
+Corresponding modified source and build scripts:
+https://github.com/wickidcow/SF_CultivationLegacy

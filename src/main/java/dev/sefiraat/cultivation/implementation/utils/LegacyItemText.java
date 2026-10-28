@@ -6,16 +6,17 @@ import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Bridges existing SefiLib legacy-formatted text to Paper's Adventure item-meta API.
- * This only changes presentation; item IDs, persistent data and saved profiles stay untouched.
- */
+/** Existing legacy text remains a boundary format; RGB colors must never be downsampled. */
 public final class LegacyItemText {
-
-    private static final LegacyComponentSerializer LEGACY = LegacyComponentSerializer.legacySection();
+    private static final LegacyComponentSerializer LEGACY = LegacyComponentSerializer.builder()
+        .character('\u00a7').hexColors().useUnusualXRepeatedCharacterHexFormat().build();
 
     private LegacyItemText() {
         throw new IllegalStateException("Utility class");
+    }
+
+    public static LegacyComponentSerializer serializer() {
+        return LEGACY;
     }
 
     public static Component parse(String legacyText) {

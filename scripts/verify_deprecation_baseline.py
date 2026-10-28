@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Fail a Cultivation build if new Java API deprecations appear.
+"""Reject every deprecated/for-removal source diagnostic after the Theme migration.
 
-The approved remaining warnings come from the SefiLib 0.3.0 Theme ABI, whose
-constructors require deprecated Bungee ChatColor. Do not suppress those warnings.
-Each Maven compile target is audited independently to prevent accidental regressions.
+Old binary bridges remain explicitly deprecated declarations, not warning
+suppressions. The compiler must report zero deprecated API uses in main source.
 """
 from __future__ import annotations
 
@@ -11,68 +10,42 @@ import re
 import sys
 from pathlib import Path
 
-APPROVED_FILE = "dev/sefiraat/cultivation/api/utils/CultivationThemes.java"
-APPROVED_DETAILS = frozenset({
-    "net.md_5.bungee.api.ChatColor in net.md_5.bungee.api has been deprecated",
-    "of(java.lang.String) in net.md_5.bungee.api.ChatColor has been deprecated",
-})
-MAX_APPROVED_WARNINGS = 38
-
-# Maven compiler emits this when -Xlint:deprecation/-Xlint:removal are enabled.
-JAVA_WARNING = re.compile(
-    r"\[WARNING\]\s+.*?/src/main/java/"
-    r"(?P<file>[A-Za-z0-9_./-]+\.java):"
-    r"\[(?P<line>\d+),(?P<column>\d+)\]\s+"
-    r"(?P<detail>.+)"
-)
+ANSI = re.compile(r"\x1b\[[0-9;]*m")
 
 
 def audit_log(log_text: str) -> tuple[int, list[str]]:
-    """Return the unique approved warning count and all unapproved warnings."""
-    distinct: set[tuple[str, int, int, str]] = set()
-    unexpected: list[str] = []
-    for line in log_text.splitlines():
-        if "[WARNING]" not in line or "/src/main/java/" not in line:
+    unexpected: set[str] = set()
+    for raw in log_text.splitlines():
+        line = ANSI.sub("", raw).replace("\\", "/")
+        if "[WARNING]" not in line and "warning:" not in line.lower():
             continue
-        # Compilation warnings about non-deprecation matters are a separate audit.
-        if "deprecated" not in line.lower() and "removal" not in line.lower():
+        if "src/main/java/" not in line and ".java:" not in line:
             continue
-        match = JAVA_WARNING.search(line)
-        if match is None:
-            unexpected.append("Unparseable Java deprecation warning: " + line.strip())
-            continue
-        file = match.group("file")
-        reason = match.group("detail").strip()
-        marker = (file, int(match.group("line")), int(match.group("column")), reason)
-        if file != APPROVED_FILE or reason not in APPROVED_DETAILS:
-            unexpected.append(f"New deprecated API: {file}:{marker[1]}:{marker[2]} {reason}")
-        else:
-            distinct.add(marker)
-
-    if len(distinct) > MAX_APPROVED_WARNINGS:
-        unexpected.append(
-            f"Approved SefiLib warnings increased from {MAX_APPROVED_WARNINGS} to {len(distinct)}"
-        )
-    return len(distinct), unexpected
+        if any(token in line.lower() for token in ("deprecated", "deprecation", "removal")):
+            unexpected.add(line.strip())
+    return 0, sorted(unexpected)
 
 
 def main(paths: list[str]) -> int:
     if not paths:
-        print("Usage: python3 scripts/verify_deprecation_baseline.py <maven-log> [...]", file=sys.stderr)
+        print("Usage: verify_deprecation_baseline.py <maven-log> [...]", file=sys.stderr)
         return 2
-
     failures = 0
     for name in paths:
         try:
             log = Path(name).read_text(encoding="utf-8")
-        except OSError as exc:
+        except (OSError, UnicodeError) as exc:
             print(f"Cannot read {name}: {exc}", file=sys.stderr)
             failures += 1
             continue
-        count, unexpected = audit_log(log)
-        print(f"{name}: {count}/{MAX_APPROVED_WARNINGS} approved SefiLib deprecations")
-        for item in unexpected:
-            print(item, file=sys.stderr)
+        # Do not mistake an empty, truncated or failed build log for zero warnings.
+        if "BUILD SUCCESS" not in log:
+            print(f"{name}: missing successful Maven build evidence", file=sys.stderr)
+            failures += 1
+        _, unexpected = audit_log(log)
+        print(f"{name}: {len(unexpected)} deprecated/removal source diagnostics (required: 0)")
+        for line in unexpected:
+            print(line, file=sys.stderr)
         failures += len(unexpected)
     return 1 if failures else 0
 

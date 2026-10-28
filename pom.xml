@@ -48,7 +48,11 @@
                         <relocation><pattern>io.papermc.lib</pattern><shadedPattern>dev.sefiraat.cultivation.paperlib</shadedPattern></relocation>
                         <relocation><pattern>io.github.sefiraat.sefilib</pattern><shadedPattern>io.github.sefiraat.cultivation.sefilib</shadedPattern></relocation>
                     </relocations>
-                    <filters><filter><artifact>*:*</artifact><excludes><exclude>META-INF/*</exclude><exclude>acf-core_*.properties</exclude><exclude>acf-minecraft_*.properties</exclude></excludes></filter></filters>
+                    <filters>
+                        <filter><artifact>*:*</artifact><excludes><exclude>META-INF/*</exclude><exclude>acf-core_*.properties</exclude><exclude>acf-minecraft_*.properties</exclude></excludes></filter>
+                        <!-- Use the reviewed, ABI-compatible Adventure implementation from this project. -->
+                        <filter><artifact>dev.sefiraat:SefiLib</artifact><excludes><exclude>dev/sefiraat/sefilib/string/Theme.class</exclude></excludes></filter>
+                    </filters>
                 </configuration>
                 <executions><execution><phase>package</phase><goals><goal>shade</goal></goals></execution></executions>
             </plugin>
@@ -67,6 +71,7 @@
         <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
         <resources>
             <resource><directory>${basedir}/src/main/resources</directory><filtering>true</filtering><includes><include>**/*.*</include><include>tags/*.json</include></includes></resource>
+            <resource><directory>${basedir}</directory><targetPath>licenses</targetPath><filtering>false</filtering><includes><include>LICENSE</include></includes></resource>
         </resources>
     </build>
 

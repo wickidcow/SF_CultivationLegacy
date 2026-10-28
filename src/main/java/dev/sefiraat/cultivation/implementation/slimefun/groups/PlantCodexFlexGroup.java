@@ -104,7 +104,7 @@ public class PlantCodexFlexGroup extends FlexItemGroup {
     @Override
     @ParametersAreNonnullByDefault
     public void open(Player p, PlayerProfile profile, SlimefunGuideMode mode) {
-        ChestMenu chestMenu = new ChestMenu(CultivationThemes.MAIN.getColor() + "Plants Codex");
+        ChestMenu chestMenu = new ChestMenu(CultivationThemes.MAIN.legacyCode() + "Plants Codex");
 
         for (int slot : HEADER) {
             chestMenu.addItem(slot, ChestMenuUtils.getBackground(), (player1, i1, itemStack, clickAction) -> false);

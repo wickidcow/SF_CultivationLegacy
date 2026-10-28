@@ -1,56 +1,38 @@
-"""Regression checks for the compile warning gate."""
+"""Tests of the zero-deprecation gate, including formerly allowed SefiLib calls."""
+import tempfile
 import unittest
-from verify_deprecation_baseline import audit_log
+from pathlib import Path
+from verify_deprecation_baseline import audit_log, main
 
 
 class DeprecationBaselineTests(unittest.TestCase):
-    def test_existing_sefilib_color_warnings_are_tracked(self):
-        old = (
-            "[WARNING] /tmp/repo/src/main/java/dev/sefiraat/cultivation/api/utils/"
-            "CultivationThemes.java:[12,57] of(java.lang.String) in "
-            "net.md_5.bungee.api.ChatColor has been deprecated"
-        )
-        count, unexpected = audit_log(old + "\n" + old)
-        self.assertEqual(1, count)
-        self.assertEqual([], unexpected)
+    def test_old_color_warning_now_fails(self):
+        warning = "[WARNING] /tmp/src/main/java/dev/sefiraat/cultivation/api/utils/CultivationThemes.java:[12,57] of(java.lang.String) in net.md_5.bungee.api.ChatColor has been deprecated"
+        self.assertEqual(1, len(audit_log(warning + "\n" + warning)[1]))
 
-    def test_new_deprecated_itemmeta_calls_fail(self):
-        current = (
-            "[WARNING] /tmp/repo/src/main/java/dev/sefiraat/cultivation/api/"
-            "slimefun/items/trees/CultivationTree.java:[42,17] "
-            "getLore() in org.bukkit.inventory.meta.ItemMeta has been deprecated"
-        )
-        count, unexpected = audit_log(current)
-        self.assertEqual(0, count)
-        self.assertEqual(1, len(unexpected))
+    def test_itemmeta_warning_fails(self):
+        warning = "[WARNING] /tmp/src/main/java/CultivationTree.java:[42,17] getLore() has been deprecated"
+        self.assertEqual(1, len(audit_log(warning)[1]))
 
-    def test_future_removal_warning_fails_even_in_allowlisted_file(self):
-        future = (
-            "[WARNING] /tmp/repo/src/main/java/dev/sefiraat/cultivation/api/utils/"
-            "CultivationThemes.java:[12,48] "
-            "net.md_5.bungee.api.ChatColor is deprecated and marked for removal"
-        )
-        count, unexpected = audit_log(future)
-        self.assertEqual(0, count)
-        self.assertEqual(1, len(unexpected))
+    def test_for_removal_fails(self):
+        warning = "[WARNING] /tmp/src/main/java/Theme.java:[35,20] API deprecated and marked for removal"
+        self.assertEqual(1, len(audit_log(warning)[1]))
 
-    def test_new_warning_in_same_file_fails(self):
-        current = (
-            "[WARNING] /tmp/repo/src/main/java/dev/sefiraat/cultivation/api/utils/"
-            "CultivationThemes.java:[35,20] "
-            "getLore() in org.bukkit.inventory.meta.ItemMeta has been deprecated"
-        )
-        count, unexpected = audit_log(current)
-        self.assertEqual(0, count)
-        self.assertEqual(1, len(unexpected))
+    def test_ansi_windows_and_javac_forms_fail(self):
+        warning = "\x1b[33mC:\\work\\src\\main\\java\\Theme.java:12: warning: [deprecation] old API\x1b[0m"
+        self.assertEqual(1, len(audit_log(warning)[1]))
 
-    def test_shade_and_repository_messages_are_not_java_deprecations(self):
-        noise = (
-            "[WARNING] bungeecord-chat:1.21-R0.2-deprecated was downloaded from a mirror\n"
-            "[WARNING] maven-shade-plugin has detected overlapping classes\n"
-            "[INFO] BUILD SUCCESS\n"
-        )
+    def test_dependency_noise_not_confused_with_source(self):
+        noise = "[WARNING] bungeecord-chat:1.21-R0.2-deprecated was downloaded from a mirror\n[WARNING] overlapping classes\n[INFO] BUILD SUCCESS"
         self.assertEqual((0, []), audit_log(noise))
+
+    def test_empty_log_not_accepted_as_success(self):
+        with tempfile.TemporaryDirectory() as temp:
+            file = Path(temp) / "build.log"
+            file.write_text("", encoding="utf-8")
+            self.assertEqual(1, main([str(file)]))
+            file.write_text("[INFO] BUILD SUCCESS", encoding="utf-8")
+            self.assertEqual(0, main([str(file)]))
 
 
 if __name__ == "__main__":
