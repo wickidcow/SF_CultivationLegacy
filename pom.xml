@@ -54,7 +54,13 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><version>3.14.1</version>
-                <configuration><release>${maven.compiler.release}</release></configuration>
+                <configuration>
+                    <release>${maven.compiler.release}</release>
+                    <compilerArgs>
+                        <arg>-Xlint:deprecation</arg>
+                        <arg>-Xlint:removal</arg>
+                    </compilerArgs>
+                </configuration>
             </plugin>
         </plugins>
         <defaultGoal>clean package</defaultGoal>
