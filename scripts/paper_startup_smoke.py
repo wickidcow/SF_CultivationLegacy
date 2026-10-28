@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Disposable Paper 26.3 two-boot Cultivation smoke with legacy-format progress data.
+"""Disposable Paper runtime tests with a separate, never-distributed probe plugin.
 
-This script intentionally never connects to, edits, or deploys on a real server.
-It verifies plugin enablement and player-data persistence across clean shutdowns;
-interactive breeding, machine recipes and Folia require separate integration tests.
+Two normal boots exercise registered items, metadata, menus and recipe logic;
+a third boot verifies malformed progress data fails closed. This does not
+simulate a connected player or certify Folia's region scheduler.
 """
 from __future__ import annotations
 
@@ -14,25 +14,21 @@ import sys
 import time
 from pathlib import Path
 
+from build_runtime_probe import build_probe
+
 TEST_PLAYER = "00000000-0000-4000-8000-000000000042"
 DATA_ROOT = Path("plugins/Cultivation")
 EXPERIENCE = (
     f"{TEST_PLAYER}:\n"
-    "  HORTICULTURALIST:\n"
-    "    EXP: 274\n"
-    "  ORCHARDIST:\n"
-    "    EXP: 117\n"
-    "  legacy-unknown:\n"
-    "    setting: keep-me\n"
+    "  HORTICULTURALIST:\n    EXP: 274\n"
+    "  ORCHARDIST:\n    EXP: 117\n"
+    "  legacy-unknown:\n    setting: keep-me\n"
 )
 CODEX = (
     f"{TEST_PLAYER}:\n"
-    "  PLANT:\n"
-    "    BREEDING:\n"
-    "      CLT_PLANT_LEMON:\n"
-    "        UNLOCKED: true\n"
-    "      CLT_PLANT_OTHER:\n"
-    "        UNLOCKED: false\n"
+    "  PLANT:\n    BREEDING:\n"
+    "      CLT_PLANT_LEMON:\n        UNLOCKED: true\n"
+    "      CLT_PLANT_OTHER:\n        UNLOCKED: false\n"
     "  legacy-custom-flag: leave-intact\n"
 )
 EXPECTED = {
@@ -42,10 +38,6 @@ EXPECTED = {
                   "CLT_PLANT_OTHER:", "UNLOCKED: false", "legacy-custom-flag: leave-intact"],
 }
 READY = re.compile(r"Done \([\d.]+s\)! For help")
-ENABLES = (
-    re.compile(r"Enabling Slimefun\b"),
-    re.compile(r"Enabling Cultivation\b"),
-)
 FATAL = (
     re.compile(r"Error occurred while enabling (Slimefun|Cultivation)", re.IGNORECASE),
     re.compile(r"Could not load .*?(Slimefun|Cultivation)", re.IGNORECASE),
@@ -70,27 +62,29 @@ def run_boot(directory: Path, number: int, timeout_seconds: int = 200,
     with output.open("w", encoding="utf-8") as log:
         process = subprocess.Popen(
             ["java", "-Xms512M", "-Xmx2G", "-jar", "server.jar", "--nogui"],
-            cwd=directory,
-            stdin=subprocess.PIPE,
-            stdout=log,
-            stderr=subprocess.STDOUT,
-            text=True,
+            cwd=directory, stdin=subprocess.PIPE, stdout=log,
+            stderr=subprocess.STDOUT, text=True,
         )
         try:
             deadline = time.monotonic() + timeout_seconds
             ready = False
+            content = ""
             while time.monotonic() < deadline:
-                if output.exists() and READY.search(output.read_text(encoding="utf-8", errors="replace")):
+                content = output.read_text(encoding="utf-8", errors="replace")
+                if "CULTIVATION_PROBE_FAIL" in content:
+                    raise AssertionError("Packaged addon integration probe failed:\n" + content[-12000:])
+                probe_done = expected_invalid_codex or "CULTIVATION_PROBE_PASS" in content
+                if READY.search(content) and probe_done:
                     ready = True
                     break
                 if process.poll() is not None:
                     break
                 time.sleep(1)
             if not ready:
-                raise AssertionError(f"Paper did not finish boot {number} within {timeout_seconds}s")
+                raise AssertionError(f"Boot {number} did not pass startup/probe within {timeout_seconds}s:\n"
+                                     + content[-12000:])
             if process.stdin is None:
                 raise AssertionError("The Paper process has no console input")
-            # Commands are delivered in order, and stop flushes all enabled plugins' data.
             process.stdin.write("plugins\nstop\n")
             process.stdin.flush()
             try:
@@ -109,45 +103,53 @@ def run_boot(directory: Path, number: int, timeout_seconds: int = 200,
                     process.wait(timeout=10)
 
     content = output.read_text(encoding="utf-8", errors="replace")
-    if not READY.search(content):
-        raise AssertionError(f"Paper boot {number} did not reach a ready state")
-    if not ENABLES[0].search(content):
-        raise AssertionError(f"Paper boot {number} did not enable Slimefun")
+    if not READY.search(content) or not re.search(r"Enabling Slimefun\b", content):
+        raise AssertionError(f"Paper boot {number} did not reach readiness with Slimefun")
     if expected_invalid_codex:
         if "Unable to load codex.yml" not in content:
-            raise AssertionError("Malformed codex did not trigger the expected strict data-load failure")
+            raise AssertionError("Malformed codex did not trigger the strict data-load failure")
         if not re.search(r"Error occurred while enabling Cultivation", content, re.IGNORECASE):
-            raise AssertionError("Cultivation did not fail closed on its malformed saved codex")
+            raise AssertionError("Cultivation did not fail closed on malformed saved codex")
         if re.search(r"Error occurred while enabling Slimefun", content, re.IGNORECASE):
-            raise AssertionError("Slimefun unexpectedly failed during Cultivation recovery test")
-        print(f"Paper boot {number}: malformed codex rejected; server stopped cleanly")
+            raise AssertionError("Slimefun unexpectedly failed during the negative test")
+        if "CULTIVATION_PROBE_PASS" in content:
+            raise AssertionError("Probe must not pass when its Cultivation dependency is disabled")
+        print(f"Paper boot {number}: malformed codex rejected; server stopped cleanly", flush=True)
         return
-    if not ENABLES[1].search(content):
+    if not re.search(r"Enabling Cultivation\b", content):
         raise AssertionError(f"Paper boot {number} did not enable Cultivation")
     for fatal in FATAL:
         if fatal.search(content):
             raise AssertionError(f"Paper boot {number} reported a fatal plugin error: {fatal.pattern}")
-    print(f"Paper boot {number}: ready, both plugins enabled, clean shutdown")
+    for line in content.splitlines():
+        if "CULTIVATION_PROBE_PASS" in line:
+            print(f"Boot {number}: {line}", flush=True)
+    print(f"Paper boot {number}: both plugins enabled, runtime probe passed, clean shutdown", flush=True)
 
 
 def main(argv: list[str]) -> int:
     if len(argv) != 4:
-        print("Usage: paper_startup_smoke.py <paper.jar> <slimefun.jar> <cultivation.jar> <work-dir>",
+        print("Usage: paper_startup_smoke.py <paper.jar> <slimefun.jar> <cultivation.jar> <empty-work-dir>",
               file=sys.stderr)
         return 2
     paper, slimefun, cultivation, root = map(Path, argv)
     for jar in (paper, slimefun, cultivation):
         if not jar.is_file() or jar.stat().st_size < 1024:
             raise FileNotFoundError(f"Missing or invalid JAR: {jar}")
+    # Never overwrite a previously existing world/server, even if invoked manually.
+    if root.exists() and any(root.iterdir()):
+        raise FileExistsError(f"Refusing to modify a non-empty server directory: {root}")
     root.mkdir(parents=True, exist_ok=True)
+    probe = build_probe(cultivation, slimefun, root.parent / "probe-build")
     (root / "plugins").mkdir(exist_ok=True)
     (root / DATA_ROOT).mkdir(parents=True, exist_ok=True)
     shutil.copyfile(paper, root / "server.jar")
     shutil.copyfile(slimefun, root / "plugins/Slimefun-Legacy.jar")
     shutil.copyfile(cultivation, root / "plugins/SF_Cultivation.jar")
+    shutil.copyfile(probe, root / "plugins/CultivationRuntimeProbe.jar")
     (root / "eula.txt").write_text("eula=true\n", encoding="utf-8")
     (root / "server.properties").write_text(
-        "online-mode=false\nmax-players=1\nview-distance=2\nsimulation-distance=2\n"
+        "server-ip=127.0.0.1\nonline-mode=false\nmax-players=1\nview-distance=2\nsimulation-distance=2\n"
         "spawn-protection=0\nenable-query=false\nenable-rcon=false\n",
         encoding="utf-8",
     )
@@ -162,16 +164,12 @@ def main(argv: list[str]) -> int:
     exp_before = exp_path.read_bytes()
     invalid_codex = b"legacy-player:\n  PLANT: [unfinished\n"
     codex_path.write_bytes(invalid_codex)
-
-    # Third boot intentionally fails plugin enablement, not the Paper server itself.
-    # This is a negative test: failure must never re-save an empty codex over bad input.
     run_boot(root, 3, expected_invalid_codex=True)
     if codex_path.read_bytes() != invalid_codex:
-        raise AssertionError("Malformed codex file was modified during failed plugin startup/shutdown")
+        raise AssertionError("Malformed codex changed during failed plugin startup/shutdown")
     if exp_path.read_bytes() != exp_before:
         raise AssertionError("Unrelated experience file changed during failed codex startup")
-
-    print("Cultivation: two clean restarts preserved legacy YAML; invalid codex failed closed without data loss")
+    print("Cultivation: runtime probes and restarts passed; malformed codex failed closed without data loss")
     return 0
 
 
