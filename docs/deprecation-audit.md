@@ -14,15 +14,17 @@ Normal code now uses Adventure TextColor, getTextColor() and legacyCode(). Exact
 
 Only the upstream dependency's Theme.class is excluded from shading. The packaged addon must contain exactly one replacement Theme.class. Other SefiLib classes are unchanged. THIRD_PARTY_NOTICES.txt and licenses/LICENSE ship in the JAR, and the modified source remains in this repository.
 
-## Text preservation
+## Text and display preservation
 
 All 19 Cultivation palette colors and existing public labels remain unchanged, including the historical DISCOVEREY field spelling. Legacy hexadecimal text retains its original lowercase encoding. RGB-preserving serialization prevents existing custom colors from being downsampled when generating plant displays, prefixing Seed Pack names, or replacing recipe-scroll placeholders.
+
+The item-display 180-degree correction no longer relies on PaperLib parsing an old 1.x minor-version number: every supported server is newer than 1.20. Tests cover all stored display designs, both item/non-item modes, and repeated calls without accumulated rotation.
 
 Item IDs, recipes, breeding probabilities, production rates, typed persistent-data keys and player-data formats are not migrated or reset.
 
 ## Automated gates
 
-- 43 Java tests cover player-data safety, exact palette/labels, old/new Theme binary compatibility, legacy formatting tokens, RGB text and particle colors.
+- 46 Java tests cover player-data safety, exact palette/labels, old/new Theme binary compatibility, legacy formatting tokens, RGB text/particle colors and display transformations.
 - Six Python tests validate the zero-deprecation guard, including Windows/ANSI diagnostics and rejection of an empty build log.
 - Full baseline Maven tests/package plus Java 21 bytecode checks; API compilation against 1.21.11, 26.1, 26.2 and stable 26.3.
 - Packaged-JAR checks reject leaked test frameworks/probe classes and duplicate Theme.class entries and require license notices.
