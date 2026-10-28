@@ -12,12 +12,13 @@ permissions:
   contents: write
 
 env:
-  VERSION: "1.1.23"
-  OUTPUT_NAME: "SF_Cultivation1.1.23.jar"
+  VERSION: "1.1.24"
+  OUTPUT_NAME: "SF_Cultivation1.1.24.jar"
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 35
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -37,6 +38,7 @@ jobs:
           test "$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" = "$VERSION"
           grep -Fq '<finalName>SF_Cultivation${project.version}</finalName>' pom.xml
           if printf '%s\n%s\n' "$VERSION" "$OUTPUT_NAME" | grep -Eiq '(legacy|english|snapshot)'; then exit 1; fi
+          test -s "docs/releases/${VERSION}.md"
 
       - name: Verify English source policy
         shell: python
@@ -61,13 +63,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
+          set -euo pipefail
           mkdir -p .ci-deps
           gh release download "v4.1.78" --repo "wickidcow/Slimefun-Legacy" --pattern "Slimefun-Legacy4.1.78.jar" --dir ".ci-deps"
           mvn -B install:install-file -Dfile=".ci-deps/Slimefun-Legacy4.1.78.jar" -DgroupId="com.github.slimefun" -DartifactId="Slimefun" -Dversion="4.1.78" -Dpackaging="jar" -DgeneratePom=true
 
       - name: Verify player data preservation boundary
         run: python3 scripts/verify_player_data_safety.py
-      - name: Test deprecation warning regression guard
+      - name: Test zero-deprecation regression guard
         run: python3 -m unittest discover -s scripts -p 'test_deprecation_baseline.py' -v
       - name: Build and test universal release JAR on 1.21.11 baseline
         shell: bash
@@ -75,7 +78,7 @@ jobs:
           set -euo pipefail
           mvn -B clean package 2>&1 | tee "${RUNNER_TEMP}/cultivation-deprecation-1.21.11.log"
           python3 scripts/verify_deprecation_baseline.py "${RUNNER_TEMP}/cultivation-deprecation-1.21.11.log"
-      - name: Retain player data test results
+      - name: Retain Java regression test results
         if: always()
         uses: actions/upload-artifact@v7
         with:
@@ -98,6 +101,7 @@ jobs:
       - name: Verify Java 21 bytecode
         shell: bash
         run: |
+          set -euo pipefail
           MAIN_CLASS=$(unzip -p "dist/${OUTPUT_NAME}" plugin.yml | awk '/^main:/ {print $2; exit}')
           javap -verbose -classpath "dist/${OUTPUT_NAME}" "$MAIN_CLASS" | grep -F 'major version: 65'
       - name: Verify Paper 26.1 compilation
@@ -125,64 +129,76 @@ jobs:
           name: cultivation-compiler-deprecation-audit
           path: ${{ runner.temp }}/cultivation-deprecation-*.log
           if-no-files-found: warn
-      - name: Upload canonical raw JAR artifact
+
+      # These tests also run on release-producing pushes, not only pull requests.
+      - name: Download checksum-verified stable Paper runtimes
+        shell: bash
+        run: |
+          bash scripts/download_paper.sh 1.21.11 .ci-runtime/paper-1.21.11.jar
+          bash scripts/download_paper.sh 26.3 .ci-runtime/paper-26.3.jar
+      - name: Set up Java 21 minimum runtime
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Paper 1.21.11 packaged-addon integration and recovery tests
+        timeout-minutes: 12
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/paper_startup_smoke.py \
+            .ci-runtime/paper-1.21.11.jar \
+            .ci-deps/Slimefun-Legacy4.1.78.jar \
+            "dist/${OUTPUT_NAME}" \
+            .ci-runtime/server-1.21.11
+      - name: Restore Java 25 for Paper 26.3
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '25'
+      - name: Paper 26.3 packaged-addon integration and recovery tests
+        timeout-minutes: 12
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/paper_startup_smoke.py \
+            .ci-runtime/paper-26.3.jar \
+            .ci-deps/Slimefun-Legacy4.1.78.jar \
+            "dist/${OUTPUT_NAME}" \
+            .ci-runtime/server-26.3
+      - name: Retain disposable Paper runtime evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: cultivation-paper-runtime-evidence
+          path: |
+            .ci-runtime/*.metadata.json
+            .ci-runtime/server-*/cultivation-boot-*.stdout.log
+            .ci-runtime/server-*/plugins/Cultivation/exp.yml
+            .ci-runtime/server-*/plugins/Cultivation/codex.yml
+            .ci-runtime/server-*/plugins/CultivationRuntimeProbe/seed-pack.bin
+          if-no-files-found: warn
+      - name: Upload validated canonical raw JAR
         uses: actions/upload-artifact@v7
         with:
           name: ${{ env.OUTPUT_NAME }}
           path: dist/${{ env.OUTPUT_NAME }}
           archive: false
           if-no-files-found: error
-      - name: Download and checksum-verify stable Paper 26.3
-        if: github.event_name == 'pull_request'
-        shell: bash
-        env:
-          PAPER_AGENT: "CultivationLegacy-CI/1.0 (+https://github.com/wickidcow/SF_CultivationLegacy)"
-        run: |
-          set -euo pipefail
-          mkdir -p .ci-runtime
-          META=$(curl --fail --silent --show-error --location --retry 3 --header "User-Agent: ${PAPER_AGENT}" "https://fill.papermc.io/v3/projects/paper/versions/26.3/builds")
-          URL=$(jq -er '[.[] | select(.channel == "STABLE")][0].downloads["server:default"].url // empty' <<<"${META}")
-          SHA=$(jq -er '[.[] | select(.channel == "STABLE")][0].downloads["server:default"].checksums.sha256 // empty' <<<"${META}")
-          [[ "${URL}" == https://fill-data.papermc.io/* ]]
-          [[ "${SHA}" =~ ^[0-9a-f]{64}$ ]]
-          curl --fail --silent --show-error --location --retry 3 --header "User-Agent: ${PAPER_AGENT}" --output ".ci-runtime/paper.jar" "${URL}"
-          echo "${SHA}  .ci-runtime/paper.jar" | sha256sum -c -
-          unzip -tqq .ci-runtime/paper.jar
-      - name: Two-boot Cultivation Paper 26.3 runtime smoke
-        if: github.event_name == 'pull_request'
-        timeout-minutes: 12
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 scripts/paper_startup_smoke.py \
-            .ci-runtime/paper.jar \
-            .ci-deps/Slimefun-Legacy4.1.78.jar \
-            dist/SF_Cultivation1.1.23.jar \
-            .ci-runtime/server
-      - name: Retain disposable Paper 26.3 boot evidence
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: cultivation-paper26.3-two-boot-smoke
-          path: |
-            .ci-runtime/server/cultivation-boot-*.stdout.log
-            .ci-runtime/server/plugins/Cultivation/exp.yml
-            .ci-runtime/server/plugins/Cultivation/codex.yml
-          if-no-files-found: warn
       - name: Publish canonical raw JAR release
-        if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/') || github.ref_name == github.event.repository.default_branch
+        if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/v') || github.ref_name == github.event.repository.default_branch)
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
-          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then TAG="$GITHUB_REF_NAME"; else TAG="v${VERSION}"; fi
-          JAR="dist/${OUTPUT_NAME}"
+          TAG="v${VERSION}"
+          if [[ "$GITHUB_REF" == refs/tags/* ]]; then test "$GITHUB_REF_NAME" = "$TAG"; fi
+          # Previously published versions are never replaced by subsequent CI runs.
           if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            while IFS= read -r OLD; do
-              if [[ "$OLD" == *.jar && "$OLD" != "$OUTPUT_NAME" ]]; then gh release delete-asset "$TAG" "$OLD" --repo "$GITHUB_REPOSITORY" -y; fi
-            done < <(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name')
-            gh release upload "$TAG" "$JAR" --repo "$GITHUB_REPOSITORY" --clobber
+            echo "Release ${TAG} already exists; leaving its files unchanged."
           else
-            gh release create "$TAG" "$JAR" --repo "$GITHUB_REPOSITORY" --title "SF_Cultivation ${VERSION}" --notes "Cultivation ${VERSION}: canonical ${OUTPUT_NAME} release."
+            gh release create "$TAG" "dist/${OUTPUT_NAME}" \
+              --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+              --title "Cultivation ${VERSION}" --notes-file "docs/releases/${VERSION}.md"
           fi

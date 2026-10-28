@@ -164,6 +164,10 @@ def main(argv: list[str]) -> int:
     exp_before = exp_path.read_bytes()
     invalid_codex = b"legacy-player:\n  PLANT: [unfinished\n"
     codex_path.write_bytes(invalid_codex)
+    # The negative test deliberately disables Cultivation. Remove the CI-only
+    # consumer before that boot, rather than testing it against a disabled API.
+    # All positive integration assertions ran on both preceding real boots.
+    (root / "plugins/CultivationRuntimeProbe.jar").unlink()
     run_boot(root, 3, expected_invalid_codex=True)
     if codex_path.read_bytes() != invalid_codex:
         raise AssertionError("Malformed codex changed during failed plugin startup/shutdown")

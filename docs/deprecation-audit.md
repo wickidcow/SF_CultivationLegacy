@@ -1,47 +1,39 @@
-# Cultivation deprecation audit — 2026-10-28
+# Cultivation 1.1.24 — deprecation migration and validation
 
-This is an addon-source audit of Java API deprecation warnings. Build warnings from Maven repository cache resolution and duplicate shaded metadata/classes are tracked separately; they are **not** counted as deprecated Java calls.
+## Outcome and scope
 
-## Audit baseline
+The original audit identified 76 distinct compiler diagnostics. Updating the provided Slimefun Legacy API to 4.1.78 and migrating ItemMeta text reduced that to 38. Version 1.1.24 removes the remaining active Bungee color calls by supplying an Adventure-backed, binary-compatible implementation of SefiLib's Theme class. CI now requires **zero deprecated/removal source diagnostics** on Paper API 1.21.11, 26.1, 26.2 and 26.3.
 
-The Maven compiler now uses `-Xlint:deprecation` and `-Xlint:removal`. The initial audit against Slimefun Legacy 4.1.29 showed 76 distinct source diagnostics across 10 Java files, repeated by three compile target builds:
+This is a focused Theme/API migration, not a claim that every class inside all bundled third-party libraries has been rewritten. Other Maven shading/unchecked-type notices are separate from API deprecation diagnostics.
 
-| Category | Distinct diagnostics | Treatment |
-| --- | ---: | --- |
-| SefiLib / Bungee hex ChatColor | 38 | Requires careful SefiLib Theme migration |
-| Legacy ChestMenu and ClickAction references | 23 | Supported by the official Slimefun Legacy 4.1.78 API; update provided compile dependency |
-| Bukkit string lore | 8 | Use Adventure component lore |
-| Legacy int energy-capacity interface | 3 | The public interface remains supported in Slimefun Legacy 4.1.78 |
-| Bukkit string display names | 4 | Use Adventure component display names |
+## SefiLib compatibility boundary
 
-The first updated CI build passed (16 JUnit tests, 0 failures, 0 errors) and reported **38 distinct remaining diagnostics**, all from `CultivationThemes.java` Bungee ChatColor references.
+Cultivation publicly exposes `dev.sefiraat.sefilib.string.Theme` in theme constants, PlantTheme and CultivationFlora. Changing that class name or its old public descriptors would break compiled consumers. The local GPL-3.0 adaptation therefore keeps every original public method, constructor and field descriptor, verified against the original SefiLib 0.3.0 JAR by automated tests.
 
-## Why the remaining warnings are not silently suppressed
+Normal code now uses Adventure TextColor, getTextColor() and legacyCode(). Exactly three old public members remain explicitly deprecated, not marked for removal: the two ChatColor constructors and getColor(). They exist only as binary-compatibility bridges for old consumers. The implementation does not use blanket warning suppression or reflection to avoid deprecated symbols. Reflection in the tests verifies the original binary API, not production behavior.
 
-Cultivation depends on SefiLib 0.3.0 `dev.sefiraat.sefilib.string.Theme`, whose public constructor takes `net.md_5.bungee.api.ChatColor` rather than Adventure `TextColor`. Replacing `ChatColor.of("#RRGGBB")` calls with Adventure `TextColor` directly does not compile. Replacing all Theme references or introducing an incompatible Theme class risks changing color output, item lore, and other addons' API expectations.
+Only the upstream dependency's Theme.class is excluded from shading. The packaged addon must contain exactly one replacement Theme.class. Other SefiLib classes are unchanged. THIRD_PARTY_NOTICES.txt and licenses/LICENSE ship in the JAR, and the modified source remains in this repository.
 
-Next action: evaluate an API-compatible modernized SefiLib Theme or a carefully staged local theme adapter with parity tests. Do not remove item IDs, change lore contents, hide the warnings, or use reflection to evade the deprecated symbols.
+## Text preservation
 
-## Preservation and validation requirements
+All 19 Cultivation palette colors and existing public labels remain unchanged, including the historical DISCOVEREY field spelling. Legacy hexadecimal text retains its original lowercase encoding. RGB-preserving serialization prevents existing custom colors from being downsampled when generating plant displays, prefixing Seed Pack names, or replacing recipe-scroll placeholders.
 
-- Preserve all existing Slimefun IDs, saved player XP, discovery IDs and keys, typed plant profiles, seed-pack contents, recipes and growth/production rates.
-- Keep real player data on disk when parsing/serialization fails; do not treat a failed read as an empty file.
-- Use source guard, Java 21 bytecode check, all 16+ unit tests, raw JAR checks and Paper API compilation targets before merge.
-- CI compilation is **not** a substitute for real startup/restart tests. Verify with disposable old-format data and test: placing/breaking crops, breeding, catalog UI, seed-pack name/lore and storage persistence, recipe unlocks, garden-cloche visuals and output, powered kitchen recipes and network charge.
-- Also validate Folia region scheduling and concurrent menu/machine behavior on an actual compatible Folia build before asserting Folia support.
-- Keep unrelated Maven toolchain modernization PR #4 separate; reconcile its changes when merging.
-- A passing draft PR is **not** a release authorization.
+Item IDs, recipes, breeding probabilities, production rates, typed persistent-data keys and player-data formats are not migrated or reset.
 
-## CI deprecation-regression contract (2026-10-28)
+## Automated gates
 
-`scripts/verify_deprecation_baseline.py` checks the full compiler output separately for Paper 1.21.11, 26.1, 26.2, and 26.3. It accepts **at most 38** unique diagnostics, and only when they are the two explicitly documented Bungee ChatColor warnings within `CultivationThemes.java`. A new deprecated method, deprecated-for-removal API, unexpected warning in another source file, or growth above the current ceiling fails CI. Warnings are not hidden, suppressed, or downgraded. Retained logs remain available as a CI artifact. A future *reduction* below 38 is accepted.
+- 43 Java tests cover player-data safety, exact palette/labels, old/new Theme binary compatibility, legacy formatting tokens, RGB text and particle colors.
+- Six Python tests validate the zero-deprecation guard, including Windows/ANSI diagnostics and rejection of an empty build log.
+- Full baseline Maven tests/package plus Java 21 bytecode checks; API compilation against 1.21.11, 26.1, 26.2 and stable 26.3.
+- Packaged-JAR checks reject leaked test frameworks/probe classes and duplicate Theme.class entries and require license notices.
+- Disposable official checksum-verified Paper 1.21.11 on Java 21 and Paper 26.3 on Java 25 run a separate integration probe on two consecutive boots. It exercises item registration/serialization, analyzed plant profiles, breeding-pair logic, Seed Pack GUI selectors and storage persistence, recipe scroll generation, kitchen recipe lookup and power capacity.
+- Each runtime also receives a third deliberately malformed-codex boot, which must fail plugin initialization without changing the malformed codex bytes or the unrelated XP file. The CI-only probe is removed for this negative test because its dependency is deliberately disabled.
+- These runtime gates apply before producing release assets on main/tag pushes, not only pull requests. Existing published release files are never overwritten by reruns.
 
-`CultivationThemesTest` snapshots all **19 named theme color values**, plus public labels (including the existing `DISCOVEREY` spelling) so a future SefiLib replacement must maintain the existing hex colors, player-visible names, and API compatibility. Tests do not grant a live-server release gate.
+The integration probe lives under scripts/integration and is built separately; it is never distributed with Cultivation. Test servers bind only to loopback, and the harness refuses to modify a non-empty server directory.
 
-## Disposable Paper startup/restart CI
+## Validation limits
 
-PR builds also run an **independent** two-boot smoke using the newest official **stable Paper 26.3** server JAR returned by PaperMC Fill v3. This download requires a project-specific User-Agent, verifies the official SHA-256 and refuses pre-release builds. CI copies only the built Cultivation JAR and pinned Slimefun Legacy 4.1.78 JAR into an ephemeral temporary server, starts Paper on Java 25, waits for both plugins to enable and Paper to report readiness, shuts down cleanly, and starts it again. Old-format disposable `exp.yml` and `codex.yml` fixtures must retain their known player UUID, EXP, discovery bits and unknown legacy values across both boots.
+Programmatic integration checks do not simulate a connected player's inventory drag/shift-click sequences, every protection-plugin combination, actual crop growth in loaded production chunks, or sustained multi-region concurrency. In particular, **Folia support is not certified or newly enabled by this release**; a region-scheduler migration and dedicated Folia gameplay tests are a separate compatibility task. Purpur/Leaf-specific runtime behavior is not inferred merely from Paper compile success.
 
-The smoke never contacts or alters a live server. It **does not** assert full 1.21.11/Purpur/Leaf/Folia runtime support, simulate real player clicks/breeding/crafting, or prove threading safety. Those remain manual or more advanced integration gates.
-
-The same disposable server also performs a **third, deliberately failing boot** using a malformed `codex.yml`. The Paper server must still start, while Cultivation must report its strict input-load failure and leave the malformed codex **byte-for-byte unchanged**; the unrelated experience file must also remain unchanged. This validates fail-closed startup behavior under actual Paper lifecycle conditions, in addition to the 13 existing player-data unit tests.
+Keep the independent Maven toolchain PR #4 separate. A toolchain update must retain these migration tests and release gates when it is reconciled.

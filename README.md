@@ -5,7 +5,7 @@
 **Plants, breeding, fruit trees, food production, and farming progression for Slimefun.**
 
 ![Slimefun Legacy](https://img.shields.io/badge/Slimefun-Legacy-6bd425?style=for-the-badge)
-![Paper 26.2+](https://img.shields.io/badge/Paper-26.2%2B-blue?style=for-the-badge)
+![Paper 1.21.11+](https://img.shields.io/badge/Paper-1.21.11%2B-blue?style=for-the-badge)
 ![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-blue?style=for-the-badge)
 ![Maintained for AlbionMC.com](https://img.shields.io/badge/Maintained%20for-albionmc.com-7b68ee?style=for-the-badge)
 
@@ -32,10 +32,15 @@ The goal is to make agriculture feel like a complete Slimefun progression path r
 
 Primary maintenance target:
 
-- **Minecraft:** 1.21.11+
-- **Paper:** 26.2+
-- **Slimefun:** Slimefun Legacy
-- **Runtime/build environment:** modern Java/Paper servers
+- **Minecraft/Paper minimum:** 1.21.11
+- **API compilation checks:** 1.21.11, 26.1, 26.2 and 26.3
+- **Runtime integration gates:** Paper 1.21.11 on Java 21 and Paper 26.3 on Java 25
+- **Validated dependency:** Slimefun Legacy 4.1.78
+- **Plugin bytecode:** Java 21; use the Java runtime required by the selected server version
+
+Version **1.1.24** completes the Adventure-backed SefiLib Theme migration while retaining the old public binary API for existing consumers. It also preserves custom RGB colors in plant display items, Seed Packs and recipe scrolls. See [release notes](docs/releases/1.1.24.md) and the [migration and validation report](docs/deprecation-audit.md).
+
+The runtime probes exercise packaged item metadata, breeding-pair logic, Seed Pack menus/persistence, kitchen recipe lookup and save-data recovery. They are not a claim of exhaustive connected-player gameplay testing. **Folia support is not newly enabled or certified by this release.** Purpur/Leaf-specific runtime behavior requires its own validation.
 
 Legacy maintenance includes:
 
@@ -54,7 +59,7 @@ Cultivation Legacy does **not** require ExoticGarden to run.
 
 Cultivation exists because of the original developers and the community that continued maintaining it.
 
-- **Sefiraat** — original Cultivation project creator and lead developer.
+- **Sefiraat** — original Cultivation project creator and lead developer, and SefiLib author.
 - **J3fftw / J3fftw1** — original project development and contribution.
 - **JustAHuman** — original project development and contribution.
 - **Sefiraat/Cultivation** — original source repository and gameplay foundation.
@@ -69,6 +74,8 @@ This maintenance fork is intended to **honor and preserve** the original work, n
 Cultivation is licensed under the **GNU General Public License v3.0 (GPLv3)**. The complete license text is included in `LICENSE` and remains controlling if this summary differs from it.
 
 If you distribute this GPL-covered project or a modified version, follow the GPLv3 requirements that apply to your distribution, including preserving applicable notices, licensing covered modified source under GPLv3, and making the required **Corresponding Source** available when distributing object-code builds. Modified versions should be clearly identified as modified.
+
+The adapted SefiLib Theme source is included under `src/main/java/dev/sefiraat/sefilib/string/Theme.java`, with its origin and modifications recorded in `THIRD_PARTY_NOTICES.txt` inside the JAR.
 
 This software is provided **without warranty** to the extent described by GPLv3.
 
