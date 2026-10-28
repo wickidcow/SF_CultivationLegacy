@@ -31,3 +31,9 @@ Next action: evaluate an API-compatible modernized SefiLib Theme or a carefully 
 - Also validate Folia region scheduling and concurrent menu/machine behavior on an actual compatible Folia build before asserting Folia support.
 - Keep unrelated Maven toolchain modernization PR #4 separate; reconcile its changes when merging.
 - A passing draft PR is **not** a release authorization.
+
+## CI deprecation-regression contract (2026-10-28)
+
+`scripts/verify_deprecation_baseline.py` checks the full compiler output separately for Paper 1.21.11, 26.1, 26.2, and 26.3. It accepts **at most 38** unique diagnostics, and only when they are the two explicitly documented Bungee ChatColor warnings within `CultivationThemes.java`. A new deprecated method, deprecated-for-removal API, unexpected warning in another source file, or growth above the current ceiling fails CI. Warnings are not hidden, suppressed, or downgraded. Retained logs remain available as a CI artifact. A future *reduction* below 38 is accepted.
+
+`CultivationThemesTest` snapshots all **19 named theme color values**, plus public labels (including the existing `DISCOVEREY` spelling) so a future SefiLib replacement must maintain the existing hex colors, player-visible names, and API compatibility. Tests do not grant a live-server release gate.

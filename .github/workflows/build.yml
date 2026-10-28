@@ -67,8 +67,14 @@ jobs:
 
       - name: Verify player data preservation boundary
         run: python3 scripts/verify_player_data_safety.py
+      - name: Test deprecation warning regression guard
+        run: python3 -m unittest discover -s scripts -p 'test_deprecation_baseline.py' -v
       - name: Build and test universal release JAR on 1.21.11 baseline
-        run: mvn -B clean package
+        shell: bash
+        run: |
+          set -euo pipefail
+          mvn -B clean package 2>&1 | tee "${RUNNER_TEMP}/cultivation-deprecation-1.21.11.log"
+          python3 scripts/verify_deprecation_baseline.py "${RUNNER_TEMP}/cultivation-deprecation-1.21.11.log"
       - name: Retain player data test results
         if: always()
         uses: actions/upload-artifact@v7
@@ -95,11 +101,30 @@ jobs:
           MAIN_CLASS=$(unzip -p "dist/${OUTPUT_NAME}" plugin.yml | awk '/^main:/ {print $2; exit}')
           javap -verbose -classpath "dist/${OUTPUT_NAME}" "$MAIN_CLASS" | grep -F 'major version: 65'
       - name: Verify Paper 26.1 compilation
-        run: mvn -B clean package -DskipTests -Dserver.api.group=io.papermc.paper -Dserver.api.artifact=paper-api "-Dserver.api.version=[26.1.build,26.2)"
+        shell: bash
+        run: |
+          set -euo pipefail
+          mvn -B clean package -DskipTests -Dserver.api.group=io.papermc.paper -Dserver.api.artifact=paper-api "-Dserver.api.version=[26.1.build,26.2)" 2>&1 | tee "${RUNNER_TEMP}/cultivation-deprecation-26.1.log"
+          python3 scripts/verify_deprecation_baseline.py "${RUNNER_TEMP}/cultivation-deprecation-26.1.log"
       - name: Verify Paper 26.2 compilation
-        run: mvn -B clean package -DskipTests -Dserver.api.group=io.papermc.paper -Dserver.api.artifact=paper-api "-Dserver.api.version=[26.2.build,26.3)"
+        shell: bash
+        run: |
+          set -euo pipefail
+          mvn -B clean package -DskipTests -Dserver.api.group=io.papermc.paper -Dserver.api.artifact=paper-api "-Dserver.api.version=[26.2.build,26.3)" 2>&1 | tee "${RUNNER_TEMP}/cultivation-deprecation-26.2.log"
+          python3 scripts/verify_deprecation_baseline.py "${RUNNER_TEMP}/cultivation-deprecation-26.2.log"
       - name: Verify Paper 26.3 stable compilation
-        run: mvn -B clean package -DskipTests -Dserver.api.group=io.papermc.paper -Dserver.api.artifact=paper-api "-Dserver.api.version=[26.3.build,26.4)"
+        shell: bash
+        run: |
+          set -euo pipefail
+          mvn -B clean package -DskipTests -Dserver.api.group=io.papermc.paper -Dserver.api.artifact=paper-api "-Dserver.api.version=[26.3.build,26.4)" 2>&1 | tee "${RUNNER_TEMP}/cultivation-deprecation-26.3.log"
+          python3 scripts/verify_deprecation_baseline.py "${RUNNER_TEMP}/cultivation-deprecation-26.3.log"
+      - name: Retain compiler deprecation audit logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: cultivation-compiler-deprecation-audit
+          path: ${{ runner.temp }}/cultivation-deprecation-*.log
+          if-no-files-found: warn
       - name: Upload canonical raw JAR artifact
         uses: actions/upload-artifact@v7
         with:
