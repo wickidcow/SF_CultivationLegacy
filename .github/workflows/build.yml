@@ -120,10 +120,13 @@ jobs:
           test "$PLUGIN_VERSION" = "$VERSION"
           if printf '%s\n' "$PLUGIN_VERSION" | grep -Eiq '(legacy|english|snapshot)'; then exit 1; fi
           sha256sum "dist/${OUTPUT_NAME}"
-      - name: Verify Java 21 bytecode
+      - name: Test raw JAR Java 21 bytecode gate
+        run: python3 -m unittest discover -s scripts -p 'test_check_java21_jar.py' -v
+      - name: Verify every packaged class uses stable Java 21 bytecode
         shell: bash
         run: |
           set -euo pipefail
+          python3 scripts/check_java21_jar.py "dist/${OUTPUT_NAME}"
           MAIN_CLASS=$(unzip -p "dist/${OUTPUT_NAME}" plugin.yml | awk '/^main:/ {print $2; exit}')
           javap -verbose -classpath "dist/${OUTPUT_NAME}" "$MAIN_CLASS" | grep -F 'major version: 65'
       - name: Verify Paper 26.1 compilation
