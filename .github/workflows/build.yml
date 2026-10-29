@@ -44,6 +44,8 @@ jobs:
           distribution: temurin
           java-version: '25'
           cache: maven
+      - name: Install checksum-verified Apache Maven 3.10.0
+        run: bash scripts/install_maven_3_10.sh
 
       - name: Verify canonical release identity
         shell: bash
@@ -186,18 +188,42 @@ jobs:
             .ci-deps/Slimefun-Legacy4.1.78.jar \
             "dist/${OUTPUT_NAME}" \
             .ci-runtime/server-26.3
+      - name: Stage allowlisted old-data runtime receipts
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Artifacts exclude hidden .ci-runtime by default. Copy ONLY the
+          # synthetic test's expected receipts to a non-hidden, new directory.
+          test ! -e runtime-evidence
+          mkdir runtime-evidence
+          for version in 1.21.11 26.3; do
+            server=".ci-runtime/server-${version}"
+            for boot in 1 2 3; do
+              source_file="${server}/cultivation-boot-${boot}.stdout.log"
+              test -s "$source_file"
+              test ! -L "$source_file"
+              if [[ "$boot" != 3 ]]; then
+                grep -Fq 'CULTIVATION_PROBE_PASS' "$source_file"
+              else
+                grep -Fq 'Unable to load codex.yml' "$source_file"
+              fi
+              cp "$source_file" "runtime-evidence/${version}-boot-${boot}.stdout.log"
+            done
+            for file in exp.yml codex.yml; do
+              source_file="${server}/plugins/Cultivation/${file}"
+              test -s "$source_file"
+              test ! -L "$source_file"
+              cp "$source_file" "runtime-evidence/${version}-${file}"
+            done
+          done
+          test "$(find runtime-evidence -maxdepth 1 -type f | wc -l)" -eq 10
+          (cd runtime-evidence && sha256sum * | sort > SHA256SUMS.txt)
       - name: Retain disposable Paper runtime evidence
-        if: always()
         uses: actions/upload-artifact@v7
         with:
           name: cultivation-paper-runtime-evidence
-          path: |
-            .ci-runtime/*.metadata.json
-            .ci-runtime/server-*/cultivation-boot-*.stdout.log
-            .ci-runtime/server-*/plugins/Cultivation/exp.yml
-            .ci-runtime/server-*/plugins/Cultivation/codex.yml
-            .ci-runtime/server-*/plugins/CultivationRuntimeProbe/seed-pack.bin
-          if-no-files-found: warn
+          path: runtime-evidence/
+          if-no-files-found: error
       - name: Upload validated canonical raw JAR
         uses: actions/upload-artifact@v7
         with:
