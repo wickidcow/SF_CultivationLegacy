@@ -7,9 +7,25 @@ on:
   pull_request:
     branches: ['**']
   workflow_dispatch:
+    inputs:
+      publish_new_release:
+        description: 'Publish a DISTINCT new version after every required build and runtime check passes'
+        required: true
+        type: boolean
+        default: false
+      confirm_version:
+        description: 'Exact reviewed version string, e.g. 1.1.25'
+        required: false
+        type: string
+        default: ''
+      expected_source_sha:
+        description: 'Reviewed 40-character commit SHA; must equal current main'
+        required: false
+        type: string
+        default: ''
 
 permissions:
-  contents: write
+  contents: read
 
 env:
   VERSION: "1.1.24"
@@ -68,6 +84,10 @@ jobs:
           gh release download "v4.1.78" --repo "wickidcow/Slimefun-Legacy" --pattern "Slimefun-Legacy4.1.78.jar" --dir ".ci-deps"
           mvn -B install:install-file -Dfile=".ci-deps/Slimefun-Legacy4.1.78.jar" -DgroupId="com.github.slimefun" -DartifactId="Slimefun" -Dversion="4.1.78" -Dpackaging="jar" -DgeneratePom=true
 
+      - name: Verify immutable release authorization and no-clobber regression
+        run: |
+          bash -n scripts/publish_new_release.sh
+          python3 -m unittest discover -s scripts -p 'test_publish_new_release.py' -v
       - name: Verify player data preservation boundary
         run: python3 scripts/verify_player_data_safety.py
       - name: Test zero-deprecation regression guard
@@ -185,20 +205,56 @@ jobs:
           path: dist/${{ env.OUTPUT_NAME }}
           archive: false
           if-no-files-found: error
-      - name: Publish canonical raw JAR release
-        if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/v') || github.ref_name == github.event.repository.default_branch)
+
+
+  publish:
+    name: Publish DISTINCT Cultivation version after opt-in authorization
+    needs: build
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.publish_new_release == true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out reviewed release source
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Download exact same-run raw JAR, not its artifact envelope
+        uses: actions/download-artifact@v8
+        with:
+          name: ${{ env.OUTPUT_NAME }}
+          path: dist
+          skip-decompress: true
+      - name: Verify release policy and publish only an unused tag
+        shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
+          RELEASE_CONFIRMED: ${{ inputs.publish_new_release }}
+          CONFIRM_VERSION: ${{ inputs.confirm_version }}
+          EXPECTED_SOURCE_SHA: ${{ inputs.expected_source_sha }}
+          JAR: dist/SF_Cultivation1.1.24.jar
+        run: bash scripts/publish_new_release.sh
+      - name: Verify exact published source, digest, and downloaded JAR bytes
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          TAG="v${VERSION}"
-          if [[ "$GITHUB_REF" == refs/tags/* ]]; then test "$GITHUB_REF_NAME" = "$TAG"; fi
-          # Previously published versions are never replaced by subsequent CI runs.
-          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            echo "Release ${TAG} already exists; leaving its files unchanged."
-          else
-            gh release create "$TAG" "dist/${OUTPUT_NAME}" \
-              --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
-              --title "Cultivation ${VERSION}" --notes-file "docs/releases/${VERSION}.md"
-          fi
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/v$VERSION" > "$RUNNER_TEMP/cultivation-release.json"
+          python3 - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          release = json.loads((Path(os.environ['RUNNER_TEMP']) / 'cultivation-release.json').read_text(encoding='utf-8'))
+          jar = Path('dist') / os.environ['OUTPUT_NAME']
+          assert release['tag_name'] == 'v' + os.environ['VERSION']
+          assert release['target_commitish'] == os.environ['GITHUB_SHA']
+          assert len(release['assets']) == 1
+          asset = release['assets'][0]
+          assert asset['name'] == jar.name
+          assert asset['state'] == 'uploaded'
+          assert asset['size'] == jar.stat().st_size
+          assert asset['digest'] == 'sha256:' + hashlib.sha256(jar.read_bytes()).hexdigest()
+          PY
+          mkdir -p verified
+          gh release download "v$VERSION" --repo "$GITHUB_REPOSITORY" --pattern "$OUTPUT_NAME" --dir verified
+          cmp "dist/$OUTPUT_NAME" "verified/$OUTPUT_NAME"
