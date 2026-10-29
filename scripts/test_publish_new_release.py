@@ -19,28 +19,28 @@ class ImmutableCultivationReleaseTest(unittest.TestCase):
         dist.mkdir()
         self.jar = dist / "SF_Cultivation1.1.24.jar"
         with ZipFile(self.jar, "w") as out:
-            out.writestr("plugin.yml", "name: Cultivation\\nversion: '1.1.24'\\napi-version: '1.21.11'\\n")
+            out.writestr("plugin.yml", "name: Cultivation\nversion: '1.1.24'\napi-version: '1.21.11'\n")
         notes = root / "docs" / "releases"
         notes.mkdir(parents=True)
-        (notes / "1.1.24.md").write_text("Test release notes.\\n", encoding="utf-8")
+        (notes / "1.1.24.md").write_text("Test release notes.\n", encoding="utf-8")
         gh = root / "gh"
         gh.write_text(
-            "#!/usr/bin/env python3\\n"
-            "import os, sys\\n"
-            "args=sys.argv[1:]\\n"
-            "with open(os.environ['TEST_LOG'], 'a') as f:f.write('gh '+ ' '.join(args)+'\\\\n')\\n"
-            "if args[:2]==['api', 'repos/wickidcow/SF_CultivationLegacy/git/ref/heads/main']:\\n"
-            " print(os.environ['GITHUB_SHA'] if os.environ.get('TEST_MOVED_MAIN')!='true' else 'b'*40);sys.exit(0)\\n"
-            "if args[:2]==['release', 'view']:sys.exit(0 if os.environ.get('TEST_EXISTING_RELEASE')=='true' else 1)\\n"
-            "if args[:2]==['release', 'create']:sys.exit(0)\\n"
-            "sys.exit(98)\\n", encoding="utf-8")
+            "#!/usr/bin/env python3\n"
+            "import os, sys\n"
+            "args=sys.argv[1:]\n"
+            "with open(os.environ['TEST_LOG'], 'a') as f:f.write('gh '+ ' '.join(args)+'\\n')\n"
+            "if args[:2]==['api', 'repos/wickidcow/SF_CultivationLegacy/git/ref/heads/main']:\n"
+            " print(os.environ['GITHUB_SHA'] if os.environ.get('TEST_MOVED_MAIN')!='true' else 'b'*40);sys.exit(0)\n"
+            "if args[:2]==['release', 'view']:sys.exit(0 if os.environ.get('TEST_EXISTING_RELEASE')=='true' else 1)\n"
+            "if args[:2]==['release', 'create']:sys.exit(0)\n"
+            "sys.exit(98)\n", encoding="utf-8")
         gh.chmod(0o755)
         git = root / "git"
         git.write_text(
-            "#!/usr/bin/env python3\\n"
-            "import os, sys\\n"
-            "with open(os.environ['TEST_LOG'], 'a') as f:f.write('git '+' '.join(sys.argv[1:])+'\\\\n')\\n"
-            "sys.exit(128 if os.environ.get('TEST_TAG_NETWORK_FAIL')=='true' else (0 if os.environ.get('TEST_EXISTING_TAG')=='true' else 2))\\n",
+            "#!/usr/bin/env python3\n"
+            "import os, sys\n"
+            "with open(os.environ['TEST_LOG'], 'a') as f:f.write('git '+' '.join(sys.argv[1:])+'\\n')\n"
+            "sys.exit(128 if os.environ.get('TEST_TAG_NETWORK_FAIL')=='true' else (0 if os.environ.get('TEST_EXISTING_TAG')=='true' else 2))\n",
             encoding="utf-8")
         git.chmod(0o755)
         self.cwd = root
@@ -112,7 +112,7 @@ class ImmutableCultivationReleaseTest(unittest.TestCase):
 
     def test_missing_or_tampered_jar_is_rejected(self):
         with ZipFile(self.jar,"w") as out:
-            out.writestr("plugin.yml","version: 1.1.23\\n")
+            out.writestr("plugin.yml","version: 1.1.23\n")
         result, commands=self.invoke()
         self.assertNotEqual(result.returncode,0)
         self.assertFalse(any("release create" in x for x in commands))
