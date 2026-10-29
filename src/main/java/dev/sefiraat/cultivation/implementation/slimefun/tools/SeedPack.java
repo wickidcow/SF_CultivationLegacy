@@ -4,6 +4,7 @@ import dev.sefiraat.cultivation.api.datatypes.SeedPackDataType;
 import dev.sefiraat.cultivation.api.datatypes.instances.FloraLevelProfile;
 import dev.sefiraat.cultivation.api.datatypes.instances.SeedPackInstance;
 import dev.sefiraat.cultivation.api.slimefun.items.plants.CultivationPlant;
+import dev.sefiraat.cultivation.implementation.utils.LegacyItemText;
 import dev.sefiraat.sefilib.string.Theme;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -17,6 +18,7 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -25,6 +27,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -247,9 +250,12 @@ public class SeedPack extends SlimefunItem {
         private void reapplyInstance(@Nonnull CultivationPlant plant) {
             ItemMeta itemMeta = this.packStack.getItemMeta();
             PersistentDataAPI.set(itemMeta, SeedPackDataType.KEY, SeedPackDataType.TYPE, this.instance);
-            List<String> lore = itemMeta.getLore();
-            lore.set(3, Theme.CLICK_INFO.asTitle("Set to", plant.getItemName()));
-            itemMeta.setLore(lore);
+            List<Component> existingLore = itemMeta.lore();
+            if (existingLore != null && existingLore.size() > 3) {
+                List<Component> lore = new ArrayList<>(existingLore);
+                lore.set(3, LegacyItemText.parse(Theme.CLICK_INFO.asTitle("Set to", plant.getItemName())));
+                itemMeta.lore(lore);
+            }
             this.packStack.setItemMeta(itemMeta);
         }
 
@@ -257,7 +263,7 @@ public class SeedPack extends SlimefunItem {
         private ItemStack getSeedDisplayStack(@Nonnull CultivationPlant plant) {
             ItemStack itemStack = plant.getItem().clone();
             ItemMeta itemMeta = itemStack.getItemMeta();
-            itemMeta.setDisplayName(Theme.CLICK_INFO.apply("Stored Seed Type: " + itemMeta.getDisplayName()));
+            itemMeta.displayName(LegacyItemText.prepend(Theme.CLICK_INFO.apply("Stored Seed Type: "), itemMeta.displayName()));
             itemStack.setItemMeta(itemMeta);
             return itemStack;
         }
@@ -269,7 +275,7 @@ public class SeedPack extends SlimefunItem {
             }
             ItemStack itemStack = plant.getItem().clone();
             ItemMeta itemMeta = itemStack.getItemMeta();
-            itemMeta.setDisplayName(Theme.CLICK_INFO.apply("Remove Seed: " + itemMeta.getDisplayName()));
+            itemMeta.displayName(LegacyItemText.prepend(Theme.CLICK_INFO.apply("Remove Seed: "), itemMeta.displayName()));
             itemStack.setItemMeta(itemMeta);
             itemStack.setAmount(Math.min(amount, 64));
             return itemStack;
